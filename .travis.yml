@@ -28,5 +28,6 @@ script:
 - memote
 
 # Changed from 'deploy' to 'after_script' so that we deploy even after failures.
+#
 after_script:
 - scripts/deploy.sh
