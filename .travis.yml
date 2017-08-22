@@ -31,3 +31,6 @@ script:
 #
 after_script:
 - scripts/deploy.sh
+
+notifications:
+  email: false
