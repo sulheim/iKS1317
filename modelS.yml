@@ -31885,6 +31885,14 @@
       - ec-code: ''
       - origin: iMK1208
   - !!omap
+    - id: DM_albflon_c
+    - name: Albaflavenone demand
+    - metabolites: !!omap
+      - albflon_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+  - !!omap
     - id: DM_amob_c
     - name: Sink needed to allow S-Adenosyl-4-methylthio-2-oxobutanoate to leave system
     - metabolites: !!omap
@@ -31924,6 +31932,14 @@
       - bigg.reaction: DM_ectoine__L_c
       - ec-code: ''
       - origin: iMK1208
+  - !!omap
+    - id: DM_geosmin_c
+    - name: Geosmin demand
+    - metabolites: !!omap
+      - geosmin_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
   - !!omap
     - id: DM_germicidinA_c
     - name: Sink needed to allow intracellular germicidin A to leave system
@@ -31976,6 +31992,14 @@
       - bigg.reaction: DM_germicidinD_c
       - ec-code: ''
       - origin: iMK1208
+  - !!omap
+    - id: DM_grmcrnd_c
+    - name: (-)-Germacrene D demand
+    - metabolites: !!omap
+      - grmcrnd_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
   - !!omap
     - id: DM_mmyA_c
     - name: methylenomycin A demand
