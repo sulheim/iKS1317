@@ -16915,6 +16915,14 @@
       - metanetx.chemical: MNXM272
       - origin: iMK1208
   - !!omap
+    - id: strprub_c
+    - name: Streptorubin B
+    - compartment: c
+    - formula: C25H33N3O
+    - annotation: !!omap
+      - bigg.metabolite: strprub_c
+      - biocyc: Streptorubin B
+  - !!omap
     - id: stys_c
     - name: Stachyose
     - compartment: c
@@ -32029,6 +32037,14 @@
       - bigg.reaction: DM_msh_c
       - ec-code: ''
       - origin: iMK1208
+  - !!omap
+    - id: DM_strprub_c
+    - name: Streptorubin B demand
+    - metabolites: !!omap
+      - strprub_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
   - !!omap
     - id: DNADDP
     - name: Deaminido NAD diphosphatase
