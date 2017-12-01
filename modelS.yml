@@ -3626,6 +3626,20 @@
       - metanetx.chemical: MNXM925
       - origin: iMK1208
   - !!omap
+    - id: C21565_c
+    - name: Prodigiosin
+    - compartment: c
+    - formula: C20H25N3O
+    - annotation: !!omap
+      - kegg.compound: C21565
+  - !!omap
+    - id: C21572_c
+    - name: 2-Methyl-3-n-amyl-pyrrole
+    - compartment: c
+    - formula: C10H17N
+    - annotation: !!omap
+      - kegg.compound: C21572
+  - !!omap
     - id: CCbuttc_c
     - name: cis,cis-Butadiene-1,2,4-tricarboxylate
     - compartment: c
@@ -3947,6 +3961,14 @@
       - kegg.compound: C06249
       - metanetx.chemical: MNXM96175
       - origin: iMA789
+  - !!omap
+    - id: acetone_c
+    - name: Acetone
+    - compartment: c
+    - formula: C3H6O
+    - annotation: !!omap
+      - bigg.metabolite: acetone_c
+      - kegg.compound: C00207
   - !!omap
     - id: acg5p_c
     - name: N-Acetyl-L-glutamyl 5-phosphate
@@ -16358,6 +16380,7 @@
     - formula: C25H35N3O
     - annotation: !!omap
       - bigg.metabolite: red_c
+      - biocyc: CPD1A0-6175
       - chebi: '29702'
       - kegg.compound: C12023
       - metanetx.chemical: MNXM88518
@@ -16921,7 +16944,7 @@
     - formula: C25H33N3O
     - annotation: !!omap
       - bigg.metabolite: strprub_c
-      - biocyc: Streptorubin B
+      - biocyc: CPD1A0-6177
   - !!omap
     - id: stys_c
     - name: Stachyose
@@ -25095,6 +25118,82 @@
       - metanetx.reaction: MNXR3091
       - origin: iMK1208
   - !!omap
+    - id: ALBFLOLR
+    - name: (+)-epi-isozizaene,NADPH:oxygen oxidoreductase (5R-hydroxylating)
+    - metabolites: !!omap
+      - albflol__R_c: 1.0
+      - episz_c: -1.0
+      - h2o_c: 1.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - o2_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5223
+    - annotation: !!omap
+      - ec-code: 1.14.13.106
+      - kegg.reaction: R08853
+      - origin: KEGG
+      - subsystem: Albaflavenol biosynthesis
+  - !!omap
+    - id: ALBFLOLS
+    - name: (+)-epi-isozizaene,NADPH:oxygen oxidoreductase (5S-hydroxylating)
+    - metabolites: !!omap
+      - albflol__S_c: 1.0
+      - episz_c: -1.0
+      - h2o_c: 1.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - o2_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5223
+    - annotation: !!omap
+      - ec-code: 1.14.13.106
+      - kegg.reaction: R08851
+      - origin: KEGG
+      - subsystem: Albaflavenol biosynthesis
+  - !!omap
+    - id: ALBFLONR
+    - name: (5R)-albaflavenol,NADPH:oxygen 5-oxidoreductase
+    - metabolites: !!omap
+      - albflol__R_c: -1.0
+      - albflon_c: 1.0
+      - h2o_c: 2.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - o2_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5223
+    - annotation: !!omap
+      - ec-code: 1.14.13.106
+      - kegg.reaction: R08854
+      - origin: KEGG
+      - subsystem: Albaflavenol biosynthesis
+  - !!omap
+    - id: ALBFLONS
+    - name: (5S)-albaflavenol,NADPH:oxygen 5-oxidoreductase
+    - metabolites: !!omap
+      - albflol__S_c: -1.0
+      - albflon_c: 1.0
+      - h2o_c: 2.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - o2_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5223
+    - annotation: !!omap
+      - ec-code: 1.14.13.106
+      - kegg.reaction: R08852
+      - origin: KEGG
+      - subsystem: Albaflavenol biosynthesis
+  - !!omap
     - id: ALCD19
     - name: alcohol dehydrogenase (glycerol)
     - metabolites: !!omap
@@ -31684,6 +31783,21 @@
       - reactome: REACT_R-MTU-964851
       - rhea: '21099'
   - !!omap
+    - id: DIFRNLY
+    - name: (2E,6E)-farnesyl-diphosphate diphosphate-lyase [(E)-beta-farnesene-forming]
+    - metabolites: !!omap
+      - bfrn_c: 1.0
+      - frdp_c: -1.0
+      - ppi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5223
+    - annotation: !!omap
+      - ec-code: 4.2.3.47
+      - kegg.reaction: R08695
+      - origin: KEGG
+      - subsystem: Farnesene biosynthesis
+  - !!omap
     - id: DINSt2
     - name: deoxyinosine transport in via proton symport
     - metabolites: !!omap
@@ -34168,6 +34282,21 @@
       - metanetx.reaction: MNXR68883
       - origin: iMK1208
       - rhea: '10167'
+  - !!omap
+    - id: EPIZSYN
+    - name: (2E,6E)-farnesyl-diphosphate diphosphate-lyase [(+)-epi-isozizaene-forming]
+    - metabolites: !!omap
+      - episz_c: 1.0
+      - frdp_c: -1.0
+      - ppi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5222
+    - annotation: !!omap
+      - ec-code: 4.2.3.37
+      - kegg.reaction: R07830
+      - origin: KEGG
+      - subsystem: Albaflavenol biosynthesis
   - !!omap
     - id: EPMEACPR
     - name: Enoylpimeloyl-[ACP] methyl ester reductase
@@ -38450,6 +38579,23 @@
       - ec-code: 1.3.99.1
       - origin: iMK1208
   - !!omap
+    - id: FRNDIT
+    - name: farnesyl-diphosphate:farnesyl-diphosphate farnesyltransferase
+    - metabolites: !!omap
+      - frdp_c: -2.0
+      - ppi_c: 1.0
+      - psqldi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - ec-code: 2.5.1.21
+      - kegg.reaction: R00702
+      - origin: KEGG
+      - subsystem: Biosynthesis of secondary metabolites, Steroid biosynthesis, Carotenoid
+          biosynthesis, Sesquiterpenoid and triterpenoid biosynthesis, Biosynthesis
+          of antibiotics
+  - !!omap
     - id: FRTT
     - name: farnesyltranstransferase
     - metabolites: !!omap
@@ -41128,6 +41274,38 @@
       - origin: iMK1208
       - rhea: '16504'
   - !!omap
+    - id: GRMCRDS
+    - name: 2-trans,6-trans-farnesyl-diphosphate diphosphate-lyase [(-)-Germacrene
+        D-forming]
+    - metabolites: !!omap
+      - frdp_c: -1.0
+      - grmcrnd_c: 1.0
+      - ppi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO6073
+    - annotation: !!omap
+      - ec-code: 4.2.3.75
+      - kegg.reaction: R07648
+      - origin: KEGG
+      - subsystem: Geosmin biosynthesis
+  - !!omap
+    - id: GRMCROS
+    - name: 2-trans,6-trans-farnesyl-diphosphate diphosphate-lyase [(1E,4S,5E,7R)-germacra-1(10),5-dien-11-ol-forming]
+    - metabolites: !!omap
+      - frdp_c: -1.0
+      - grmcrol_c: 1.0
+      - h2o_c: -1.0
+      - ppi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO6073
+    - annotation: !!omap
+      - ec-code: 4.2.3.22
+      - kegg.reaction: R07647
+      - origin: KEGG
+      - subsystem: Geosmin biosynthesis
+  - !!omap
     - id: GRTT
     - name: geranyltranstransferase
     - metabolites: !!omap
@@ -41147,6 +41325,22 @@
       - metanetx.reaction: MNXR479
       - origin: iMK1208
       - rhea: '19364'
+  - !!omap
+    - id: GSMNSYN
+    - name: germacradienol geosmin-lyase (acetone forming)
+    - metabolites: !!omap
+      - acetone_c: 1.0
+      - geosmin_c: 1.0
+      - grmcrol_c: -1.0
+      - h2o_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO6073
+    - annotation: !!omap
+      - ec-code: 4.1.99.16
+      - kegg.reaction: R09487
+      - origin: KEGG
+      - subsystem: Geosmin biosynthesis
   - !!omap
     - id: GSNt2
     - name: guanosine transport in via proton symport
@@ -45864,7 +46058,7 @@
       - origin: iMK1208
   - !!omap
     - id: MMSYNA
-    - name: ''
+    - name: MMSYNA
     - metabolites: !!omap
       - mmyA_c: 1.0
       - mmyC_c: -1.0
@@ -45877,7 +46071,7 @@
       - subsystem: Methylenomycin biosynthesis
   - !!omap
     - id: MMSYNB
-    - name: ''
+    - name: MMSYNB
     - metabolites: !!omap
       - co2_c: 1.0
       - mmyB_c: 1.0
@@ -45912,7 +46106,7 @@
       - rhea: '31050'
   - !!omap
     - id: MMYSYN1
-    - name: ''
+    - name: MMYSYN1
     - metabolites: !!omap
       - accoa_c: -1.0
       - actACPmmy_c: -1.0
@@ -45928,7 +46122,7 @@
       - subsystem: Methylenomycin biosynthesis
   - !!omap
     - id: MMYSYN2
-    - name: ''
+    - name: MMYSYN2
     - metabolites: !!omap
       - ACPmmy_c: 1.0
       - malACPmmy_c: -1.0
@@ -45943,7 +46137,7 @@
       - subsystem: Methylenomycin biosynthesis
   - !!omap
     - id: MMYSYN3
-    - name: ''
+    - name: MMYSYN3
     - metabolites: !!omap
       - mmyC_c: 1.0
       - mmyint2_c: -1.0
@@ -51465,6 +51659,23 @@
       - origin: iMK1208
       - rhea: '26127'
   - !!omap
+    - id: PRODSYN
+    - name: R11662
+    - metabolites: !!omap
+      - C21565_c: 1.0
+      - C21572_c: -1.0
+      - adp_c: 1.0
+      - atp_c: -1.0
+      - mbc_c: -1.0
+      - pi_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5896
+    - annotation: !!omap
+      - kegg.reaction: R11662
+      - origin: KEGG
+      - subsystem: Undecylprodigiosin Biosynthesis
+  - !!omap
     - id: PROTRS
     - name: Prolyl-tRNA synthetase
     - metabolites: !!omap
@@ -51910,6 +52121,25 @@
       - metanetx.reaction: MNXR82717
       - origin: iMK1208
       - rhea: '21211'
+  - !!omap
+    - id: PSQLDL
+    - name: presqualene-diphosphate diphosphate-lyase (reducing, squalene-forming)
+    - metabolites: !!omap
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - ppi_c: 1.0
+      - psqldi_c: -1.0
+      - sql_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - ec-code: 2.5.1.21
+      - kegg.reaction: R02872
+      - origin: KEGG
+      - subsystem: Biosynthesis of secondary metabolites, Sesquiterpenoid and triterpenoid
+          biosynthesis, Steroid biosynthesis, Biosynthesis of antibiotics
   - !!omap
     - id: PSSA120
     - name: Phosphatidylserine syntase (n-C12:0)
@@ -53372,6 +53602,23 @@
       - ec-code: ''
       - origin: iMK1208
   - !!omap
+    - id: REDS27b
+    - name: '4-keto-2-undecylpyrroline, NADPH: oxidoreductase'
+    - metabolites: !!omap
+      - h2o_c: 1.0
+      - h_c: -1.0
+      - nadp_c: 1.0
+      - nadph_c: -1.0
+      - up_c: 1.0
+      - upn_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5893
+    - annotation: !!omap
+      - kegg.reaction: R11663
+      - origin: KEGG
+      - subsystem: Undecylprodigiosin Biosynthesis
+  - !!omap
     - id: REDS28
     - name: L-prolyladenylate synthase
     - metabolites: !!omap
@@ -53531,6 +53778,22 @@
       - bigg.reaction: REDS35
       - ec-code: ''
       - origin: iMK1208
+  - !!omap
+    - id: REDS35b
+    - name: 4-hydroxy-2,2'-bipyrrole-5-methanal:NAD+ oxidoreductase
+    - metabolites: !!omap
+      - h_c: 1.0
+      - hbc_c: 1.0
+      - hbm_c: -1.0
+      - nad_c: -1.0
+      - nadh_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5882
+    - annotation: !!omap
+      - kegg.reaction: R11669
+      - origin: KEGG
+      - subsystem: Undecylprodigiosin Biosynthesis
   - !!omap
     - id: REDS36
     - name: 4-methoxy-2,2'-bipyrrole-5-methanol dehydrogenase
@@ -54877,6 +55140,51 @@
       - metanetx.reaction: MNXR2551
       - origin: iMK1208
       - rhea: '19976'
+  - !!omap
+    - id: SQLCYC1
+    - name: squalene mutase (cyclizing)
+    - metabolites: !!omap
+      - hop22en_c: 1.0
+      - sql_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO6764
+    - annotation: !!omap
+      - ec-code: 5.4.99.17
+      - kegg.reaction: R07322
+      - origin: KEGG
+      - subsystem: Sesquiterpenoid and triterpenoid biosynthesis
+  - !!omap
+    - id: SQLCYC2
+    - name: squalene mutase (cyclizing)
+    - metabolites: !!omap
+      - h2o_c: -1.0
+      - hop22ol_c: 1.0
+      - sql_c: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO6764
+    - annotation: !!omap
+      - ec-code: 4.2.1.129
+      - kegg.reaction: R07323
+      - origin: KEGG
+      - subsystem: Biosynthesis of secondary metabolites, Sesquiterpenoid and triterpenoid
+          biosynthesis
+  - !!omap
+    - id: SRUBSYN
+    - name: SRUBSYN
+    - metabolites: !!omap
+      - h2o_c: 1.0
+      - o2_c: -1.0
+      - red_c: -1.0
+      - strprub_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5897
+    - annotation: !!omap
+      - biocyc: RXN1A0-6102
+      - origin: BioCyc
+      - subsystem: Undecylprodigiosin Biosynthesis
   - !!omap
     - id: SSALx
     - name: Succinate-semialdehyde dehydrogenase (NAD(P)+)
@@ -60730,6 +61038,12 @@
     - id: SCO5212
     - name: aroA2, SC7E4.09c
   - !!omap
+    - id: SCO5222
+    - name: SCO5222
+  - !!omap
+    - id: SCO5223
+    - name: SCO5223
+  - !!omap
     - id: SCO5225
     - name: nrdM, SC7E4.22c
   - !!omap
@@ -61123,6 +61437,9 @@
     - id: SCO5879
     - name: redW
   - !!omap
+    - id: SCO5882
+    - name: SCO5882
+  - !!omap
     - id: SCO5883
     - name: redU, SC3F7.03c
   - !!omap
@@ -61158,6 +61475,9 @@
   - !!omap
     - id: SCO5896
     - name: redH, SC10A5.01, SC3F7.16
+  - !!omap
+    - id: SCO5897
+    - name: SCO5897, redG, SC10A5.02
   - !!omap
     - id: SCO5923
     - name: SC10A5.28c
@@ -61251,6 +61571,9 @@
   - !!omap
     - id: SCO6065
     - name: SC9B1.12
+  - !!omap
+    - id: SCO6073
+    - name: SCO6073
   - !!omap
     - id: SCO6075
     - name: SC9B1.22c
@@ -61596,6 +61919,9 @@
   - !!omap
     - id: SCO6763
     - name: SC6A5.12
+  - !!omap
+    - id: SCO6764
+    - name: SCO6764
   - !!omap
     - id: SCO6767
     - name: ispG
