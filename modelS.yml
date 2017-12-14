@@ -3632,6 +3632,7 @@
     - formula: C20H25N3O
     - annotation: !!omap
       - kegg.compound: C21565
+      - origin: KEGG
   - !!omap
     - id: C21572_c
     - name: 2-Methyl-3-n-amyl-pyrrole
@@ -3639,6 +3640,7 @@
     - formula: C10H17N
     - annotation: !!omap
       - kegg.compound: C21572
+      - origin: KEGG
   - !!omap
     - id: CCbuttc_c
     - name: cis,cis-Butadiene-1,2,4-tricarboxylate
@@ -3982,6 +3984,7 @@
     - annotation: !!omap
       - bigg.metabolite: acetone_c
       - kegg.compound: C00207
+      - origin: KEGG
   - !!omap
     - id: acg5p_c
     - name: N-Acetyl-L-glutamyl 5-phosphate
@@ -4898,6 +4901,7 @@
     - annotation: !!omap
       - bigg.metabolite: albflol__R_c
       - kegg.compound: C17955
+      - origin: KEGG
   - !!omap
     - id: albflol__S_c
     - name: (5S)-Albaflavenol
@@ -4906,6 +4910,7 @@
     - annotation: !!omap
       - bigg.metabolite: albflol__S_c
       - kegg.compound: C17953
+      - origin: KEGG
   - !!omap
     - id: albflon_c
     - name: Albaflavenone
@@ -4914,6 +4919,7 @@
     - annotation: !!omap
       - bigg.metabolite: albflon_c
       - kegg.compound: C17954
+      - origin: KEGG
   - !!omap
     - id: allglutADP_c
     - name: Adenylyl-[L-glutamate:ammonia ligase (ADP-forming)]
@@ -5548,6 +5554,7 @@
     - annotation: !!omap
       - bigg.metabolite: bfrn_c
       - kegg.compound: C09666
+      - origin: KEGG
   - !!omap
     - id: bglycogen_c
     - name: branching glycogen
@@ -8492,6 +8499,7 @@
     - annotation: !!omap
       - bigg.metabolite: episz_c
       - kegg.compound: C16269
+      - origin: KEGG
   - !!omap
     - id: epm_c
     - name: Epimelibiose
@@ -9619,6 +9627,7 @@
     - annotation: !!omap
       - bigg.metabolite: geosmin_c
       - kegg.compound: C16286
+      - origin: KEGG
   - !!omap
     - id: germicidinA_c
     - name: germicidin A
@@ -10234,6 +10243,7 @@
     - annotation: !!omap
       - bigg.metabolite: grmcrnd_c
       - kegg.compound: C16142
+      - origin: KEGG
   - !!omap
     - id: grmcrol_c
     - name: (1E,4S,5E,7R)-Germacra-1(10),5-dien-11-ol
@@ -10242,6 +10252,7 @@
     - annotation: !!omap
       - bigg.metabolite: grmcrol_c
       - kegg.compound: C16143
+      - origin: KEGG
   - !!omap
     - id: gsn_c
     - name: Guanosine
@@ -10502,6 +10513,7 @@
     - annotation: !!omap
       - bigg.metabolite: hbc_c
       - kegg.compound: C21569
+      - origin: KEGG
   - !!omap
     - id: hbm_c
     - name: 4-Hydroxy-2,2'-bipyrrole-5-methanol
@@ -10955,6 +10967,7 @@
       - chebi: '4648'
       - kegg.compound: C06310
       - metanetx.chemical: MNXM2
+      - origin: KEGG
   - !!omap
     - id: hop22ol_c
     - name: Diplopterol
@@ -10966,6 +10979,7 @@
       - chebi: '14411'
       - kegg.compound: C06309
       - metanetx.chemical: MNXM606
+      - origin: KEGG
   - !!omap
     - id: houdic_c
     - name: 5-Hydroxy-2-oxo-4-ureido-2,5-dihydro-1H-imidazole-5-carboxylate
@@ -16025,6 +16039,7 @@
       - chebi: '14886'
       - kegg.compound: C03428
       - metanetx.chemical: MNXM2
+      - origin: KEGG
   - !!omap
     - id: ptdcaACP_c
     - name: Pentadecanoyl-ACP (n-C15:0ACP)
@@ -16937,6 +16952,7 @@
       - chebi: '10795'
       - kegg.compound: C00751
       - metanetx.chemical: MNXM2
+      - origin: KEGG
   - !!omap
     - id: stcoa_c
     - name: Stearoyl-CoA (n-C18:0CoA)
@@ -16958,6 +16974,7 @@
     - annotation: !!omap
       - bigg.metabolite: strprub_c
       - biocyc: CPD1A0-6177
+      - origin: BioCyc
   - !!omap
     - id: stys_c
     - name: Stachyose
@@ -22742,7 +22759,7 @@
       - metanetx.reaction: MNXR3471
       - origin: iMK1208
       - rhea: '17268'
-      - subsystem: Unassigned
+      - subsystem: C5-Branched dibasic acid metabolism
   - !!omap
     - id: ACONMT
     - name: Trans-aconitate methyltransferase
@@ -27218,7 +27235,7 @@
       - kegg.reaction: R00086
       - origin: iMK1208
       - rhea: '13068'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: BACCL
     - name: biotin-[acetyl-CoA-carboxylase] ligase
@@ -29998,7 +30015,7 @@
       - kegg.reaction: R02161
       - metanetx.reaction: MNXR107339
       - origin: KEGG
-      - subsystem: Oxydative phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: CYO2a
     - name: 'cytochrome bc1c complex (reductase, menaquinol: 2 protons)'
@@ -30017,7 +30034,7 @@
       - bigg.reaction: CYO2a
       - ec-code: ''
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: CYO2b
     - name: cytochrome aa3 oxidase (2 protons)
@@ -30036,7 +30053,7 @@
       - kegg.reaction: R00081
       - metanetx.reaction: MNXR106380
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: CYRDAAT
     - name: cob(I)yrinic acid a,c-diamide adenosyltransferase
@@ -30292,7 +30309,7 @@
       - metanetx.reaction: MNXR112913
       - origin: iMK1208
       - rhea: '30262'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: CYTD
     - name: cytidine deaminase
@@ -32026,7 +32043,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DM_amob_c
@@ -32077,7 +32094,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DM_germicidinA_c
@@ -32140,7 +32157,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DM_mmyA_c
@@ -32151,7 +32168,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DM_mmyB_c
@@ -32162,7 +32179,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DM_msh_c
@@ -32186,7 +32203,7 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
-      - origin: biocyc
+      - origin: BioCyc
       - subsystem: Exchange
   - !!omap
     - id: DNADDP
@@ -38606,7 +38623,7 @@
       - bigg.reaction: FRD8
       - ec-code: 1.3.99.1
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: FRNDIT
     - name: farnesyl-diphosphate:farnesyl-diphosphate farnesyltransferase
@@ -38990,7 +39007,7 @@
       - ec-code: 1.1.99.5
       - metanetx.reaction: MNXR69191
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: G5SADs
     - name: L-glutamate 5-semialdehyde dehydratase (spontaneous)
@@ -44400,7 +44417,7 @@
       - bigg.reaction: L_LACD4
       - ec-code: 1.1.2.3
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: L_LACt2r
     - name: L-lactate reversible transport via proton symport
@@ -46775,7 +46792,7 @@
       - metanetx.reaction: MNXR107856
       - origin: iMK1208
       - rhea: '29238'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: NADH17b
     - name: NADH dehydrogenase (menaquinone-9 & 3 protons)
@@ -46800,7 +46817,7 @@
       - metanetx.reaction: MNXR107856
       - origin: iMK1208
       - rhea: '29238'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: NADH2r
     - name: NADH dehydrogenase (ubiquinone)
@@ -46912,7 +46929,7 @@
       - metanetx.reaction: MNXR2843
       - origin: iMK1208
       - rhea: '11695'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: NAMNPP
     - name: nicotinic acid mononucleotide pyrophosphorylase
@@ -48188,7 +48205,7 @@
       - metanetx.reaction: MNXR83078
       - origin: iMK1208
       - rhea: '24631'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: NTRIR2y
     - name: nitrite/sulphite reductase
@@ -51002,7 +51019,7 @@
       - bigg.reaction: POX3
       - ec-code: 1.2.2.2
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: PPA
     - name: inorganic diphosphatase
@@ -51258,7 +51275,7 @@
       - ec-code: 2.7.4.1
       - metanetx.reaction: MNXR2847
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: PPM
     - name: phosphopentomutase
@@ -53006,7 +53023,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR2846
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: QULNS
     - name: quinolinate synthase
@@ -55381,7 +55398,7 @@
       - ec-code: 1.3.99.1
       - metanetx.reaction: MNXR2846
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: SUCD9
     - name: succinate:quinone oxidoreductase
@@ -56153,7 +56170,7 @@
       - kegg.reaction: R00112
       - origin: iMK1208
       - rhea: '11695'
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: THDPLOR
     - name: 2,3,4,5-tetrahydrodipicolinate:NAD+ 4-oxidoreductase
@@ -56253,7 +56270,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR69434
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: THMDt2
     - name: thymidine transport in via proton symport, reversible
@@ -56788,7 +56805,7 @@
       - kegg.reaction: R02016
       - metanetx.reaction: MNXR26657
       - origin: iMK1208
-      - subsystem: Oxidative Phosphorylation
+      - subsystem: Oxidative phosphorylation
   - !!omap
     - id: TRE6PP
     - name: trehalose-phosphatase
