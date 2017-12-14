@@ -24229,7 +24229,7 @@
       - metanetx.reaction: MNXR3782
       - origin: iMA789
       - rhea: '31138'
-      - subsystem: Purine biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: ADSK
     - name: adenylyl-sulfate kinase
@@ -24269,7 +24269,7 @@
       - metanetx.reaction: MNXR2856
       - origin: iMK1208
       - rhea: '16856'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: ADSL2r
     - name: adenylosuccinate lyase
@@ -24288,7 +24288,7 @@
       - metanetx.reaction: MNXR515
       - origin: iMK1208
       - rhea: '23923'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: ADSS
     - name: adenylosuccinate synthase
@@ -24311,7 +24311,7 @@
       - metanetx.reaction: MNXR69220
       - origin: iMK1208
       - rhea: '15756'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: AGDC
     - name: N-acetylglucosamine-6-phosphate deacetylase
@@ -24750,7 +24750,7 @@
       - metanetx.reaction: MNXR1964
       - origin: iMK1208
       - rhea: '22195'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: AIRCr
     - name: phosphoribosylaminoimidazole carboxylase
@@ -24769,7 +24769,7 @@
       - kegg.reaction: R04209
       - metanetx.reaction: MNXR81638
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: AKGDH
     - name: 2-Oxogluterate dehydrogenase
@@ -26849,7 +26849,7 @@
       - metanetx.reaction: MNXR83103
       - origin: iMK1208
       - rhea: '20016'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: ASPK
     - name: aspartate kinase
@@ -29868,7 +29868,7 @@
       - metanetx.reaction: MNXR69227
       - origin: iMK1208
       - rhea: '16600'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: CTPS2
     - name: CTP synthase (glutamine)
@@ -29893,7 +29893,7 @@
       - metanetx.reaction: MNXR69228
       - origin: iMK1208
       - rhea: '26429'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: CU1O
     - name: Cuprous Oxidase (Cu+1)
@@ -31654,7 +31654,7 @@
       - ec-code: 1.3.3.1
       - metanetx.reaction: MNXR2941
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: DHORD_NADP
     - name: (S)-dihydroorotate:NADP+ oxidoreductase
@@ -31694,7 +31694,7 @@
       - metanetx.reaction: MNXR2942
       - origin: iMK1208
       - rhea: '24299'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: DHPPDA2
     - name: diaminohydroxyphosphoribosylaminopryrimidine deaminase (25drapp)
@@ -39454,7 +39454,7 @@
       - metanetx.reaction: MNXR83108
       - origin: iMK1208
       - rhea: '15056'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: GCALDD
     - name: Glycolaldehyde dehydrogenase
@@ -40307,7 +40307,7 @@
       - kegg.reaction: R01072
       - metanetx.reaction: MNXR83109
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: GLUR
     - name: glutamate racemase
@@ -41041,7 +41041,7 @@
       - metanetx.reaction: MNXR2946
       - origin: iMK1208
       - rhea: '11683'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: GND
     - name: phosphogluconate dehydrogenase (NADP)
@@ -43228,7 +43228,7 @@
       - metanetx.reaction: MNXR69234
       - origin: iMK1208
       - rhea: '18448'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: IMPD
     - name: IMP dehydrogenase
@@ -43250,7 +43250,7 @@
       - metanetx.reaction: MNXR2949
       - origin: iMK1208
       - rhea: '11711'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: INDOLEt2r
     - name: Indole transport via proton symport, reversible
@@ -48545,7 +48545,7 @@
       - metanetx.reaction: MNXR79250
       - origin: iMK1208
       - rhea: '11599'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: OP4ENH3
     - name: 2-oxopent-4-enoate hydratase
@@ -48736,7 +48736,7 @@
       - metanetx.reaction: MNXR2955
       - origin: iMK1208
       - rhea: '10383'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: OXBPTA
     - name: phosphate acetyltransferase
@@ -51499,7 +51499,7 @@
       - kegg.reaction: R04144
       - metanetx.reaction: MNXR2956
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: PRAIS
     - name: phosphoribosylaminoimidazole synthase
@@ -51520,7 +51520,7 @@
       - kegg.reaction: R04208
       - metanetx.reaction: MNXR84002
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: PRAIi
     - name: phosphoribosylanthranilate isomerase (irreversible)
@@ -51579,7 +51579,7 @@
       - metanetx.reaction: MNXR84003
       - origin: iMK1208
       - rhea: '22631'
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: PRATPP
     - name: phosphoribosyl-ATP pyrophosphatase
@@ -51644,7 +51644,7 @@
       - kegg.reaction: R04463
       - metanetx.reaction: MNXR55855
       - origin: iMK1208
-      - subsystem: Purine and Pyrimidine Biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: PRMICI
     - name: 1-(5-phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino)imidazole-4-carboxamide
@@ -58148,7 +58148,7 @@
       - metanetx.reaction: MNXR69528
       - origin: iMA789
       - rhea: '10803'
-      - subsystem: Purine biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: XTSNH
     - name: Xanthosine hydrolase
