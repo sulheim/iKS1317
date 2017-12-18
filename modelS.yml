@@ -26478,21 +26478,6 @@
       - rhea: '14824'
       - subsystem: Alternate Carbon metabolism
   - !!omap
-    - id: ARB_Dabc
-    - name: D-arabinose transport via ABC system
-    - metabolites: !!omap
-      - arab__D_e: -1.0
-    - lower_bound: 0.0
-    - upper_bound: 1000.0
-    - gene_reaction_rule: ''
-    - annotation: !!omap
-      - bigg.reaction: ARB_Dabc
-      - ec-code: ''
-      - kegg.reaction: ''
-      - metanetx.reaction: MNXR5981
-      - origin: iMA789
-      - subsystem: Exchange
-  - !!omap
     - id: ARBabc
     - name: L-arabinose transport via ABC system
     - metabolites: !!omap
@@ -34957,6 +34942,21 @@
       - origin: iMA789
       - subsystem: Exchange
   - !!omap
+    - id: EX_arab__D_e
+    - name: D-arabinose transport via ABC system
+    - metabolites: !!omap
+      - arab__D_e: -1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: ''
+    - annotation: !!omap
+      - bigg.reaction: ARB_Dabc
+      - ec-code: ''
+      - kegg.reaction: ''
+      - metanetx.reaction: MNXR5981
+      - origin: iMA789
+      - subsystem: Exchange
+  - !!omap
     - id: EX_arab__L_e
     - name: L-Arabinose exchange
     - metabolites: !!omap
@@ -35828,17 +35828,15 @@
       - subsystem: Exchange
   - !!omap
     - id: EX_gam_e
-    - name: D-glucosamine transport via PEP:PTS
+    - name: D-glucosamine exchange
     - metabolites: !!omap
       - gam_e: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0434 and SCO1390 and SCO2906 and SCO2907 and SCO3196
+    - gene_reaction_rule: ''
     - annotation: !!omap
       - bigg.reaction: EX_gam_e
-      - ec-code: 2.7.1.69
       - kegg.reaction: ''
-      - metanetx.reaction: MNXR69619
       - origin: iMA789
       - subsystem: Exchange
   - !!omap
@@ -48533,7 +48531,7 @@
       - h_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: s0001
+    - gene_reaction_rule: SCO5522
     - annotation: !!omap
       - bigg.reaction: OMCDC
       - biocyc: META:RXN-7800
