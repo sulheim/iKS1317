@@ -22355,7 +22355,7 @@
       - malcoa_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2445 and SCO2777 and SCO4921 and SCO6271
+    - gene_reaction_rule: ( SCO6271 or SCO4921 ) and SCO2445 and SCO2777
     - annotation: !!omap
       - bigg.reaction: ACCOAC_1
       - ec-code: 6.4.1.2
@@ -22734,7 +22734,7 @@
       - h_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3815 and SCO3829
+    - gene_reaction_rule: SCO3815 or SCO3829
     - annotation: !!omap
       - bigg.reaction: ACON6LAT
       - ec-code: 2.3.1.12
@@ -23572,7 +23572,7 @@
       - o2_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO5080
     - annotation: !!omap
       - bigg.reaction: ACTS16b
       - ec-code: ''
@@ -23592,7 +23592,7 @@
       - nadh_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO5092
     - annotation: !!omap
       - bigg.reaction: ACTS17
       - kegg.reaction: R09312
@@ -23611,7 +23611,7 @@
       - o2_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO5080
     - annotation: !!omap
       - bigg.reaction: ACTS18
       - ec-code: ''
@@ -27129,7 +27129,7 @@
       - pyr_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2043 and SCO3213 and SCO3214
+    - gene_reaction_rule: gprSCO3213 and ( SCO3214 or SCO2043 )
     - annotation: !!omap
       - bigg.reaction: ATNS_nh4
       - ec-code: 4.1.3.27
@@ -28507,7 +28507,7 @@
       - chiralc_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO5072
     - annotation: !!omap
       - bigg.reaction: CHIRAISO
       - kegg.reaction: R09307
@@ -29993,7 +29993,8 @@
       - q8h2_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO2150 and SCO2149 and ( SCO7236 or SCO2148 or SCO7120
+        )
     - annotation: !!omap
       - bigg.reaction: CYO1ab
       - ec-code: ''
@@ -34286,7 +34287,7 @@
       - nadh_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0884 and SCO2180 and SCO4919
+    - gene_reaction_rule: SCO0884 or SCO2180 or SCO4919
     - annotation: !!omap
       - bigg.reaction: EN6LNOR
       - ec-code: 1.8.1.4
@@ -37968,7 +37969,7 @@
       - g3p_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3649 and SCO5852
+    - gene_reaction_rule: SCO3649 or SCO5852
     - annotation: !!omap
       - bigg.reaction: FBA_1
       - biocyc: F16ALDOLASE-RXN
@@ -39073,7 +39074,7 @@
       - nadph_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ( SCO1937 and SCO6661 ) or ( SCO1937 and SCO6661 )
+    - gene_reaction_rule: SCO1937 or SCO6661
     - annotation: !!omap
       - bigg.reaction: G6PBDH
       - biocyc: GLU6PDEHYDROG-RXN
@@ -39111,7 +39112,7 @@
       - nadh_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1937 and SCO6661
+    - gene_reaction_rule: SCO1937 or SCO6661
     - annotation: !!omap
       - bigg.reaction: G6PDH1b
       - ec-code: 1.1.1.363
@@ -39148,7 +39149,7 @@
       - g6p_B_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1942 and SCO6659
+    - gene_reaction_rule: SCO1942 or SCO6659
     - annotation: !!omap
       - bigg.reaction: G6PI
       - ec-code: 5.3.1.9
@@ -42648,7 +42649,7 @@
       - nadh_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0420 and SCO5354
+    - gene_reaction_rule: SCO0420 or SCO5354
     - annotation: !!omap
       - bigg.reaction: HSDxi
       - ec-code: 1.1.1.3
@@ -43599,7 +43600,7 @@
       - 3hmop_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5514 and SCO7154
+    - gene_reaction_rule: SCO5514 or SCO7154
     - annotation: !!omap
       - bigg.reaction: KARI
       - biocyc: META:RXN-14106
@@ -43620,7 +43621,7 @@
       - nadph_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5514 and SCO7154
+    - gene_reaction_rule: SCO5514 or SCO7154
     - annotation: !!omap
       - bigg.reaction: KARI_23dhmb
       - ec-code: 1.1.1.86
@@ -43641,7 +43642,7 @@
       - nadph_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5514 and SCO7154
+    - gene_reaction_rule: SCO5514 or SCO7154
     - annotation: !!omap
       - bigg.reaction: KARI_23dhmp
       - ec-code: 1.1.1.86
@@ -43658,7 +43659,7 @@
       - alac__S_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5514 and SCO7154
+    - gene_reaction_rule: SCO5514 or SCO7154
     - annotation: !!omap
       - bigg.reaction: KARI_3hmoa
       - biocyc: META:2-ACETOLACTATE-MUTASE-RXN
@@ -45302,7 +45303,7 @@
       - h_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5696 and SCO6767
+    - gene_reaction_rule: SCO5696 or SCO6767
     - annotation: !!omap
       - bigg.reaction: MECDPDH4
       - ec-code: 1.17.7.1
@@ -45322,7 +45323,7 @@
       - h_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5696 and SCO6767
+    - gene_reaction_rule: SCO5696 or SCO6767
     - annotation: !!omap
       - bigg.reaction: MECDPDH5_2
       - ec-code: 1.17.7.3
@@ -46727,7 +46728,7 @@
       - noeicoylACP_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5087 and SCO5088
+    - gene_reaction_rule: SCO5087 or SCO5088
     - annotation: !!omap
       - bigg.reaction: NAACPHYD
       - ec-code: 2.3.1.235
@@ -49979,7 +49980,7 @@
       - g6p_A_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1942 and SCO6659
+    - gene_reaction_rule: SCO1942 or SCO6659
     - annotation: !!omap
       - bigg.reaction: PGIA
       - biocyc: RXN-6182
@@ -55407,9 +55408,8 @@
       - succ_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ( SCO0922 and SCO0923 and SCO4855 and SCO4856 and SCO5106
-        and SCO5107 and SCO7109 ) or ( SCO0922 and SCO0923 and SCO4855 and SCO4856
-        and SCO5106 and SCO5107 and SCO7109 )
+    - gene_reaction_rule: ( SCO0922 or SCO04855 or SCO5106 ) and ( SCO0923 or SCO4856
+        or SCO5107 or SCO7109 )
     - annotation: !!omap
       - bigg.reaction: SUCD9
       - ec-code: 1.3.5.1, 1.3.5.4
@@ -55878,7 +55878,7 @@
       - s7p_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1936 and SCO6662
+    - gene_reaction_rule: SCO1936 or SCO6662
     - annotation: !!omap
       - bigg.reaction: TALAb
       - biocyc: TRANSALDOL-RXN
@@ -56612,7 +56612,7 @@
       - xu5p__D_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1935 and SCO6497 and SCO6663
+    - gene_reaction_rule: SCO1935 or SCO6497 or SCO6663
     - annotation: !!omap
       - bigg.reaction: TKT2h
       - biocyc: 2TRANSKETO-RXN
@@ -58653,6 +58653,9 @@
   - !!omap
     - id: SCO0476
     - name: SCF76.16
+  - !!omap
+    - id: SCO04855
+    - name: SCO04855
   - !!omap
     - id: SCO0491
     - name: SCF34.10c
@@ -62301,6 +62304,9 @@
   - !!omap
     - id: SCP1233B
     - name: SCP1.233B, mmyC
+  - !!omap
+    - id: gprSCO3213
+    - name: gprSCO3213
   - !!omap
     - id: s0001
     - name: s0001
