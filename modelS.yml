@@ -31821,7 +31821,7 @@
       - nadph_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1706 and SCO3420 and SCO4913 and SCO5679
+    - gene_reaction_rule: SCO1706 or SCO3420 or SCO4913 or SCO5679
     - annotation: !!omap
       - EC NUMBER: 1.2.1.3
       - bigg.reaction: DIOP5OR
@@ -39266,7 +39266,7 @@
       - gal_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2393 and SCO2407
+    - gene_reaction_rule: SCO2393 or SCO2407
     - annotation: !!omap
       - EC NUMBER: 5.1.3.3
       - bigg.reaction: GALM2
@@ -39968,7 +39968,7 @@
       - h2o_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2542 and SCO7570
+    - gene_reaction_rule: SCO2542 or SCO7570
     - annotation: !!omap
       - EC NUMBER: 4.2.1.40
       - bigg.reaction: GLCRD2
@@ -44958,7 +44958,7 @@
       - tcynt_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO4164 and SCO5854
+    - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
       - EC NUMBER: 2.8.1.2
       - bigg.reaction: MCPST
@@ -44977,7 +44977,7 @@
       - tsul_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO4164 and SCO5854
+    - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
       - EC NUMBER: 2.8.1.2
       - bigg.reaction: MCPST2
@@ -49749,7 +49749,7 @@
       - peng_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3184 and SCO4049
+    - gene_reaction_rule: SCO3184 or SCO4049
     - annotation: !!omap
       - EC NUMBER: 3.5.1.11
       - bigg.reaction: PENAM
