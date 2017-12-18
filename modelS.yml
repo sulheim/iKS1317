@@ -31824,8 +31824,8 @@
     - gene_reaction_rule: SCO1706 and SCO3420 and SCO4913 and SCO5679
     - annotation: !!omap
       - EC NUMBER: 1.2.1.3
-      - KEGG: R00264
       - bigg.reaction: DIOP5OR
+      - kegg.reaction: R00264
       - origin: KEGG
       - subsystem: Ascorbate and aldarate metabolism or Pentose and glucuronate interconversions
   - !!omap
@@ -39269,9 +39269,9 @@
     - gene_reaction_rule: SCO2393 and SCO2407
     - annotation: !!omap
       - EC NUMBER: 5.1.3.3
-      - KEGG: R10619
       - bigg.reaction: GALM2
       - ec-code: 3.1.3.27
+      - kegg.reaction: R10619
       - metanetx.reaction: MNXR69680
       - origin: KEGG
       - subsystem: Galactose metabolism
@@ -39971,8 +39971,8 @@
     - gene_reaction_rule: SCO2542 and SCO7570
     - annotation: !!omap
       - EC NUMBER: 4.2.1.40
-      - KEGG: R08056
       - bigg.reaction: GLCRD2
+      - kegg.reaction: R08056
       - origin: KEGG
       - subsystem: Ascorbate and aldarate metabolism
   - !!omap
@@ -44542,9 +44542,9 @@
     - gene_reaction_rule: SCO2823
     - annotation: !!omap
       - EC NUMBER: 5.2.1.1
-      - KEGG: R01087
       - bigg.reaction: MALEI
       - biocyc: MALEATE-ISOMERASE-RXN
+      - kegg.reaction: R01087
       - metanetx.reaction: MNXR4199
       - origin: KEGG
       - subsystem: Nicotinate and nicotinamide metabolism or Butanoate metabolism
@@ -44961,9 +44961,9 @@
     - gene_reaction_rule: SCO4164 and SCO5854
     - annotation: !!omap
       - EC NUMBER: 2.8.1.2
-      - KEGG: R03106
       - bigg.reaction: MCPST
       - biocyc: MERCAPYSTRANS-RXN
+      - kegg.reaction: R03106
       - metanetx.reaction: MNXR69676
       - origin: KEGG
       - subsystem: ''
@@ -44980,8 +44980,8 @@
     - gene_reaction_rule: SCO4164 and SCO5854
     - annotation: !!omap
       - EC NUMBER: 2.8.1.2
-      - KEGG: R03105
       - bigg.reaction: MCPST2
+      - kegg.reaction: R03105
       - origin: KEGG
       - subsystem: Cysteine and methionine metabolism
   - !!omap
@@ -49752,8 +49752,8 @@
     - gene_reaction_rule: SCO3184 and SCO4049
     - annotation: !!omap
       - EC NUMBER: 3.5.1.11
-      - KEGG: R04103
       - bigg.reaction: PENAM
+      - kegg.reaction: R04103
       - metanetx.reaction: MNXR69678
       - origin: KEGG
       - subsystem: ''
