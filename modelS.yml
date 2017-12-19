@@ -57443,11 +57443,11 @@
       - ump_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5626 or SCO1760
+    - gene_reaction_rule: SCO5626
     - annotation: !!omap
       - bigg.reaction: UMPK
       - biocyc: RXN-12002
-      - ec-code: 2.7.4.4
+      - ec-code: 2.7.4.22
       - kegg.reaction: R00158
       - metanetx.reaction: MNXR82983
       - origin: iMK1208
