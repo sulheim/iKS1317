@@ -19540,7 +19540,7 @@
         or SCO1267 or SCO1272 )
     - annotation: !!omap
       - bigg.reaction: 2MBCOATA
-      - ec-code: ''
+      - ec-code: 2.3.1.180
       - origin: iMK1208
       - subsystem: Membrane Lipid metabolism
   - !!omap
@@ -22718,7 +22718,7 @@
     - annotation: !!omap
       - bigg.reaction: ACOATA
       - biocyc: ACP-S-ACETYLTRANSFER-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 2.3.1.180
       - kegg.reaction: R01624
       - metanetx.reaction: MNXR69075
       - origin: iMK1208
@@ -27290,7 +27290,7 @@
         or SCO1267 or SCO1272 )
     - annotation: !!omap
       - bigg.reaction: BCOATA
-      - ec-code: ''
+      - ec-code: 2.3.1.180
       - origin: iMK1208
       - subsystem: Membrane Lipid metabolism
   - !!omap
@@ -42848,7 +42848,7 @@
         or SCO1267 or SCO1272 )
     - annotation: !!omap
       - bigg.reaction: IBCOATA
-      - ec-code: ''
+      - ec-code: 2.3.1.180
       - origin: iMK1208
       - subsystem: Membrane Lipid metabolism
   - !!omap
@@ -43509,7 +43509,7 @@
         or SCO1267 or SCO1272 )
     - annotation: !!omap
       - bigg.reaction: IVCOATA
-      - ec-code: ''
+      - ec-code: 2.3.1.180
       - origin: iMK1208
       - subsystem: Membrane Lipid metabolism
   - !!omap
@@ -45059,7 +45059,8 @@
       - murein5px4p_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3408 or SCO3811 or SCO4847 or SCO6131
+    - gene_reaction_rule: SCO2090 or SCO2608 or SCO3408 or SCO3811 or SCO4439 or SCO4847
+        or SCO6131 or SCO7050 or SCO7521
     - annotation: !!omap
       - bigg.reaction: MDDCP1
       - ec-code: 3.4.16.4
@@ -45075,7 +45076,8 @@
       - murein5px4px4p_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3408 or SCO3811 or SCO4847 or SCO6131
+    - gene_reaction_rule: SCO2090 or SCO2608 or SCO3408 or SCO3811 or SCO4439 or SCO4847
+        or SCO6131 or SCO7050 or SCO7521
     - annotation: !!omap
       - bigg.reaction: MDDCP2
       - ec-code: 3.4.16.4
@@ -45091,7 +45093,8 @@
       - murein5p5p_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3408 or SCO3811 or SCO4847 or SCO6131
+    - gene_reaction_rule: SCO2090 or SCO2608 or SCO3408 or SCO3811 or SCO4439 or SCO4847
+        or SCO6131 or SCO7050 or SCO7521
     - annotation: !!omap
       - bigg.reaction: MDDCP3
       - ec-code: 3.4.16.4
@@ -45107,7 +45110,8 @@
       - murein5p4p_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3408 or SCO3811 or SCO4847 or SCO6131
+    - gene_reaction_rule: SCO2090 or SCO2608 or SCO3408 or SCO3811 or SCO4439 or SCO4847
+        or SCO6131 or SCO7050 or SCO7521
     - annotation: !!omap
       - bigg.reaction: MDDCP4
       - ec-code: 3.4.16.4
@@ -45123,7 +45127,8 @@
       - murein5p3p_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3408 or SCO3811 or SCO4847 or SCO6131
+    - gene_reaction_rule: SCO2090 or SCO2608 or SCO3408 or SCO3811 or SCO4439 or SCO4847
+        or SCO6131 or SCO7050 or SCO7521
     - annotation: !!omap
       - bigg.reaction: MDDCP5
       - ec-code: 3.4.16.4
@@ -46339,7 +46344,7 @@
     - annotation: !!omap
       - bigg.reaction: MPTG
       - ec-code: ''
-      - metanetx.reaction: MNXR55555
+      - metanetx.reaction: MNXR101731
       - origin: iMK1208
       - subsystem: Murein Biosynthesis
   - !!omap
@@ -49538,7 +49543,7 @@
         or SCO1267 or SCO1272 )
     - annotation: !!omap
       - bigg.reaction: PCOATA
-      - ec-code: ''
+      - ec-code: 2.3.1.180
       - origin: iMK1208
       - subsystem: Membrane Lipid metabolism
   - !!omap
@@ -57159,7 +57164,7 @@
     - annotation: !!omap
       - bigg.reaction: UAGPT3
       - biocyc: META:NACGLCTRANS-RXN
-      - ec-code: ''
+      - ec-code: 2.4.1.227
       - kegg.reaction: R05032
       - metanetx.reaction: MNXR55985
       - origin: iMK1208
@@ -57409,7 +57414,7 @@
     - annotation: !!omap
       - bigg.reaction: UGMDDS
       - biocyc: META:UDP-NACMURALGLDAPAALIG-RXN
-      - ec-code: 6.3.2.15
+      - ec-code: 6.3.2.10
       - kegg.reaction: R04617
       - metanetx.reaction: MNXR5251
       - origin: iMK1208
@@ -61985,6 +61990,9 @@
     - id: SCO7049
     - name: SC4G1.15
   - !!omap
+    - id: SCO7050
+    - name: SC4G1.16c
+  - !!omap
     - id: SCO7081
     - name: SC3A4.07c
   - !!omap
@@ -62152,6 +62160,9 @@
   - !!omap
     - id: SCO7519
     - name: SCBAC25F8.11c
+  - !!omap
+    - id: SCO7521
+    - name: SCBAC25F8.13c
   - !!omap
     - id: SCO7544
     - name: SC8G12.20
