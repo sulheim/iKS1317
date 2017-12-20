@@ -6443,6 +6443,22 @@
       - metanetx.chemical: MNXM438
       - origin: iMK1208
   - !!omap
+    - id: citac_c
+    - name: 2-Methylmaleate
+    - compartment: c
+    - formula: C5H6O4
+    - annotation: !!omap
+      - bigg.metabolite: citac_c
+      - kegg.compound: C02226
+  - !!omap
+    - id: citm__R_c
+    - name: (R)-2-Methylmalate
+    - compartment: c
+    - formula: C5H8O5
+    - annotation: !!omap
+      - bigg.metabolite: citm__R_c
+      - kegg.compound: C02612
+  - !!omap
     - id: citr__L_c
     - name: L-Citrulline
     - compartment: c
@@ -16322,6 +16338,14 @@
       - kegg.compound: C00620
       - metanetx.chemical: MNXM295
       - origin: iMK1208
+  - !!omap
+    - id: r3mmal_c
+    - name: D-erythro-3-Methylmalate
+    - compartment: c
+    - formula: C5H8O5
+    - annotation: !!omap
+      - bigg.metabolite: r3mmal_c
+      - kegg.compound: C06032
   - !!omap
     - id: r5p_c
     - name: alpha-D-Ribose 5-phosphate
@@ -28672,6 +28696,36 @@
       - rhea: '26179'
       - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
+    - id: CITCIa2
+    - name: (R)-2-Methylmalate hydro-lyase (2-methylmaleate-forming)
+    - metabolites: !!omap
+      - citac_c: 1.0
+      - citm__R_c: -1.0
+      - h2o_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5553 and SCO5554
+    - annotation: !!omap
+      - ec-code: 4.2.1.35
+      - kegg.reaction: R03896
+      - origin: KEGG
+      - subsystem: Valine, leucine and isoleucine biosynthesis
+  - !!omap
+    - id: CITCIb
+    - name: 2-methylmaleate hydratase
+    - metabolites: !!omap
+      - citac_c: -1.0
+      - h2o_c: -1.0
+      - r3mmal_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5553 and SCO5554
+    - annotation: !!omap
+      - ec-code: 4.2.1.35
+      - kegg.reaction: R03898
+      - origin: KEGG
+      - subsystem: Valine, leucine and isoleucine biosynthesis
+  - !!omap
     - id: CITL
     - name: Citrate lyase
     - metabolites: !!omap
@@ -34363,6 +34417,24 @@
       - ec-code: ''
       - origin: iMK1208
       - subsystem: Transport, Membrane
+  - !!omap
+    - id: ERTHMMOR
+    - name: (2R,3S)-3-methylmalate:NAD+ oxidoreductase
+    - metabolites: !!omap
+      - 2obut_c: -1.0
+      - co2_c: -1.0
+      - h_c: -1.0
+      - nad_c: 1.0
+      - nadh_c: -1.0
+      - r3mmal_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO5522
+    - annotation: !!omap
+      - ec-code: 1.1.1.85
+      - kegg.reaction: R00994
+      - origin: KEGG
+      - subsystem: Valine, leucine and isoleucine biosynthesis
   - !!omap
     - id: ETHAAL
     - name: Ethanolamine ammonia-lyase
