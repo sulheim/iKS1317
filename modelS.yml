@@ -6450,6 +6450,7 @@
     - annotation: !!omap
       - bigg.metabolite: citac_c
       - kegg.compound: C02226
+      - origin: KEGG
   - !!omap
     - id: citm__R_c
     - name: (R)-2-Methylmalate
@@ -6458,6 +6459,7 @@
     - annotation: !!omap
       - bigg.metabolite: citm__R_c
       - kegg.compound: C02612
+      - origin: KEGG
   - !!omap
     - id: citr__L_c
     - name: L-Citrulline
@@ -16346,6 +16348,7 @@
     - annotation: !!omap
       - bigg.metabolite: r3mmal_c
       - kegg.compound: C06032
+      - origin: KEGG
   - !!omap
     - id: r5p_c
     - name: alpha-D-Ribose 5-phosphate
@@ -24905,6 +24908,7 @@
     - annotation: !!omap
       - bigg.reaction: ALAALAD
       - biocyc: 3.4.13.22-RXN
+      - ec-code: 3.4.13.22
       - kegg.reaction: R07651
       - metanetx.reaction: MNXR95675
       - origin: iMK1208
