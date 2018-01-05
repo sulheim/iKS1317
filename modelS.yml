@@ -23955,7 +23955,7 @@
       - glu__L_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3851
+    - gene_reaction_rule: SCO1547 or SCO3851
     - annotation: !!omap
       - bigg.reaction: ADCS
       - biocyc: PABASYN-RXN
@@ -23984,7 +23984,7 @@
     - annotation: !!omap
       - bigg.reaction: ADCYRS
       - biocyc: META:R345-RXN
-      - ec-code: ''
+      - ec-code: 6.3.5.10
       - kegg.reaction: R05225
       - metanetx.reaction: MNXR81554
       - origin: iMK1208
@@ -24827,12 +24827,12 @@
       - succoa_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5281 and ( SCO2181 or SCO7123 ) and ( SCO0884 or SCO2180
-        or SCO4919 )
+    - gene_reaction_rule: SCO5281 and ( SCO2181 or SCO7123 or SCO1268 ) and ( SCO0884
+        or SCO2180 or SCO4919 )
     - annotation: !!omap
       - bigg.reaction: AKGDH
       - biocyc: 2OXOGLUTARATEDEH-RXN
-      - ec-code: ''
+      - ec-code: "'1.2.4.2 and 1.8.1.4 and 2.3.1.61'"
       - kegg.reaction: R08549
       - metanetx.reaction: MNXR239
       - origin: iMK1208
@@ -24891,7 +24891,7 @@
     - gene_reaction_rule: SCO0828 or SCO1290 or SCO2068 or SCO2286
     - annotation: !!omap
       - bigg.reaction: AKP1
-      - ec-code: 2.3.1.9
+      - ec-code: 3.1.3.1
       - kegg.reaction: R04620
       - metanetx.reaction: MNXR95665
       - origin: iMK1208
@@ -25614,7 +25614,7 @@
     - gene_reaction_rule: SCO4556 or SCO5940
     - annotation: !!omap
       - bigg.reaction: AMMQLT9
-      - ec-code: ''
+      - ec-code: 2.1.1.163
       - kegg.reaction: R09736
       - metanetx.reaction: MNXR113146
       - origin: iMK1208
@@ -26850,11 +26850,11 @@
       - h_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0978 and SCO3416
+    - gene_reaction_rule: SCO0978 or SCO3416
     - annotation: !!omap
       - bigg.reaction: ASP1DC
       - biocyc: ASPDECARBOX-RXN
-      - ec-code: 4.1.1.15
+      - ec-code: 4.1.1.11 or 4.1.1.15
       - kegg.reaction: R00489
       - metanetx.reaction: MNXR54944
       - origin: iMK1208
@@ -27264,7 +27264,7 @@
     - gene_reaction_rule: SCO4927
     - annotation: !!omap
       - bigg.reaction: BACCL
-      - ec-code: 6.3.4.9
+      - ec-code: 6.3.4.15
       - kegg.reaction: R01074
       - metanetx.reaction: MNXR353
       - origin: iMK1208
@@ -29817,11 +29817,11 @@
       - oaa_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2736 or SCO4388 or SCO5832
+    - gene_reaction_rule: SCO2736 or SCO4388 or SCO5831 or SCO5832
     - annotation: !!omap
       - bigg.reaction: CS
       - biocyc: RXN-14905
-      - ec-code: 2.3.3.3
+      - ec-code: 2.3.3.1
       - kegg.reaction: R00351
       - metanetx.reaction: MNXR68218
       - origin: iMK1208
@@ -37739,7 +37739,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL100
       - ec-code: 6.2.1.3
@@ -37758,7 +37759,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL120
       - ec-code: 6.2.1.3
@@ -37777,7 +37779,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL140
       - ec-code: 6.2.1.3
@@ -37797,7 +37800,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL141
       - ec-code: 6.2.1.3
@@ -37817,7 +37821,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL160
       - biocyc: RXN-9623
@@ -37840,7 +37845,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL161
       - ec-code: 6.2.1.3
@@ -37860,7 +37866,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL180
       - biocyc: RXN-16380
@@ -37881,7 +37888,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL181
       - ec-code: 6.2.1.3
@@ -37901,7 +37909,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL60
       - ec-code: 6.2.1.3
@@ -37920,7 +37929,8 @@
     - lower_bound: 0.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6196 or SCO6195 or SCO2131 or SCO2444 or SCO2561 or SCO2720
-        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244
+        or SCO3436 or SCO4006 or SCO5983 or SCO6552 or SCO6968 or SCO7244 or SCO4503
+        or SCO6790
     - annotation: !!omap
       - bigg.reaction: FACOAL80
       - ec-code: 6.2.1.3
@@ -45760,7 +45770,7 @@
       - pi_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5860
+    - gene_reaction_rule: SCO0479 or SCO5860
     - annotation: !!omap
       - bigg.reaction: MI1PP
       - biocyc: RXN0-5408
@@ -57369,7 +57379,8 @@
       - udcpp_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1326 or SCO7047
+    - gene_reaction_rule: SCO1047 or SCO1326 or SCO4133 or SCO6355 or SCO6356 or SCO6511
+        or SCO7047
     - annotation: !!omap
       - bigg.reaction: UDCPDP
       - ec-code: 3.6.1.27
@@ -58666,6 +58677,9 @@
     - id: SCO0476
     - name: SCF76.16
   - !!omap
+    - id: SCO0479
+    - name: SCO0479
+  - !!omap
     - id: SCO04855
     - name: SCO04855
   - !!omap
@@ -58891,6 +58905,9 @@
     - id: SCO1046
     - name: SCG20A.26
   - !!omap
+    - id: SCO1047
+    - name: SCO1047
+  - !!omap
     - id: SCO1059
     - name: SCG22.05
   - !!omap
@@ -58977,6 +58994,9 @@
   - !!omap
     - id: SCO1267
     - name: 2SCG18.14c
+  - !!omap
+    - id: SCO1268
+    - name: SCO1268
   - !!omap
     - id: SCO1269
     - name: 2SCG18.16c
@@ -59142,6 +59162,9 @@
   - !!omap
     - id: SCO1546
     - name: SCL11.02c
+  - !!omap
+    - id: SCO1547
+    - name: SCO1547
   - !!omap
     - id: SCO1553
     - name: SCL11.09c
@@ -60541,6 +60564,9 @@
     - id: SCO4119
     - name: SCD72A.05
   - !!omap
+    - id: SCO4133
+    - name: SCO4133
+  - !!omap
     - id: SCO4138
     - name: pitH, SCD84.05
   - !!omap
@@ -60666,6 +60692,9 @@
   - !!omap
     - id: SCO4502
     - name: SCD35.09
+  - !!omap
+    - id: SCO4503
+    - name: SCO4503
   - !!omap
     - id: SCO4506
     - name: SCD35.13
@@ -61474,6 +61503,9 @@
     - id: SCO5805
     - name: nrdJ
   - !!omap
+    - id: SCO5831
+    - name: SCO5831
+  - !!omap
     - id: SCO5832
     - name: SCO5832
   - !!omap
@@ -61780,6 +61812,12 @@
     - id: SCO6347
     - name: SC3A7.15
   - !!omap
+    - id: SCO6355
+    - name: SCO6355
+  - !!omap
+    - id: SCO6356
+    - name: SCO6356
+  - !!omap
     - id: SCO6384
     - name: SC3C8.03c
   - !!omap
@@ -61854,6 +61892,9 @@
   - !!omap
     - id: SCO6497
     - name: tktA2
+  - !!omap
+    - id: SCO6511
+    - name: SCO6511
   - !!omap
     - id: SCO6528
     - name: SC5C7.13
@@ -62025,6 +62066,9 @@
   - !!omap
     - id: SCO6789
     - name: SC6A5.38
+  - !!omap
+    - id: SCO6790
+    - name: SCO6790
   - !!omap
     - id: SCO6799
     - name: tdh
