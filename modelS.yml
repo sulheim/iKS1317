@@ -20367,8 +20367,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR110
       - ec-code: 1.1.1.100
@@ -20405,8 +20405,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR121
       - ec-code: 1.1.1.100
@@ -20424,8 +20424,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR130
       - ec-code: 1.1.1.100
@@ -20463,8 +20463,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR141
       - ec-code: 1.1.1.100
@@ -20482,8 +20482,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR150
       - ec-code: 1.1.1.100
@@ -20520,8 +20520,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR161
       - ec-code: 1.1.1.100
@@ -20539,8 +20539,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR170
       - ec-code: 1.1.1.100
@@ -20577,8 +20577,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR181
       - biocyc: META:RXN-9556
@@ -20616,8 +20616,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR50
       - ec-code: 1.1.1.100
@@ -20654,8 +20654,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR70
       - ec-code: 1.1.1.100
@@ -20693,8 +20693,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OAR90
       - ec-code: 1.1.1.100
@@ -20711,8 +20711,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai110
       - ec-code: 1.1.1.100
@@ -20729,8 +20729,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai130
       - ec-code: 1.1.1.100
@@ -20747,8 +20747,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai150
       - ec-code: 1.1.1.100
@@ -20765,8 +20765,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai170
       - ec-code: 1.1.1.100
@@ -20783,8 +20783,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai70
       - ec-code: 1.1.1.100
@@ -20801,8 +20801,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARai90
       - ec-code: 1.1.1.100
@@ -20819,8 +20819,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi100
       - ec-code: 1.1.1.100
@@ -20837,8 +20837,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi110
       - ec-code: 1.1.1.100
@@ -20855,8 +20855,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi120
       - ec-code: 1.1.1.100
@@ -20873,8 +20873,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi130
       - ec-code: 1.1.1.100
@@ -20891,8 +20891,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi140
       - ec-code: 1.1.1.100
@@ -20909,8 +20909,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi150
       - ec-code: 1.1.1.100
@@ -20927,8 +20927,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi160
       - ec-code: 1.1.1.100
@@ -20945,8 +20945,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi170
       - ec-code: 1.1.1.100
@@ -20963,8 +20963,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi180
       - ec-code: 1.1.1.100
@@ -20981,8 +20981,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi60
       - ec-code: 1.1.1.100
@@ -20999,8 +20999,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi70
       - ec-code: 1.1.1.100
@@ -21017,8 +21017,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi80
       - ec-code: 1.1.1.100
@@ -21035,8 +21035,8 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: 3OARi90
       - ec-code: 1.1.1.100
@@ -23457,7 +23457,7 @@
     - annotation: !!omap
       - bigg.reaction: ACTS1
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R01626
       - origin: iMK1208
       - subsystem: Actinorhodin Biosynthesis
@@ -43763,7 +43763,7 @@
     - annotation: !!omap
       - bigg.reaction: KAS14
       - biocyc: 3-OXOACYL-ACP-SYNTH-BASE-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04355
       - metanetx.reaction: MNXR2500
       - origin: iMK1208
@@ -45041,7 +45041,7 @@
     - annotation: !!omap
       - bigg.reaction: MCOATA
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R01626
       - metanetx.reaction: MNXR2503
       - origin: iMK1208
@@ -53240,7 +53240,7 @@
     - annotation: !!omap
       - bigg.reaction: REDS1
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R01626
       - metanetx.reaction: MNXR3496
       - origin: iMK1208
@@ -53277,12 +53277,12 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: REDS11
       - biocyc: RXN-9524
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04536
       - metanetx.reaction: MNXR69435
       - origin: iMK1208
@@ -53377,12 +53377,12 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: REDS15
       - biocyc: RXN-9528
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04534
       - metanetx.reaction: MNXR3503
       - origin: iMK1208
@@ -53474,11 +53474,11 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: REDS19
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04964
       - metanetx.reaction: MNXR3513
       - origin: iMK1208
@@ -53731,12 +53731,12 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: REDS3
       - biocyc: RXN-9514
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04533
       - metanetx.reaction: MNXR3568
       - origin: iMK1208
@@ -53788,7 +53788,7 @@
     - annotation: !!omap
       - bigg.reaction: REDS32
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R01626
       - metanetx.reaction: MNXR74148
       - origin: iMK1208
@@ -53986,11 +53986,11 @@
       - nadph_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1815 or SCO1345 or SCO1346 or SCO4501 or SCO1831 or SCO4681
-        or SCO0330
+    - gene_reaction_rule: SCO0330 or SCO1345 or SCO1346 or SCO1815 or SCO1831 or SCO3502
+        or SCO4501 or SCO4681 or SCO6264 or SCO7266
     - annotation: !!omap
       - bigg.reaction: REDS7
-      - ec-code: 2.3.1.86
+      - ec-code: 1.1.1.100
       - kegg.reaction: R04953
       - metanetx.reaction: MNXR74464
       - origin: iMK1208
