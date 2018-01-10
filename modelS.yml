@@ -19562,12 +19562,12 @@
       - nadh_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5281 and ( SCO2181 or SCO7123 ) and ( SCO0884 or SCO2180
-        or SCO4919 )
+    - gene_reaction_rule: SCO5281 and ( SCO2181 or SCO7123 or SCO1268 ) and ( SCO0884
+        or SCO2180 or SCO4919 )
     - annotation: !!omap
       - bigg.reaction: 2OXOADOX
       - biocyc: 2-KETO-ADIPATE-DEHYDROG-RXN
-      - ec-code: 1.2.4.2
+      - ec-code: '"1.2.4.2 and 1.8.1.4 and 2.3.1.61"'
       - kegg.reaction: R01933
       - metanetx.reaction: MNXR2997
       - origin: iMK1208
@@ -22464,7 +22464,7 @@
       - pyr_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ( SCO5512 and SCO5513 ) or SCO2769
+    - gene_reaction_rule: ( SCO5512 or SCO2769 or SCO6584 ) and SCO5513
     - annotation: !!omap
       - bigg.reaction: ACHBS
       - biocyc: ACETOOHBUTSYN-RXN
@@ -22504,11 +22504,11 @@
       - pyr_c: -2.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ( SCO5512 and SCO5513 ) or SCO2769
+    - gene_reaction_rule: ( SCO5512 or SCO2769 or SCO6584 ) and SCO5513
     - annotation: !!omap
       - bigg.reaction: ACLS
       - biocyc: ACETOLACTSYN-RXN
-      - ec-code: 4.1.3.18
+      - ec-code: 2.2.1.6
       - kegg.reaction: R00226
       - metanetx.reaction: MNXR38088
       - origin: iMK1208
@@ -27031,7 +27031,7 @@
     - annotation: !!omap
       - bigg.reaction: ASPTRS
       - biocyc: ASPARTATE--TRNA-LIGASE-RXN
-      - ec-code: 6.1.1.23
+      - ec-code: 6.1.1.12
       - kegg.reaction: R05577
       - metanetx.reaction: MNXR3388
       - origin: iMK1208
@@ -27184,12 +27184,7 @@
     - gene_reaction_rule: ''
     - annotation: !!omap
       - bigg.reaction: ATPM
-      - biocyc: ATPASE-RXN
-      - ec-code: 3.6.4.9
-      - kegg.reaction: R00086
-      - metanetx.reaction: MNXR3474
       - origin: iMK1208
-      - rhea: '13068'
       - subsystem: Unassigned
   - !!omap
     - id: ATPPRT
@@ -27336,7 +27331,7 @@
       - nadh_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO4828
+    - gene_reaction_rule: SCO4828 or SCO5657 or SCO5666
     - annotation: !!omap
       - bigg.reaction: BETALDHx
       - biocyc: BADH-RXN
@@ -27358,7 +27353,7 @@
       - nadph_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO4828
+    - gene_reaction_rule: SCO4828 or SCO5657 or SCO5666
     - annotation: !!omap
       - bigg.reaction: BETALDHy
       - ec-code: 1.2.1.8
@@ -28576,11 +28571,11 @@
       - nadh_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO4829
+    - gene_reaction_rule: SCO4829 or SCO0199 or SCO1705 or SCO7362
     - annotation: !!omap
       - bigg.reaction: CHOLD
       - biocyc: RXN-6021
-      - ec-code: 1.1.1.1
+      - ec-code: 1.1.1.1 or 1.1.99.1
       - kegg.reaction: R08557
       - metanetx.reaction: MNXR3482
       - origin: iMK1208
@@ -28612,7 +28607,7 @@
       - pphn_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2019 or SCO1762
+    - gene_reaction_rule: SCO1762 or SCO2019 or SCO4784
     - annotation: !!omap
       - bigg.reaction: CHORM
       - biocyc: CHORISMATEMUT-RXN
@@ -30694,7 +30689,7 @@
       - lys__L_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO5353 or SCO6438
+    - gene_reaction_rule: SCO0315 or SCO5353 or SCO6438
     - annotation: !!omap
       - bigg.reaction: DAPDC
       - biocyc: DIAMINOPIMDECARB-RXN
@@ -31515,7 +31510,7 @@
     - gene_reaction_rule: SCO5739
     - annotation: !!omap
       - bigg.reaction: DHDPRy
-      - ec-code: 1.3.1.26
+      - ec-code: 1.17.1.8
       - kegg.reaction: R04199
       - metanetx.reaction: MNXR108728
       - origin: iMK1208
@@ -31535,7 +31530,7 @@
     - gene_reaction_rule: SCO1889 or SCO1912 or SCO5744 or SCO6292
     - annotation: !!omap
       - bigg.reaction: DHDPS
-      - ec-code: 4.2.1.52
+      - ec-code: 4.3.3.7
       - kegg.reaction: R10147
       - metanetx.reaction: MNXR113514
       - origin: iMK1208
@@ -34032,7 +34027,7 @@
     - annotation: !!omap
       - bigg.reaction: ECOAH1
       - biocyc: RXN-11667
-      - ec-code: 4.2.1.55
+      - ec-code: 4.2.1.17
       - kegg.reaction: R03026
       - metanetx.reaction: MNXR3051
       - origin: iMK1208
@@ -34047,7 +34042,7 @@
       - h2o_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO6732
+    - gene_reaction_rule: SCO4384 or SCO6732
     - annotation: !!omap
       - bigg.reaction: ECOAH12
       - biocyc: METHYLACYLYLCOA-HYDROXY-RXN
@@ -34197,7 +34192,7 @@
       - h2o_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO6732
+    - gene_reaction_rule: SCO4384 or SCO6732
     - annotation: !!omap
       - bigg.reaction: ECOAH9ir
       - biocyc: TIGLYLCOA-HYDROXY-RXN
@@ -34314,7 +34309,7 @@
     - gene_reaction_rule: SCO6472
     - annotation: !!omap
       - bigg.reaction: EMCCCM
-      - ec-code: ''
+      - ec-code: 5.4.99.63
       - kegg.reaction: R09292
       - metanetx.reaction: MNXR112724
       - origin: iMK1208
@@ -38549,7 +38544,7 @@
       - thf_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1473
+    - gene_reaction_rule: SCO0499 or SCO1473
     - annotation: !!omap
       - bigg.reaction: FMETTRS
       - ec-code: 2.1.2.9
@@ -38631,7 +38626,7 @@
       - nadph_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 0.0
-    - gene_reaction_rule: SCO3409
+    - gene_reaction_rule: SCO0681
     - annotation: !!omap
       - bigg.reaction: FNOR
       - ec-code: 1.18.1.2
@@ -39031,7 +39026,7 @@
     - gene_reaction_rule: SCO0670 or SCO1661 or SCO4774 or ( SCO7005 and SCO7006 )
     - annotation: !!omap
       - bigg.reaction: G3PD
-      - ec-code: 1.1.99.5
+      - ec-code: 1.1.5.3
       - kegg.reaction: R00848
       - metanetx.reaction: MNXR3876
       - origin: iMA789
@@ -39071,7 +39066,7 @@
     - gene_reaction_rule: SCO0670 or SCO1661 or SCO4774 or ( SCO7005 and SCO7006 )
     - annotation: !!omap
       - bigg.reaction: G3PD5
-      - ec-code: 1.1.99.5
+      - ec-code: 1.1.5.3
       - kegg.reaction: R08657
       - metanetx.reaction: MNXR112172
       - origin: iMA789
@@ -40363,7 +40358,7 @@
       - h_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2126 or SCO6260 or SCO1077
+    - gene_reaction_rule: SCO0063 or SCO1077 or SCO2126 or SCO4285 or SCO6110 or SCO6260
     - annotation: !!omap
       - bigg.reaction: GLUKB
       - ec-code: 2.7.1.2
@@ -40488,7 +40483,7 @@
     - gene_reaction_rule: SCO1750
     - annotation: !!omap
       - bigg.reaction: GLUTCOADHc
-      - ec-code: 1.3.99.7
+      - ec-code: 1.3.8.6
       - kegg.reaction: R02487
       - metanetx.reaction: MNXR3054
       - origin: iMK1208
@@ -42041,8 +42036,7 @@
       - nadph_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3834 or SCO5385 or SCO0984 or SCO1591 or SCO6297 or SCO6732
-        or SCO6789
+    - gene_reaction_rule: SCO0984 or SCO1591 or SCO3834 or SCO5385 or SCO6475
     - annotation: !!omap
       - bigg.reaction: HBCO_nadp
       - biocyc: 3-HYDROXYBUTYRYL-COA-DEHYDROGENASE-RXN
@@ -42585,7 +42579,7 @@
       - pyr_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2048
+    - gene_reaction_rule: SCO2048 or SCP1301 or SCP153c
     - annotation: !!omap
       - bigg.reaction: HOPNTAL3
       - biocyc: MHPELY-RXN
@@ -42642,7 +42636,7 @@
       - prpncoa_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0364 or SCO4930 or SCO6948 or SCO5979 or SCO4384
+    - gene_reaction_rule: SCO0364 or SCO4930 or SCO6948 or SCO5979 or SCO4384 or SCO6732
     - annotation: !!omap
       - bigg.reaction: HPHL
       - ec-code: 4.2.1.17
@@ -42988,7 +42982,7 @@
       - ichor_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO7691
     - annotation: !!omap
       - bigg.reaction: ICHORS
       - biocyc: ISOCHORSYN-RXN
@@ -44005,7 +43999,7 @@
     - annotation: !!omap
       - bigg.reaction: LEUTA
       - biocyc: BRANCHED-CHAINAMINOTRANSFERLEU-RXN
-      - ec-code: 2.6.1.46
+      - ec-code: 2.6.1.42
       - kegg.reaction: R01090
       - metanetx.reaction: MNXR83418
       - origin: iMK1208
@@ -44536,11 +44530,12 @@
       - ppcoa_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO6788 or SCO1324 or SCO4502 or SCO6027
+    - gene_reaction_rule: SCO3079 or SCO4502 or SCO5399 or SCO6731 or SCO6788 or SCO1324
+        or SCO6027 or SCO6701 or SCO6967
     - annotation: !!omap
       - bigg.reaction: MACCOAT
       - biocyc: METHYLACETOACETYLCOATHIOL-RXN
-      - ec-code: 2.3.1.9
+      - ec-code: 2.3.1.9 or 2.3.1.16
       - kegg.reaction: R00927
       - metanetx.reaction: MNXR69477
       - origin: iMK1208
@@ -44955,10 +44950,10 @@
       - mqn9_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1690 or SCO2774 or SCO6787
+    - gene_reaction_rule: SCO1690 or SCO2774 or SCO6787 or SCO2779
     - annotation: !!omap
       - bigg.reaction: MBCOA2
-      - ec-code: 1.3.99.3
+      - ec-code: 1.3.8.7 or 1.3.99.12
       - kegg.reaction: R03172
       - metanetx.reaction: MNXR108000
       - origin: iMA789
@@ -44990,11 +44985,11 @@
       - ivcoa_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO2779
+    - gene_reaction_rule: SCO1690 or SCO2774 or SCO6787
     - annotation: !!omap
       - bigg.reaction: MBCOAi
       - biocyc: RXN-14264
-      - ec-code: 1.3.99.10
+      - ec-code: 1.3.8.7
       - kegg.reaction: R04095
       - metanetx.reaction: MNXR3616
       - origin: iMK1208
@@ -45088,7 +45083,7 @@
       - thym_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO4634
     - annotation: !!omap
       - bigg.reaction: MCSNAH
       - ec-code: 3.5.4.1
@@ -48593,7 +48588,7 @@
       - op4en_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCP1299 or SCP155c
     - annotation: !!omap
       - bigg.reaction: OP4ENH3
       - biocyc: RXN-13458
@@ -48866,7 +48861,7 @@
       - oxptn_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO1204 or SCO4780 or SCO7035
     - annotation: !!omap
       - bigg.reaction: OXPTNDH
       - biocyc: GLUTARATE-SEMIALDEHYDE-DEHYDROGENASE-RXN
@@ -49621,7 +49616,7 @@
     - gene_reaction_rule: SCO1690 or SCO2774 or SCO6787
     - annotation: !!omap
       - bigg.reaction: PCFO
-      - ec-code: 1.3.99.3
+      - ec-code: 1.3.8.7
       - kegg.reaction: R00924
       - origin: iMA789
       - subsystem: Propanoate metabolism
@@ -49754,7 +49749,7 @@
     - gene_reaction_rule: SCO6155 or SCO7412
     - annotation: !!omap
       - bigg.reaction: PDH3
-      - ec-code: 1.2.2.2
+      - ec-code: 1.2.5.1
       - kegg.reaction: R03145
       - metanetx.reaction: MNXR107980
       - origin: iMA789
@@ -51417,7 +51412,7 @@
     - annotation: !!omap
       - bigg.reaction: PPNDH
       - biocyc: PREPHENATEDEHYDRAT-RXN
-      - ec-code: 4.2.1.91
+      - ec-code: 4.2.1.51
       - kegg.reaction: R01373
       - metanetx.reaction: MNXR83291
       - origin: iMK1208
@@ -51657,7 +51652,7 @@
     - annotation: !!omap
       - bigg.reaction: PRDX
       - biocyc: RXN-14189
-      - ec-code: 1.11.1.7
+      - ec-code: 1.11.1.21
       - kegg.reaction: R00602
       - metanetx.reaction: MNXR3493
       - origin: iMK1208
@@ -53240,7 +53235,7 @@
     - annotation: !!omap
       - bigg.reaction: REDS1
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 1.1.1.100
+      - ec-code: 2.3.1.39
       - kegg.reaction: R01626
       - metanetx.reaction: MNXR3496
       - origin: iMK1208
@@ -53788,7 +53783,7 @@
     - annotation: !!omap
       - bigg.reaction: REDS32
       - biocyc: MALONYL-COA-ACP-TRANSACYL-RXN
-      - ec-code: 1.1.1.100
+      - ec-code: 2.3.1.39
       - kegg.reaction: R01626
       - metanetx.reaction: MNXR74148
       - origin: iMK1208
@@ -54659,11 +54654,11 @@
       - s7p_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO5047
     - annotation: !!omap
       - bigg.reaction: SBP_1
       - biocyc: SEDOHEPTULOSE-BISPHOSPHATASE-RXN
-      - ec-code: 3.1.3.37
+      - ec-code: 3.1.3.11
       - kegg.reaction: R01845
       - metanetx.reaction: MNXR3743
       - origin: iMA789
@@ -54769,7 +54764,7 @@
       - sl2a6o_c: 1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1577
+    - gene_reaction_rule: SCO1577 or SCO3658
     - annotation: !!omap
       - bigg.reaction: SDPTA
       - biocyc: SUCCINYLDIAMINOPIMTRANS-RXN
@@ -54985,7 +54980,7 @@
     - annotation: !!omap
       - bigg.reaction: SHK3Dr
       - biocyc: SHIKIMATE-5-DEHYDROGENASE-RXN
-      - ec-code: 1.1.1.282
+      - ec-code: 1.1.1.25
       - kegg.reaction: R02413
       - metanetx.reaction: MNXR69424
       - origin: iMK1208
@@ -55305,7 +55300,7 @@
       - stys_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0274 or SCO0541
+    - gene_reaction_rule: SCO0274 or SCO0284 or SCO0541
     - annotation: !!omap
       - bigg.reaction: STACHGALACT
       - ec-code: 3.2.1.22
@@ -56351,7 +56346,7 @@
     - annotation: !!omap
       - bigg.reaction: THRA2i
       - biocyc: LTAA-RXN
-      - ec-code: 4.1.2.5
+      - ec-code: 4.1.2.48
       - kegg.reaction: R06171
       - metanetx.reaction: MNXR3056
       - origin: iMK1208
@@ -56370,7 +56365,7 @@
     - annotation: !!omap
       - bigg.reaction: THRAi
       - biocyc: THREONINE-ALDOLASE-RXN
-      - ec-code: 4.1.2.5
+      - ec-code: 4.1.2.48
       - kegg.reaction: R00751
       - metanetx.reaction: MNXR3066
       - origin: iMK1208
@@ -56406,7 +56401,7 @@
       - thr__L_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO0821 or SCO4962
+    - gene_reaction_rule: SCO0821 or SCO4962 or SCO7292
     - annotation: !!omap
       - bigg.reaction: THRD_L
       - ec-code: 4.3.1.19
@@ -56924,7 +56919,7 @@
     - annotation: !!omap
       - bigg.reaction: TRPO2
       - biocyc: RXN-8665
-      - ec-code: 1.13.11.52
+      - ec-code: 1.13.11.11
       - kegg.reaction: R00678
       - metanetx.reaction: MNXR69426
       - origin: iMK1208
@@ -57104,7 +57099,7 @@
     - gene_reaction_rule: SCO1859 or SCO2053 or SCO3944 or SCO4645 or SCO3658
     - annotation: !!omap
       - bigg.reaction: TYRTA
-      - ec-code: 2.6.1.5
+      - ec-code: 2.6.1.9
       - kegg.reaction: R00734
       - metanetx.reaction: MNXR3470
       - origin: iMK1208
@@ -57804,7 +57799,7 @@
       - uri_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO4909
     - annotation: !!omap
       - bigg.reaction: URIK2
       - biocyc: URKI-RXN
@@ -57868,7 +57863,7 @@
     - gene_reaction_rule: SCO4089
     - annotation: !!omap
       - bigg.reaction: VALDHr
-      - ec-code: 1.4.1.9
+      - ec-code: 1.4.1.23
       - kegg.reaction: R01434
       - metanetx.reaction: MNXR105183
       - origin: iMK1208
@@ -57888,7 +57883,7 @@
     - annotation: !!omap
       - bigg.reaction: VALTA
       - biocyc: BRANCHED-CHAINAMINOTRANSFERVAL-RXN
-      - ec-code: 2.6.1.46
+      - ec-code: 2.6.1.42
       - kegg.reaction: R01214
       - metanetx.reaction: MNXR69489
       - origin: iMK1208
@@ -58473,6 +58468,7 @@
     - gene_reaction_rule: SCO3403
     - annotation: !!omap
       - bigg.reaction: r0120
+      - ec-code: 3.5.4.16
       - kegg.reaction: R00428
       - metanetx.reaction: MNXR105308
       - origin: iMA789
@@ -58511,7 +58507,7 @@
     - gene_reaction_rule: SCO5520
     - annotation: !!omap
       - bigg.reaction: r0686
-      - ec-code: 2.7.4.6
+      - ec-code: 1.2.1.88
       - kegg.reaction: R04445
       - metanetx.reaction: MNXR105368
       - origin: iMA789
@@ -58529,7 +58525,7 @@
     - gene_reaction_rule: SCO3403
     - annotation: !!omap
       - bigg.reaction: r0708
-      - ec-code: 3.1.3.89
+      - ec-code: 3.5.4.16
       - kegg.reaction: R04639
       - metanetx.reaction: MNXR105370
       - origin: iMA789
@@ -58547,6 +58543,7 @@
     - gene_reaction_rule: SCO3403
     - annotation: !!omap
       - bigg.reaction: r0775
+      - ec-code: 3.5.4.16
       - kegg.reaction: R05046
       - metanetx.reaction: MNXR105382
       - origin: iMA789
@@ -58562,6 +58559,7 @@
     - gene_reaction_rule: SCO3403
     - annotation: !!omap
       - bigg.reaction: r0777
+      - ec-code: 3.5.4.16
       - kegg.reaction: R05048
       - metanetx.reaction: MNXR105383
       - origin: iMA789
@@ -58630,6 +58628,9 @@
   - !!omap
     - id: SCO0313
     - name: SC5G9.22
+  - !!omap
+    - id: SCO0315
+    - name: SCO0315
   - !!omap
     - id: SCO0330
     - name: fabG
@@ -58705,6 +58706,9 @@
   - !!omap
     - id: SCO0497
     - name: SCF34.16c
+  - !!omap
+    - id: SCO0499
+    - name: SCO0499
   - !!omap
     - id: SCO0506
     - name: nadE
@@ -60899,6 +60903,9 @@
     - id: SCO4780
     - name: gabD2
   - !!omap
+    - id: SCO4784
+    - name: SCO4784
+  - !!omap
     - id: SCO4785
     - name: guaA
   - !!omap
@@ -60973,6 +60980,9 @@
   - !!omap
     - id: SCO4901
     - name: 2SCK8.27
+  - !!omap
+    - id: SCO4909
+    - name: SCO4909
   - !!omap
     - id: SCO4913
     - name: SCK13.05c
@@ -62489,6 +62499,9 @@
     - id: SCO7638
     - name: eno
   - !!omap
+    - id: SCO7691
+    - name: SCO7691
+  - !!omap
     - id: SCO7832
     - name: SC8E7.29
   - !!omap
@@ -62497,6 +62510,18 @@
   - !!omap
     - id: SCP1233B
     - name: SCP1.233B, mmyC
+  - !!omap
+    - id: SCP1299
+    - name: SCP1299
+  - !!omap
+    - id: SCP1301
+    - name: SCP1301
+  - !!omap
+    - id: SCP153c
+    - name: SCP153c
+  - !!omap
+    - id: SCP155c
+    - name: SCP155c
   - !!omap
     - id: gprSCO3213
     - name: gprSCO3213
