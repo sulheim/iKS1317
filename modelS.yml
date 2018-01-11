@@ -22365,7 +22365,7 @@
       - btnCCP_c: 1.0
       - cbtnCCP_c: -1.0
       - malcoa_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: ( SCO6271 or SCO4921 ) and SCO2445 and SCO2777
     - annotation: !!omap
@@ -25171,7 +25171,7 @@
       - nadp_c: 1.0
       - nadph_c: -1.0
       - o2_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5223
     - annotation: !!omap
@@ -25190,7 +25190,7 @@
       - nadp_c: 1.0
       - nadph_c: -1.0
       - o2_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5223
     - annotation: !!omap
@@ -25209,7 +25209,7 @@
       - nadp_c: 1.0
       - nadph_c: -1.0
       - o2_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5223
     - annotation: !!omap
@@ -25228,7 +25228,7 @@
       - nadp_c: 1.0
       - nadph_c: -1.0
       - o2_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5223
     - annotation: !!omap
@@ -28512,7 +28512,7 @@
     - metabolites: !!omap
       - actint5ACPact_c: 1.0
       - chiralc_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5072
     - annotation: !!omap
@@ -28685,7 +28685,7 @@
       - citac_c: 1.0
       - citm__R_c: -1.0
       - h2o_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5553 and SCO5554
     - annotation: !!omap
@@ -28700,7 +28700,7 @@
       - citac_c: -1.0
       - h2o_c: -1.0
       - r3mmal_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5553 and SCO5554
     - annotation: !!omap
@@ -28735,7 +28735,7 @@
       - coa_c: 1.0
       - h2o_c: -1.0
       - pyr_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5529
     - annotation: !!omap
@@ -31857,7 +31857,7 @@
       - bfrn_c: 1.0
       - frdp_c: -1.0
       - ppi_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5223
     - annotation: !!omap
@@ -31893,7 +31893,7 @@
       - h_c: 1.0
       - nadp_c: -1.0
       - nadph_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO1706 or SCO3420 or SCO4913 or SCO5679
     - annotation: !!omap
@@ -34375,7 +34375,7 @@
       - episz_c: 1.0
       - frdp_c: -1.0
       - ppi_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5222
     - annotation: !!omap
@@ -34446,7 +34446,7 @@
       - nad_c: 1.0
       - nadh_c: -1.0
       - r3mmal_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO5522
     - annotation: !!omap
@@ -38712,7 +38712,7 @@
       - frdp_c: -2.0
       - ppi_c: 1.0
       - psqldi_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
@@ -39154,7 +39154,7 @@
       - h_c: 1.0
       - nadp_c: -1.0
       - nadph_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO1937 or SCO6661
     - annotation: !!omap
@@ -39366,7 +39366,7 @@
     - metabolites: !!omap
       - gal_aD_c: 1.0
       - gal_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2393 or SCO2407
     - annotation: !!omap
@@ -40068,7 +40068,7 @@
       - 2dh3dglc_c: 1.0
       - glcr_c: -1.0
       - h2o_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2542 or SCO7570
     - annotation: !!omap
@@ -41411,7 +41411,7 @@
       - frdp_c: -1.0
       - grmcrnd_c: 1.0
       - ppi_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6073
     - annotation: !!omap
@@ -41427,7 +41427,7 @@
       - grmcrol_c: 1.0
       - h2o_c: -1.0
       - ppi_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6073
     - annotation: !!omap
@@ -41463,7 +41463,7 @@
       - geosmin_c: 1.0
       - grmcrol_c: -1.0
       - h2o_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6073
     - annotation: !!omap
@@ -42813,7 +42813,7 @@
       - h2o_c: -1.0
       - h_c: 1.0
       - houdic_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6210
     - annotation: !!omap
@@ -44625,7 +44625,7 @@
     - metabolites: !!omap
       - fum_c: 1.0
       - male_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2823
     - annotation: !!omap
@@ -45044,7 +45044,7 @@
       - mercppyr_c: -1.0
       - pyr_c: 1.0
       - tcynt_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
@@ -45063,7 +45063,7 @@
       - pyr_c: 1.0
       - so3_c: -1.0
       - tsul_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
@@ -48440,7 +48440,7 @@
       - co2_c: 1.0
       - h_c: -1.0
       - houdic_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6209
     - annotation: !!omap
@@ -49843,7 +49843,7 @@
       - h2o_c: -1.0
       - pac_c: 1.0
       - peng_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO3184 or SCO4049
     - annotation: !!omap
@@ -52194,7 +52194,7 @@
       - ppi_c: 1.0
       - psqldi_c: -1.0
       - sql_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
@@ -54782,7 +54782,7 @@
       - akg_c: -1.0
       - co2_c: 1.0
       - ichor_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
@@ -54912,7 +54912,7 @@
       - 2sephchc_c: -1.0
       - 2shchc_c: 1.0
       - pyr_c: 1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
@@ -55209,7 +55209,7 @@
     - metabolites: !!omap
       - hop22en_c: 1.0
       - sql_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6764
     - annotation: !!omap
@@ -55224,7 +55224,7 @@
       - h2o_c: -1.0
       - hop22ol_c: 1.0
       - sql_c: -1.0
-    - lower_bound: 0.0
+    - lower_bound: -1000.0
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO6764
     - annotation: !!omap
