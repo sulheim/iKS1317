@@ -43544,7 +43544,6 @@
     - metabolites: !!omap
       - 3c3hmp_c: 1.0
       - 3mob_c: -1.0
-      - accoa_c: -1.0
       - accoa_res_c: -1.0
       - coa_c: 1.0
       - h2o_c: -1.0
@@ -46074,7 +46073,6 @@
     - id: MMSAD3
     - name: methylmalonate-semialdehyde dehydrogenase (malonic semialdehyde)
     - metabolites: !!omap
-      - accoa_c: 1.0
       - accoa_res_c: 1.0
       - co2_c: 1.0
       - coa_c: -1.0
