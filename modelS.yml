@@ -31897,8 +31897,8 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO1706 or SCO3420 or SCO4913 or SCO5679
     - annotation: !!omap
-      - EC NUMBER: 1.2.1.3
       - bigg.reaction: DIOP5OR
+      - ec-code: 1.2.1.3
       - kegg.reaction: R00264
       - origin: KEGG
       - subsystem: Ascorbate and aldarate metabolism or Pentose and glucuronate interconversions
@@ -39370,7 +39370,6 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2393 or SCO2407
     - annotation: !!omap
-      - EC NUMBER: 5.1.3.3
       - bigg.reaction: GALM2
       - ec-code: 3.1.3.27
       - kegg.reaction: R10619
@@ -40072,8 +40071,8 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2542 or SCO7570
     - annotation: !!omap
-      - EC NUMBER: 4.2.1.40
       - bigg.reaction: GLCRD2
+      - ec-code: 4.2.1.40
       - kegg.reaction: R08056
       - origin: KEGG
       - subsystem: Ascorbate and aldarate metabolism
@@ -44195,7 +44194,6 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO4089
     - annotation: !!omap
-      - EC NUMBER: 1.4.1.9
       - bigg.reaction: LLEUDr
       - ec-code: 1.4.1.9
       - kegg.reaction: R01088
@@ -44628,9 +44626,9 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO2823
     - annotation: !!omap
-      - EC NUMBER: 5.2.1.1
       - bigg.reaction: MALEI
       - biocyc: MALEATE-ISOMERASE-RXN
+      - ec-code: 5.2.1.1
       - kegg.reaction: R01087
       - metanetx.reaction: MNXR4199
       - origin: KEGG
@@ -45047,9 +45045,9 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
-      - EC NUMBER: 2.8.1.2
       - bigg.reaction: MCPST
       - biocyc: MERCAPYSTRANS-RXN
+      - ec-code: 2.8.1.2
       - kegg.reaction: R03106
       - metanetx.reaction: MNXR69676
       - origin: KEGG
@@ -45066,8 +45064,8 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO4164 or SCO5854
     - annotation: !!omap
-      - EC NUMBER: 2.8.1.2
       - bigg.reaction: MCPST2
+      - ec-code: 2.8.1.2
       - kegg.reaction: R03105
       - origin: KEGG
       - subsystem: Cysteine and methionine metabolism
@@ -49845,8 +49843,8 @@
     - upper_bound: 1000.0
     - gene_reaction_rule: SCO3184 or SCO4049
     - annotation: !!omap
-      - EC NUMBER: 3.5.1.11
       - bigg.reaction: PENAM
+      - ec-code: 3.5.1.11
       - kegg.reaction: R04103
       - metanetx.reaction: MNXR69678
       - origin: KEGG
