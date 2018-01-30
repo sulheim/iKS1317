@@ -48285,6 +48285,21 @@
       - origin: iMK1208
       - subsystem: Inorganic Ion Transport and metabolism
   - !!omap
+    - id: OAADC
+    - name: oxaloacetate carboxy-lyase (pyruvate-forming)
+    - metabolites: !!omap
+      - co2_c: 1.0
+      - oaa_c: -1.0
+      - pyr_c: 1.0
+    - lower_bound: 0.0
+    - upper_bound: 1000.0
+    - gene_reaction_rule: SCO2951 or SCO5261
+    - annotation: !!omap
+      - ec-code: 1.1.1.38
+      - kegg.reaction: R00217
+      - origin: KEGG
+      - subsystem: Anaplerotic Reactions
+  - !!omap
     - id: OCDOR
     - name: unknown enzyme
     - metabolites: !!omap
