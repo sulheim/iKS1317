@@ -1853,6 +1853,15 @@
       - kegg.compound: ''
       - origin: iMK1208
   - !!omap
+    - id: 3hib_c
+    - name: (S)-3-Hydroxyisobutyrate
+    - compartment: c
+    - charge: -1
+    - formula: C4H7O3
+    - annotation: !!omap
+      - bigg.metabolite: 3hib_c
+      - kegg.compound: C06001
+  - !!omap
     - id: 3hibutcoa_c
     - name: (S)-3-Hydroxyisobutyryl-CoA
     - compartment: c
@@ -20205,17 +20214,18 @@
     - id: 3HBCOAHL
     - name: 3-hydroxyisobutyryl-CoA hydrolase
     - metabolites: !!omap
+      - 3hib_c: 1.0
       - 3hibutcoa_c: -1.0
-      - 3hmp_c: 1.0
       - coa_c: 1.0
       - h2o_c: -1.0
       - h_c: 1.0
-    - lower_bound: 0.0
-    - upper_bound: 0.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
     - gene_reaction_rule: ''
     - annotation: !!omap
       - bigg.reaction: 3HBCOAHL
       - ec-code: 3.1.2.4
+      - kegg.reaction: R05064
       - metanetx.reaction: MNXR32754
       - origin: iMK1208
       - subsystem: Valine, leucine and isoleucine metabolism
@@ -21839,7 +21849,7 @@
       - metanetx.reaction: MNXR112824
       - origin: KEGG
       - rhea: '27376'
-      - subsystem: Methane metabolism
+      - subsystem: 'Cofactor and Prosthetic Group Biosynthesis '
   - !!omap
     - id: 4PCP
     - name: tetrapeptide L,D-carboxypeptidase
@@ -22019,7 +22029,7 @@
       - metanetx.reaction: MNXR107507
       - origin: iMA789
       - rhea: '21359'
-      - subsystem: L-ribulose biosynthesis
+      - subsystem: Pentose and glucuronate interconversions
   - !!omap
     - id: ABTA
     - name: 4-aminobutyrate transaminase
@@ -22060,7 +22070,7 @@
       - metanetx.reaction: MNXR69511
       - origin: iMA789
       - rhea: '16384'
-      - subsystem: L-Xylulose synthesis
+      - subsystem: Pentose and glucuronate interconversions
   - !!omap
     - id: ABTDG
     - name: D-arabinitol 4-dehydrogenase (NAD)
@@ -22374,7 +22384,7 @@
       - kegg.reaction: R04386
       - metanetx.reaction: MNXR69673
       - origin: KEGG
-      - subsystem: Pyruvate metabolism
+      - subsystem: Membrane Lipid metabolism
   - !!omap
     - id: ACGAMK
     - name: N-acetylglucosamine kinase
@@ -25024,7 +25034,7 @@
       - kegg.reaction: R00830
       - metanetx.reaction: MNXR3897
       - origin: iMA789
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: ALATA_D2
     - name: D-alanine transaminase
@@ -25410,7 +25420,7 @@
       - nadh_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO1706 and SCO3420 and SCO4913 and SCO5679
+    - gene_reaction_rule: SCO1706 or SCO3420 or SCO4913 or SCO5679
     - annotation: !!omap
       - bigg.reaction: ALDH
       - ec-code: 1.2.1.3
@@ -25621,7 +25631,7 @@
       - metanetx.reaction: MNXR109274
       - origin: iMA789
       - rhea: '26469'
-      - subsystem: Ubiquinone and other terpenoid-quinone biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: AMPTASECG
     - name: alanyl aminopeptidase (cys-gly)
@@ -26471,7 +26481,7 @@
       - metanetx.reaction: MNXR107157
       - origin: iMA789
       - rhea: '25228'
-      - subsystem: Arabitol biosynthesis
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: ARAI
     - name: L-arabinose isomerase
@@ -26901,7 +26911,7 @@
       - ec-code: 1.4.3.16
       - kegg.reaction: ''
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: ASPO1
     - name: L-aspartate oxidase
@@ -26939,7 +26949,7 @@
       - kegg.reaction: ''
       - metanetx.reaction: MNXR26693
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: ASPO5
     - name: L-aspartate oxidase
@@ -26994,7 +27004,7 @@
       - ec-code: 1.4.3.16
       - kegg.reaction: ''
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: ASPTA
     - name: aspartate transaminase
@@ -27149,7 +27159,7 @@
       - kegg.reaction: R00985
       - metanetx.reaction: MNXR4138
       - origin: KEGG
-      - subsystem: Phenylalanine, tyrosine and tryptophan biosynthesis
+      - subsystem: Tyrosine, Tryptophan, and Phenylalanine metabolism
   - !!omap
     - id: ATPHs
     - name: ATP amine hydrolysis (spontaneous)
@@ -27185,7 +27195,7 @@
     - annotation: !!omap
       - bigg.reaction: ATPM
       - origin: iMK1208
-      - subsystem: Unassigned
+      - subsystem: Biomass and maintenance functions
   - !!omap
     - id: ATPPRT
     - name: ATP phosphoribosyltransferase
@@ -27265,7 +27275,7 @@
       - kegg.reaction: R05145
       - metanetx.reaction: MNXR109352
       - origin: iMA789
-      - subsystem: Biotin Biosynthesis
+      - subsystem: Membrane Lipid metabolism
   - !!omap
     - id: BALAt2
     - name: beta-alanine transport in via proton symport
@@ -27567,7 +27577,7 @@
       - bigg.reaction: BIOMASS_SCO
       - ec-code: ''
       - origin: iMK1208
-      - subsystem: Exchange
+      - subsystem: Biomass and maintenance functions
   - !!omap
     - id: BMOCOS
     - name: bis-molybdenum cofactor synthase
@@ -27683,7 +27693,7 @@
       - kegg.reaction: R04385
       - metanetx.reaction: MNXR82604
       - origin: iMA789
-      - subsystem: Biotin Biosynthesis
+      - subsystem: Membrane Lipid metabolism
   - !!omap
     - id: BTNt2i
     - name: Biotin transport via proton symport
@@ -28692,7 +28702,7 @@
       - ec-code: 4.2.1.35
       - kegg.reaction: R03896
       - origin: KEGG
-      - subsystem: Valine, leucine and isoleucine biosynthesis
+      - subsystem: Valine, leucine and isoleucine metabolism
   - !!omap
     - id: CITCIb
     - name: 2-methylmaleate hydratase
@@ -28707,7 +28717,7 @@
       - ec-code: 4.2.1.35
       - kegg.reaction: R03898
       - origin: KEGG
-      - subsystem: Valine, leucine and isoleucine biosynthesis
+      - subsystem: Valine, leucine and isoleucine metabolism
   - !!omap
     - id: CITL
     - name: Citrate lyase
@@ -28742,7 +28752,7 @@
       - ec-code: 2.3.1.182
       - kegg.reaction: R07399
       - origin: KEGG
-      - subsystem: Valine, leucine and isoleucine biosynthesis
+      - subsystem: Valine, leucine and isoleucine metabolism
   - !!omap
     - id: CITRLt
     - name: citrulline transport via facilitated diffusion
@@ -29516,7 +29526,7 @@
       - kegg.reaction: R08716
       - metanetx.reaction: MNXR112229
       - origin: KEGG
-      - subsystem: Porphyrin and Chlorophyl Metabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: COCHL
     - name: cobaltochelatase
@@ -29560,7 +29570,7 @@
       - kegg.reaction: R07773
       - metanetx.reaction: MNXR69669
       - origin: KEGG
-      - subsystem: Porphyrin and Chlorophyl Metabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: CODSCL5DA
     - name: cobalt-precorrin 5A acylhydrolase
@@ -29580,7 +29590,7 @@
       - metanetx.reaction: MNXR69668
       - origin: KEGG
       - rhea: '26284'
-      - subsystem: Porphyrin and Chlorophyl Metabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: COELICHELINR1
     - name: ferricoelichelin reductase
@@ -30562,7 +30572,7 @@
       - metanetx.reaction: MNXR110695
       - origin: iMK1208
       - rhea: '16904'
-      - subsystem: Ectoine Biosynthesis
+      - subsystem: Glycine, serine and threonine metabolism
   - !!omap
     - id: DABAAT
     - name: DABA aminotransferase
@@ -30583,7 +30593,7 @@
       - metanetx.reaction: MNXR81704
       - origin: iMK1208
       - rhea: '11163'
-      - subsystem: Ectoine Biosynthesis
+      - subsystem: Glycine, serine and threonine metabolism
   - !!omap
     - id: DADA
     - name: Deoxyadenosine deaminase
@@ -31647,7 +31657,7 @@
       - kegg.reaction: R05617
       - metanetx.reaction: MNXR109715
       - origin: iMA789
-      - subsystem: Ubiquinone and other terpenoid-quinone biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: DHNAS
     - name: 1,4-dihydroxy-6-naphthoate synthase
@@ -31714,7 +31724,7 @@
       - kegg.reaction: R01868
       - metanetx.reaction: MNXR107211
       - origin: KEGG
-      - subsystem: Pyrimidine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: DHORD5
     - name: dihydroorotic acid (menaquinone-9)
@@ -31790,7 +31800,7 @@
       - metanetx.reaction: MNXR107926
       - origin: iMA789
       - rhea: '30890'
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: DHPS2
     - name: dihydropteroate synthase
@@ -31864,7 +31874,7 @@
       - ec-code: 4.2.3.47
       - kegg.reaction: R08695
       - origin: KEGG
-      - subsystem: Farnesene biosynthesis
+      - subsystem: Sesquiterpenoid and triterpenoid biosynthesis
   - !!omap
     - id: DINSt2
     - name: deoxyinosine transport in via proton symport
@@ -31901,7 +31911,7 @@
       - ec-code: 1.2.1.3
       - kegg.reaction: R00264
       - origin: KEGG
-      - subsystem: Ascorbate and aldarate metabolism or Pentose and glucuronate interconversions
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: DMATT
     - name: dimethylallyltranstransferase
@@ -32283,7 +32293,7 @@
       - kegg.reaction: R04621
       - metanetx.reaction: MNXR3872
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: DNTPPA_1
     - name: ATP-dependent DNA helicase
@@ -32303,7 +32313,7 @@
       - metanetx.reaction: MNXR3872
       - origin: iMA789
       - rhea: '25305'
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: DPCOAK
     - name: dephospho-CoA kinase
@@ -32453,7 +32463,7 @@
       - kegg.reaction: R02984
       - metanetx.reaction: MNXR107867
       - origin: iMA789
-      - subsystem: Nucleotide Sugar metabolism
+      - subsystem: Streptomycin biosynthesis
   - !!omap
     - id: DTMPK
     - name: dTMP kinase
@@ -34220,7 +34230,7 @@
       - bigg.reaction: ECTH
       - ec-code: ''
       - origin: iMK1208
-      - subsystem: Ectoine Biosynthesis
+      - subsystem: Glycine, serine and threonine metabolism
   - !!omap
     - id: ECTS
     - name: L-ectoine synthase
@@ -34239,7 +34249,7 @@
       - metanetx.reaction: MNXR110696
       - origin: iMK1208
       - rhea: '17284'
-      - subsystem: Ectoine Biosynthesis
+      - subsystem: Glycine, serine and threonine metabolism
   - !!omap
     - id: EDA
     - name: 2-dehydro-3-deoxy-phosphogluconate aldolase
@@ -34453,7 +34463,7 @@
       - ec-code: 1.1.1.85
       - kegg.reaction: R00994
       - origin: KEGG
-      - subsystem: Valine, leucine and isoleucine biosynthesis
+      - subsystem: Valine, leucine and isoleucine metabolism
   - !!omap
     - id: ETHAAL
     - name: Ethanolamine ammonia-lyase
@@ -38719,8 +38729,7 @@
       - ec-code: 2.5.1.21
       - kegg.reaction: R00702
       - origin: KEGG
-      - subsystem: Steroid biosynthesis, Carotenoid biosynthesis, Sesquiterpenoid
-          and triterpenoid biosynthesis
+      - subsystem: Sesquiterpenoid and triterpenoid biosynthesis
   - !!omap
     - id: FRTT
     - name: farnesyltranstransferase
@@ -38973,7 +38982,7 @@
       - metanetx.reaction: MNXR55744
       - origin: iMA789
       - rhea: '15228'
-      - subsystem: Nucleotide Sugar metabolism
+      - subsystem: Streptomycin biosynthesis
   - !!omap
     - id: G1SAT
     - name: glutamate-1-semialdehyde aminotransferase
@@ -39012,7 +39021,7 @@
       - metanetx.reaction: MNXR79300
       - origin: iMK1208
       - rhea: '13364'
-      - subsystem: Teichoic Acid Biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: G3PD
     - name: Glycerol-3-phosphate dehydrogenase
@@ -39122,7 +39131,7 @@
       - ec-code: 5.4.3.8
       - kegg.reaction: ''
       - origin: iMA789
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: G5SD
     - name: glutamate-5-semialdehyde dehydrogenase
@@ -39343,7 +39352,7 @@
       - metanetx.reaction: MNXR69634
       - origin: KEGG
       - rhea: '13556'
-      - subsystem: Galactose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: GALM1
     - name: Aldose 1-epimerase
@@ -39359,7 +39368,7 @@
       - kegg.reaction: ''
       - metanetx.reaction: MNXR83437
       - origin: iMA789
-      - subsystem: Salicin metabolism
+      - subsystem: Glycolysis/Gluconeogenesis
   - !!omap
     - id: GALM2
     - name: D-galactose 1-epimerase
@@ -39375,7 +39384,7 @@
       - kegg.reaction: R10619
       - metanetx.reaction: MNXR69680
       - origin: KEGG
-      - subsystem: Galactose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: GALS3
     - name: a-galactosidase (melibiose)
@@ -39414,7 +39423,7 @@
       - metanetx.reaction: MNXR26766
       - origin: iMA789
       - rhea: '14212'
-      - subsystem: Galactose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: GALUi
     - name: UTP-glucose-1-phosphate uridylyltransferase (irreversible)
@@ -39748,7 +39757,7 @@
       - metanetx.reaction: MNXR69634
       - origin: KEGG
       - rhea: '30558'
-      - subsystem: Methane metabolism
+      - subsystem: 'Cofactor and Prosthetic Group Biosynthesis '
   - !!omap
     - id: GF4GL_1
     - name: L-glutamate:coenzyme F420-1 ligase (GDP-forming)
@@ -39769,7 +39778,7 @@
       - metanetx.reaction: MNXR83555
       - origin: KEGG
       - rhea: '30526'
-      - subsystem: Methane metabolism
+      - subsystem: 'Cofactor and Prosthetic Group Biosynthesis '
   - !!omap
     - id: GF6PTA
     - name: glutamine-fructose-6-phosphate transaminase
@@ -40075,7 +40084,7 @@
       - ec-code: 4.2.1.40
       - kegg.reaction: R08056
       - origin: KEGG
-      - subsystem: Ascorbate and aldarate metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: GLCRt2r
     - name: D-glucarate transport via proton symport, reversible
@@ -41091,7 +41100,7 @@
       - metanetx.reaction: MNXR3759
       - origin: iMA789
       - rhea: '23823'
-      - subsystem: Mannose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: GMPS
     - name: Xanthosine-5'-phosphate:ammonia ligase (AMP-forming)
@@ -41113,7 +41122,7 @@
       - metanetx.reaction: MNXR4088
       - origin: KEGG
       - rhea: '18304'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: GMPS2
     - name: GMP synthase
@@ -41148,8 +41157,8 @@
       - nadp_c: -1.0
       - nadph_c: 1.0
       - ru5p__D_c: 1.0
-    - lower_bound: 0.0
-    - upper_bound: 0.0
+    - lower_bound: -1000.0
+    - upper_bound: 1000.0
     - gene_reaction_rule: SCO0975 or SCO3877 or SCO6658
     - annotation: !!omap
       - bigg.reaction: GND
@@ -42023,7 +42032,7 @@
       - metanetx.reaction: MNXR108069
       - origin: iMA789
       - rhea: '21763'
-      - subsystem: Lysine metabolism
+      - subsystem: Threonine and Lysine metabolism
   - !!omap
     - id: HBCO_nadp
     - name: 3-hydroxybutyryl-CoA dehydrogenase
@@ -42043,7 +42052,7 @@
       - kegg.reaction: R01976
       - metanetx.reaction: MNXR69539
       - origin: iMA789
-      - subsystem: Lysine metabolism
+      - subsystem: Threonine and Lysine metabolism
   - !!omap
     - id: HCO3E
     - name: HCO3 equilibration reaction
@@ -42246,7 +42255,7 @@
     - id: HIBD
     - name: 3-hydroxyisobutyrate dehydrogenase
     - metabolites: !!omap
-      - 3hmp_c: -1.0
+      - 3hib_c: -1.0
       - h_c: 1.0
       - mmtsa_c: 1.0
       - nad_c: -1.0
@@ -42257,6 +42266,7 @@
     - annotation: !!omap
       - bigg.reaction: HIBD
       - ec-code: 1.1.1.31
+      - kegg.reaction: R05066
       - metanetx.reaction: MNXR3623
       - origin: iMK1208
       - subsystem: Valine, leucine and isoleucine metabolism
@@ -42586,7 +42596,7 @@
       - kegg.reaction: R00750
       - metanetx.reaction: MNXR69562
       - origin: iMA789
-      - subsystem: Toluene metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: HOXPR2
     - name: 2-hydroxy-3-oxopropionate reductase
@@ -42821,7 +42831,7 @@
       - metanetx.reaction: MNXR100652
       - origin: KEGG
       - rhea: '23739'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: HXAND
     - name: hypoxanthine dehydrogenase
@@ -42990,7 +43000,7 @@
       - metanetx.reaction: MNXR69556
       - origin: iMA789
       - rhea: '18988'
-      - subsystem: Menaquinone Biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: ICL
     - name: Isocitrate lyase
@@ -43795,7 +43805,7 @@
       - metanetx.reaction: MNXR83435
       - origin: iMA789
       - rhea: '18148'
-      - subsystem: Fructose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: KYN
     - name: kynureninase
@@ -44221,7 +44231,7 @@
       - metanetx.reaction: MNXR69632
       - origin: KEGG
       - rhea: '27513'
-      - subsystem: Methane metabolism
+      - subsystem: 'Cofactor and Prosthetic Group Biosynthesis '
   - !!omap
     - id: LPPGS
     - name: GTP:2-phospho-L-lactate guanylyltransferase
@@ -44242,7 +44252,7 @@
       - metanetx.reaction: MNXR83555
       - origin: KEGG
       - rhea: '30522'
-      - subsystem: Methane metabolism
+      - subsystem: 'Cofactor and Prosthetic Group Biosynthesis '
   - !!omap
     - id: LTHRK
     - name: threonine-phosphate synthase
@@ -44632,7 +44642,7 @@
       - kegg.reaction: R01087
       - metanetx.reaction: MNXR4199
       - origin: KEGG
-      - subsystem: Nicotinate and nicotinamide metabolism or Butanoate metabolism
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: MALS
     - name: malate synthase
@@ -45068,7 +45078,7 @@
       - ec-code: 2.8.1.2
       - kegg.reaction: R03105
       - origin: KEGG
-      - subsystem: Cysteine and methionine metabolism
+      - subsystem: Cysteine metabolism
   - !!omap
     - id: MCSNAH
     - name: 5-Methylcytosine aminohydrolase
@@ -45379,7 +45389,7 @@
       - kegg.reaction: R10859
       - metanetx.reaction: MNXR114173
       - origin: KEGG
-      - subsystem: Terpenoid backbone biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: MECDPS
     - name: 2-C-methyl-D-erythritol 2,4-cyclodiphosphate synthase
@@ -46024,7 +46034,7 @@
       - ppi_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ''
+    - gene_reaction_rule: SCO2444
     - annotation: !!omap
       - bigg.reaction: MMCOAL
       - ec-code: ''
@@ -46643,7 +46653,7 @@
       - metanetx.reaction: MNXR3874
       - origin: iMA789
       - rhea: '19820'
-      - subsystem: One Carbon Pool
+      - subsystem: Folate metabolism
   - !!omap
     - id: MTI
     - name: maltose trehalose isomerase
@@ -46852,7 +46862,7 @@
       - metanetx.reaction: MNXR3849
       - origin: iMA789
       - rhea: '23155'
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: NADK
     - name: NAD kinase
@@ -47038,7 +47048,7 @@
       - kegg.reaction: ''
       - metanetx.reaction: MNXR3781
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: NDPK1
     - name: nucleoside-diphosphate kinase (ATP:GDP)
@@ -47303,7 +47313,7 @@
       - kegg.reaction: R02323
       - metanetx.reaction: MNXR3847
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: NMNP
     - name: NMN permease
@@ -47572,7 +47582,7 @@
       - kegg.reaction: R02295
       - metanetx.reaction: MNXR3841
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: NPHS
     - name: naphthoate synthase
@@ -47590,7 +47600,7 @@
       - metanetx.reaction: MNXR69558
       - origin: iMA789
       - rhea: '15528'
-      - subsystem: Menaquinone Biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: NT5C
     - name: Nicotinate D-ribonucleotide phosphohydrolase
@@ -47610,7 +47620,7 @@
       - metanetx.reaction: MNXR83460
       - origin: iMA789
       - rhea: '30938'
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: NTD10e
     - name: 5'-nucleotidase (XMP)
@@ -48446,7 +48456,7 @@
       - metanetx.reaction: MNXR110386
       - origin: KEGG
       - rhea: '26304'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: OHPBAT
     - name: O-Phospho-4-hydroxy-L-threonine:2-oxoglutarate aminotransferase
@@ -48592,7 +48602,7 @@
       - kegg.reaction: R02601
       - metanetx.reaction: MNXR3896
       - origin: iMA789
-      - subsystem: Phenylalanine metabolism
+      - subsystem: Tyrosine, Tryptophan, and Phenylalanine metabolism
   - !!omap
     - id: OPMEACPD
     - name: 3-Oxo-pimeloyl-[ACP] methyl ester dehydratase
@@ -48786,7 +48796,7 @@
       - kegg.reaction: R00993
       - metanetx.reaction: MNXR106778
       - origin: iMA789
-      - subsystem: Propanoate metabolism or C5-Branched dibasic acid metabolism
+      - subsystem: Propanoate metabolism
   - !!omap
     - id: OXCDC
     - name: Oxalyl-CoA decarboxylase
@@ -49848,7 +49858,7 @@
       - kegg.reaction: R04103
       - metanetx.reaction: MNXR69678
       - origin: KEGG
-      - subsystem: ''
+      - subsystem: Cysteine metabolism
   - !!omap
     - id: PEPCK
     - name: phosphoenolpyruvate carboxykinase (GTP)
@@ -50974,7 +50984,7 @@
       - kegg.reaction: R02294
       - metanetx.reaction: MNXR3848
       - origin: iMA789
-      - subsystem: Nicotinamidenucleotides NAD+,NADP+ biosynthesis
+      - subsystem: Nicotinate and nicotinamide metabolism
   - !!omap
     - id: PNTK
     - name: pantothenate kinase
@@ -51372,7 +51382,7 @@
       - metanetx.reaction: MNXR69628
       - origin: KEGG
       - rhea: '25159'
-      - subsystem: Pantothenate and CoA biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: PPND
     - name: prephenate dehydrogenase
@@ -51509,7 +51519,7 @@
       - kegg.reaction: R01377
       - metanetx.reaction: MNXR69533
       - origin: iMA789
-      - subsystem: Phenylalnine metabolism
+      - subsystem: Tyrosine, Tryptophan, and Phenylalanine metabolism
   - !!omap
     - id: PRAGSr
     - name: phosphoribosylglycinamide synthase
@@ -52197,7 +52207,7 @@
       - ec-code: 2.5.1.21
       - kegg.reaction: R02872
       - origin: KEGG
-      - subsystem: Sesquiterpenoid and triterpenoid biosynthesis, Steroid biosynthesis
+      - subsystem: Sesquiterpenoid and triterpenoid biosynthesis
   - !!omap
     - id: PSSA120
     - name: Phosphatidylserine syntase (n-C12:0)
@@ -52986,7 +52996,7 @@
       - metanetx.reaction: MNXR3783
       - origin: iMA789
       - rhea: '24391'
-      - subsystem: Pyrimidines biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: PYRt2
     - name: pyruvate reversible transport via proton symport
@@ -54538,7 +54548,7 @@
       - metanetx.reaction: MNXR109345
       - origin: iMA789
       - rhea: '33130'
-      - subsystem: Salicin metabolism
+      - subsystem: Glycolysis/Gluconeogenesis
   - !!omap
     - id: SADT
     - name: ATP:sulfate adenylyltransferase
@@ -54559,7 +54569,7 @@
       - metanetx.reaction: MNXR83552
       - origin: KEGG
       - rhea: '18136'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: SADT2
     - name: Sulfate adenyltransferase
@@ -54639,7 +54649,7 @@
       - metanetx.reaction: MNXR110923
       - origin: iMA789
       - rhea: '21975'
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: SBP_1
     - name: Phosphoric-monoester hydrolases
@@ -54789,7 +54799,7 @@
       - metanetx.reaction: MNXR4195
       - origin: KEGG
       - rhea: '25596'
-      - subsystem: Ubiquinone and other terpenoid-quinone biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: SERAT
     - name: Serine O-acetyltransferase
@@ -54919,7 +54929,7 @@
       - metanetx.reaction: MNXR111742
       - origin: KEGG
       - rhea: '25600'
-      - subsystem: Ubiquinone and other terpenoid-quinone biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: SHCHD2
     - name: sirohydrochlorin dehydrogenase (NAD)
@@ -55303,7 +55313,7 @@
       - kegg.reaction: R03634
       - metanetx.reaction: MNXR3767
       - origin: iMA789
-      - subsystem: Galactose metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: SUCBZL
     - name: o-succinylbenzoate-CoA ligase
@@ -55325,7 +55335,7 @@
       - metanetx.reaction: MNXR55784
       - origin: iMA789
       - rhea: '17012'
-      - subsystem: Menaquinone Biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: SUCBZS
     - name: o-succinylbenzoate synthase
@@ -55344,7 +55354,7 @@
       - metanetx.reaction: MNXR108605
       - origin: iMA789
       - rhea: '10199'
-      - subsystem: Menaquinone Biosynthesis
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: SUCCt2_2
     - name: succinate transport via proton symport (2 H)
@@ -55614,7 +55624,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR69932
       - origin: iMK1208
-      - subsystem: Teichoic Acid Biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: TAGS120
     - name: Triacylglycerol synthase (n-C12:0)
@@ -56008,7 +56018,7 @@
       - metanetx.reaction: MNXR69530
       - origin: iMA789
       - rhea: '28001'
-      - subsystem: Thiamine metabolism
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: TDPDRE
     - name: dTDP-4-dehydrorhamnose 3,5-epimerase
@@ -56086,7 +56096,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR2985
       - origin: iMK1208
-      - subsystem: Teichoic Acid Biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: TECA2S
     - name: glycerol techoic acid synthesis (D-ala, n=25)
@@ -56110,7 +56120,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR2994
       - origin: iMK1208
-      - subsystem: Teichoic Acid Biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: TECA3S
     - name: glycerol teichoic acid synthesis (n=25, glucose sub)
@@ -56131,7 +56141,7 @@
       - ec-code: ''
       - metanetx.reaction: MNXR2996
       - origin: iMK1208
-      - subsystem: Teichoic Acid Biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: TGBPA
     - name: Tagatose-bisphosphate aldolase
@@ -56270,7 +56280,7 @@
       - kegg.reaction: R00942
       - metanetx.reaction: MNXR106759
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: THIORDXi
     - name: hydrogen peroxide reductase (thioredoxin)
@@ -56785,7 +56795,7 @@
       - metanetx.reaction: MNXR108251
       - origin: iMA789
       - rhea: '16740'
-      - subsystem: Toluene metabolism
+      - subsystem: Alternate Carbon metabolism
   - !!omap
     - id: TPI
     - name: triose-phosphate isomerase
@@ -57306,7 +57316,7 @@
       - ec-code: 6.3.2.9
       - kegg.reaction: ''
       - origin: iMA789
-      - subsystem: NAG & NAM biosynthesis
+      - subsystem: Cell Envelope Biosynthesis
   - !!omap
     - id: UAMAS
     - name: UDP-N-acetylmuramoyl-L-alanine synthetase
@@ -57450,7 +57460,7 @@
       - metanetx.reaction: MNXR109676
       - origin: KEGG
       - rhea: '25244'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: UGLT
     - name: UDPglucose--hexose-1-phosphate uridylyltransferase
@@ -57571,7 +57581,7 @@
       - kegg.reaction: R03166
       - metanetx.reaction: MNXR3899
       - origin: iMA789
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: UPP3MT
     - name: uroporphyrinogen methyltransferase
@@ -57610,7 +57620,7 @@
       - ec-code: 2.1.1.107
       - kegg.reaction: ''
       - origin: iMA789
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: UPP3S
     - name: uroporphyrinogen-III synthase
@@ -57669,7 +57679,7 @@
       - metanetx.reaction: MNXR3900
       - origin: iMA789
       - rhea: '31242'
-      - subsystem: Porphyrin and Chlorophyl lMetabolsim
+      - subsystem: Cofactor and Prosthetic Group Biosynthesis
   - !!omap
     - id: UPPRT
     - name: uracil phosphoribosyltransferase
@@ -57803,7 +57813,7 @@
       - kegg.reaction: R00968
       - metanetx.reaction: MNXR3785
       - origin: iMA789
-      - subsystem: Pyrimidines biosynthesis
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: URIt2
     - name: uridine transport in via proton symport, reversible
@@ -57842,7 +57852,7 @@
       - metanetx.reaction: MNXR69626
       - origin: KEGG
       - rhea: '21371'
-      - subsystem: Purine metabolism
+      - subsystem: Purine and pyrimidine biosynthesis
   - !!omap
     - id: VALDHr
     - name: valine dehydrogenase (NAD, irreversible)
@@ -58468,7 +58478,7 @@
       - kegg.reaction: R00428
       - metanetx.reaction: MNXR105308
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: r0163
     - name: R00621
@@ -58507,7 +58517,7 @@
       - kegg.reaction: R04445
       - metanetx.reaction: MNXR105368
       - origin: iMA789
-      - subsystem: Proline metabolism
+      - subsystem: Arginine and Proline metabolism
   - !!omap
     - id: r0708
     - name: GTP cyclohydrolase I
@@ -58525,7 +58535,7 @@
       - kegg.reaction: R04639
       - metanetx.reaction: MNXR105370
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: r0775
     - name: GTP cyclohydrolase I
@@ -58543,7 +58553,7 @@
       - kegg.reaction: R05046
       - metanetx.reaction: MNXR105382
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
   - !!omap
     - id: r0777
     - name: GTP cyclohydrolase I
@@ -58559,7 +58569,7 @@
       - kegg.reaction: R05048
       - metanetx.reaction: MNXR105383
       - origin: iMA789
-      - subsystem: Folate biosynthesis
+      - subsystem: Folate metabolism
 - genes:
   - !!omap
     - id: SCO0006
