@@ -1861,6 +1861,7 @@
     - annotation: !!omap
       - bigg.metabolite: 3hib_c
       - kegg.compound: C06001
+      - origin: KEGG
   - !!omap
     - id: 3hibutcoa_c
     - name: (S)-3-Hydroxyisobutyryl-CoA
