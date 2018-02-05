@@ -27931,7 +27931,7 @@
       - pyr_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: gprSCO3213 and ( SCO3214 or SCO2043 )
+    - gene_reaction_rule: SCO3213 and ( SCO3214 or SCO2043 )
     - annotation: !!omap
       - bigg.reaction: ATNS_nh4
       - ec-code: 4.1.3.27
@@ -59419,7 +59419,7 @@
       - succ_c: -1.0
     - lower_bound: -1000.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: ( SCO0922 or SCO04855 or SCO5106 ) and ( SCO0923 or SCO4856
+    - gene_reaction_rule: ( SCO0922 or SCO4855 or SCO5106 ) and ( SCO0923 or SCO4856
         or SCO5107 or SCO7109 )
     - annotation: !!omap
       - bigg.reaction: SUCD9
@@ -63029,9 +63029,6 @@
   - !!omap
     - id: SCO0479
     - name: SCO0479
-  - !!omap
-    - id: SCO04855
-    - name: SCO04855
   - !!omap
     - id: SCO0491
     - name: SCF34.10c
@@ -66866,9 +66863,6 @@
   - !!omap
     - id: SCP155c
     - name: SCP155c
-  - !!omap
-    - id: gprSCO3213
-    - name: gprSCO3213
   - !!omap
     - id: s0001
     - name: s0001
