@@ -32473,7 +32473,7 @@
       - h_c: 1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3474 or SCO0851 or SCO03494 or SCO4988
+    - gene_reaction_rule: SCO3474 or SCO0851 or SCO3494 or SCO4988
     - annotation: !!omap
       - bigg.reaction: DDGLK
       - biocyc: DEOXYGLUCONOKIN-RXN
@@ -62978,9 +62978,6 @@
   - !!omap
     - id: SCO0330
     - name: fabG
-  - !!omap
-    - id: SCO03494
-    - name: SCO03494
   - !!omap
     - id: SCO0364
     - name: SCF41.23
