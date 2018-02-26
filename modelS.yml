@@ -61802,7 +61802,7 @@
       - subsystem: Nucleotide Salvage Pathway
   - !!omap
     - id: UPP1S
-    - name: uroporphyrinogen-III synthase
+    - name: uroporphyrinogen-I synthase
     - metabolites: !!omap
       - h2o_c: 1.0
       - hmbil_c: -1.0
