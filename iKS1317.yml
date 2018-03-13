@@ -29683,7 +29683,7 @@
       - subsystem: Citric Acid Cycle
   - !!omap
     - id: CITMS
-    - name: R07399
+    - name: (R)-citramalate synthase
     - metabolites: !!omap
       - accoa_c: -1.0
       - citm__R_c: 1.0
@@ -61802,7 +61802,7 @@
       - subsystem: Nucleotide Salvage Pathway
   - !!omap
     - id: UPP1S
-    - name: uroporphyrinogen-I synthase
+    - name: uroporphyrinogen-III synthase
     - metabolites: !!omap
       - h2o_c: 1.0
       - hmbil_c: -1.0
@@ -66863,7 +66863,8 @@
   - !!omap
     - id: s0001
     - name: s0001
-- id: modelS
+- id: iKS1317
+- name: iKS1317
 - compartments: !!omap
   - c: Cytoplasm
   - e: Extracellular
