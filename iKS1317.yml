@@ -848,8 +848,8 @@
     - id: 2dh3dglc_c
     - name: 2-Dehydro-3-deoxy-D-glucarate
     - compartment: c
-    - charge: 0
-    - formula: C6H8O7
+    - charge: -2
+    - formula: C6H6O7
     - annotation: !!omap
       - bigg.metabolite: 2dh3dglc_c
       - kegg.compound: C03921
@@ -871,7 +871,7 @@
     - id: 2dmmq9_c
     - name: 2-Demethylmenaquinone
     - compartment: c
-    - charge: 0
+    - charge: -1
     - formula: C55H77O2
     - annotation: !!omap
       - bigg.metabolite: 2dmmq9_c
@@ -3651,8 +3651,8 @@
     - id: C21572_c
     - name: 2-Methyl-3-n-amyl-pyrrole
     - compartment: c
-    - charge: 0
-    - formula: C10H17N
+    - charge: -1
+    - formula: C10H16N
     - annotation: !!omap
       - kegg.compound: C21572
       - origin: KEGG
@@ -6457,8 +6457,8 @@
     - id: citac_c
     - name: 2-Methylmaleate
     - compartment: c
-    - charge: -2
-    - formula: C5H4O4
+    - charge: -1
+    - formula: C5H5O4
     - annotation: !!omap
       - bigg.metabolite: citac_c
       - kegg.compound: C02226
@@ -6467,8 +6467,8 @@
     - id: citm__R_c
     - name: (R)-2-Methylmalate
     - compartment: c
-    - charge: -2
-    - formula: C5H6O5
+    - charge: -1
+    - formula: C5H7O5
     - annotation: !!omap
       - bigg.metabolite: citm__R_c
       - kegg.compound: C02612
@@ -6913,7 +6913,7 @@
     - id: cofac3_c
     - name: Cobalt-factor III
     - compartment: c
-    - charge: -9
+    - charge: -7
     - formula: C43H41N4O16Co
     - annotation: !!omap
       - bigg.metabolite: cofac3_c
@@ -6924,8 +6924,8 @@
     - id: cooodacp_c
     - name: 18-Carbamoyl-3,5,7,9,11,13,15,17-octaoxooctadecanoyl-[acp]
     - compartment: c
-    - charge: 0
-    - formula: C19H20NO10SR
+    - charge: -2
+    - formula: C30H39N3O17PSR
     - annotation: !!omap
       - bigg.metabolite: cooodacp_c
       - chebi: '31060'
@@ -7014,7 +7014,7 @@
     - id: cpppg1_c
     - name: Coproporphyrinogen I
     - compartment: c
-    - charge: 0
+    - charge: -4
     - formula: C36H40N4O8
     - annotation: !!omap
       - bigg.metabolite: cpppg1_c
@@ -7931,7 +7931,7 @@
     - id: dhpmp_c
     - name: Dihydroneopterin phosphate
     - compartment: c
-    - charge: -2
+    - charge: -1
     - formula: C9H13N5O7P
     - annotation: !!omap
       - bigg.metabolite: dhpmp_c
@@ -8074,7 +8074,7 @@
     - id: dna5mtc_c
     - name: DNA 5-methylcytosine
     - compartment: c
-    - charge: 0
+    - charge: -2
     - formula: C10H16N3O7PR
     - annotation: !!omap
       - bigg.metabolite: dna5mtc_c
@@ -8252,7 +8252,7 @@
     - id: dtdpglu_c
     - name: dTDPglucose
     - compartment: c
-    - charge: -3
+    - charge: -2
     - formula: C16H24N2O16P2
     - annotation: !!omap
       - bigg.metabolite: dtdpglu_c
@@ -8649,7 +8649,7 @@
     - id: f420_1_c
     - name: Coenzyme F420-1
     - compartment: c
-    - charge: -3
+    - charge: -2
     - formula: C24H27N4O15P
     - annotation: !!omap
       - bigg.metabolite: f420_1_c
@@ -8662,7 +8662,7 @@
     - id: f420_c
     - name: Coenzyme F420
     - compartment: c
-    - charge: -3
+    - charge: -2
     - formula: C29H34N5O18P
     - annotation: !!omap
       - bigg.metabolite: f420_c
@@ -9117,7 +9117,7 @@
     - id: fpntp_c
     - name: Formamidopyrimidine nucleoside triphosphate
     - compartment: c
-    - charge: -3
+    - charge: -4
     - formula: C10H14N5O15P3
     - annotation: !!omap
       - bigg.metabolite: fpntp_c
@@ -9617,7 +9617,7 @@
     - id: gdpddman_c
     - name: GDP-4-dehydro-6-deoxy-D-mannose
     - compartment: c
-    - charge: 0
+    - charge: -2
     - formula: C16H21N5O15P2
     - annotation: !!omap
       - bigg.metabolite: gdpddman_c
@@ -11935,7 +11935,7 @@
     - id: lipopb_c
     - name: Protein N6-(lipoyl)lysine
     - compartment: c
-    - charge: 1
+    - charge: 0
     - formula: C8H12OS2
     - annotation: !!omap
       - bigg.metabolite: lipopb_c
@@ -11960,7 +11960,7 @@
     - id: lppg_c
     - name: (2S)-Lactyl-2-diphospho-5'-guanosine
     - compartment: c
-    - charge: -3
+    - charge: -2
     - formula: C13H17N5O13P2
     - annotation: !!omap
       - bigg.metabolite: lppg_c
@@ -12212,8 +12212,8 @@
     - id: malmoACP_c
     - name: Malonamoyl-[acyl-carrier protein]
     - compartment: c
-    - charge: 0
-    - formula: C3H4NO2SR
+    - charge: -2
+    - formula: C14H23N3O9PSR
     - annotation: !!omap
       - bigg.metabolite: malmoACP_c
       - kegg.compound: C21430
@@ -12579,8 +12579,8 @@
     - id: mercppyr_c
     - name: Mercaptopyruvate
     - compartment: c
-    - charge: 0
-    - formula: C3H4O3S
+    - charge: -1
+    - formula: C3H3O3S
     - annotation: !!omap
       - bigg.metabolite: mercppyr_c
       - biocyc: 3-MERCAPTO-PYRUVATE
@@ -12830,7 +12830,7 @@
     - name: pentose intermediate
     - compartment: c
     - charge: 0
-    - formula: C5H11O5
+    - formula: C5H10O5
     - annotation: !!omap
       - bigg.metabolite: mmyint1_c
       - biocyc: CPD1A0-6282
@@ -13622,7 +13622,7 @@
     - id: noeicoylACP_c
     - name: 3,5,7,9,11,13,15,17,19-Nonaoxo-eicosanoyl-[acp]
     - compartment: c
-    - charge: 0
+    - charge: -2
     - formula: C31H40N2O17PRS
     - annotation: !!omap
       - bigg.metabolite: noeicoylACP_c
@@ -14581,8 +14581,8 @@
     - id: peng_c
     - name: Penicillin G
     - compartment: c
-    - charge: 0
-    - formula: C16H18N2O4S
+    - charge: -1
+    - formula: C16H17N2O4S
     - annotation: !!omap
       - bigg.metabolite: peng_c
       - kegg.compound: C05551
@@ -15851,7 +15851,7 @@
     - id: prpadnl_c
     - name: Propinol adenylate
     - compartment: c
-    - charge: -1
+    - charge: -2
     - formula: C13H16N5O8P1
     - annotation: !!omap
       - bigg.metabolite: prpadnl_c
@@ -16375,8 +16375,8 @@
     - id: r3mmal_c
     - name: D-erythro-3-Methylmalate
     - compartment: c
-    - charge: -2
-    - formula: C5H6O5
+    - charge: -1
+    - formula: C5H7O5
     - annotation: !!omap
       - bigg.metabolite: r3mmal_c
       - kegg.compound: C06032
@@ -17582,8 +17582,8 @@
     - id: tcynt_c
     - name: Thiocyanate
     - compartment: c
-    - charge: -1
-    - formula: CNS
+    - charge: 0
+    - formula: HCNS
     - annotation: !!omap
       - bigg.metabolite: tcynt_c
       - biocyc: HSCN
@@ -47723,6 +47723,7 @@
     - id: MCPST2
     - name: 3-Mercaptopyruvate:cyanide sulfurtransferase
     - metabolites: !!omap
+      - h_c: -1.0
       - mercppyr_c: -1.0
       - pyr_c: 1.0
       - so3_c: -1.0
@@ -59229,7 +59230,8 @@
     - id: SRUBSYN
     - name: SRUBSYN
     - metabolites: !!omap
-      - h2o_c: 1.0
+      - h2o_c: 2.0
+      - h_c: -2.0
       - o2_c: -1.0
       - red_c: -1.0
       - strprub_c: 1.0
