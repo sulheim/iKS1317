@@ -848,6 +848,7 @@
     - id: 2dh3dglc_c
     - name: 2-Dehydro-3-deoxy-D-glucarate
     - compartment: c
+    - charge: 0
     - formula: C6H8O7
     - annotation: !!omap
       - bigg.metabolite: 2dh3dglc_c
@@ -1184,7 +1185,7 @@
     - name: 2-Succinyl-5-enolpyruvyl-6-hydroxy-3-cyclohexene-1-carboxylate
     - compartment: c
     - charge: -3
-    - formula: C14H16O9
+    - formula: C14H13O9
     - annotation: !!omap
       - bigg.metabolite: 2sephchc_c
       - biocyc: CPD-9924
@@ -3480,6 +3481,7 @@
     - id: 6apa_c
     - name: 6-Aminopenicillanate
     - compartment: c
+    - charge: 0
     - formula: C8H12N2O3S
     - annotation: !!omap
       - bigg.metabolite: 6apa_c
@@ -3594,6 +3596,7 @@
     - id: ACPmmy_c
     - name: MmyA
     - compartment: c
+    - charge: 0
     - formula: R
     - annotation: !!omap
       - bigg.metabolite: ACPmmy_c
@@ -3639,6 +3642,7 @@
     - id: C21565_c
     - name: Prodigiosin
     - compartment: c
+    - charge: 0
     - formula: C20H25N3O
     - annotation: !!omap
       - kegg.compound: C21565
@@ -3647,6 +3651,7 @@
     - id: C21572_c
     - name: 2-Methyl-3-n-amyl-pyrrole
     - compartment: c
+    - charge: 0
     - formula: C10H17N
     - annotation: !!omap
       - kegg.compound: C21572
@@ -3752,7 +3757,7 @@
     - id: N6dhliplys_c
     - name: Enzyme N6-(dihydrolipoyl)lysine
     - compartment: c
-    - charge: 0
+    - charge: -1
     - formula: C8H16NOS2
     - annotation: !!omap
       - bigg.metabolite: N6dhliplys_c
@@ -3980,6 +3985,7 @@
     - id: acetone_c
     - name: Acetone
     - compartment: c
+    - charge: 0
     - formula: C3H6O
     - annotation: !!omap
       - bigg.metabolite: acetone_c
@@ -4248,6 +4254,7 @@
     - id: actACPmmy_c
     - name: malonyl-MmyA
     - compartment: c
+    - charge: 0
     - formula: C3H4O3S1R1
     - annotation: !!omap
       - bigg.metabolite: actACPmmy_c
@@ -4897,6 +4904,7 @@
     - id: albflol__R_c
     - name: (5R)-Albaflavenol
     - compartment: c
+    - charge: 0
     - formula: C15H24O
     - annotation: !!omap
       - bigg.metabolite: albflol__R_c
@@ -4906,6 +4914,7 @@
     - id: albflol__S_c
     - name: (5S)-Albaflavenol
     - compartment: c
+    - charge: 0
     - formula: C15H24O
     - annotation: !!omap
       - bigg.metabolite: albflol__S_c
@@ -4915,6 +4924,7 @@
     - id: albflon_c
     - name: Albaflavenone
     - compartment: c
+    - charge: 0
     - formula: C15H22O
     - annotation: !!omap
       - bigg.metabolite: albflon_c
@@ -4924,8 +4934,8 @@
     - id: allglutADP_c
     - name: Adenylyl-[L-glutamate:ammonia ligase (ADP-forming)]
     - compartment: c
-    - charge: 0
-    - formula: C20H22N7O9PR2
+    - charge: -1
+    - formula: C20H21N7O9PR2
     - annotation: !!omap
       - bigg.metabolite: allglutADP_c
       - kegg.compound: C01299
@@ -5550,6 +5560,7 @@
     - id: bfrn_c
     - name: beta-Farnesene
     - compartment: c
+    - charge: 0
     - formula: C15H24
     - annotation: !!omap
       - bigg.metabolite: bfrn_c
@@ -6446,7 +6457,8 @@
     - id: citac_c
     - name: 2-Methylmaleate
     - compartment: c
-    - formula: C5H6O4
+    - charge: -2
+    - formula: C5H4O4
     - annotation: !!omap
       - bigg.metabolite: citac_c
       - kegg.compound: C02226
@@ -6455,7 +6467,8 @@
     - id: citm__R_c
     - name: (R)-2-Methylmalate
     - compartment: c
-    - formula: C5H8O5
+    - charge: -2
+    - formula: C5H6O5
     - annotation: !!omap
       - bigg.metabolite: citm__R_c
       - kegg.compound: C02612
@@ -7129,6 +7142,7 @@
     - id: cyan_c
     - name: Hydrogen cyanide
     - compartment: c
+    - charge: 0
     - formula: CHN
     - annotation: !!omap
       - bigg.metabolite: cyan_c
@@ -8513,6 +8527,7 @@
     - id: episz_c
     - name: (+)-epi-Isozizaene
     - compartment: c
+    - charge: 0
     - formula: C15H24
     - annotation: !!omap
       - bigg.metabolite: episz_c
@@ -8781,7 +8796,7 @@
     - id: fdxox_c
     - name: Oxidized ferredoxin
     - compartment: c
-    - charge: 0
+    - charge: 1
     - formula: R
     - annotation: !!omap
       - bigg.metabolite: fdxox_c
@@ -9641,6 +9656,7 @@
     - id: geosmin_c
     - name: Geosmin
     - compartment: c
+    - charge: 0
     - formula: C12H22O
     - annotation: !!omap
       - bigg.metabolite: geosmin_c
@@ -10257,6 +10273,7 @@
     - id: grmcrnd_c
     - name: (-)-Germacrene D
     - compartment: c
+    - charge: 0
     - formula: C15H24
     - annotation: !!omap
       - bigg.metabolite: grmcrnd_c
@@ -10266,6 +10283,7 @@
     - id: grmcrol_c
     - name: (1E,4S,5E,7R)-Germacra-1(10),5-dien-11-ol
     - compartment: c
+    - charge: 0
     - formula: C15H26O
     - annotation: !!omap
       - bigg.metabolite: grmcrol_c
@@ -10527,6 +10545,7 @@
     - id: hbc_c
     - name: 4-Hydroxy-2,2'-bipyrrole-5-carbaldehyde
     - compartment: c
+    - charge: 0
     - formula: C9H8N2O2
     - annotation: !!omap
       - bigg.metabolite: hbc_c
@@ -10978,6 +10997,7 @@
     - id: hop22en_c
     - name: Diploptene
     - compartment: c
+    - charge: 0
     - formula: C30H50
     - annotation: !!omap
       - bigg.metabolite: hop22en_c
@@ -10990,6 +11010,7 @@
     - id: hop22ol_c
     - name: Diplopterol
     - compartment: c
+    - charge: 0
     - formula: C30H52O
     - annotation: !!omap
       - bigg.metabolite: hop22ol_c
@@ -11372,7 +11393,7 @@
     - id: iasp_c
     - name: Iminoaspartate
     - compartment: c
-    - charge: -2
+    - charge: -1
     - formula: C4H4NO4
     - annotation: !!omap
       - bigg.metabolite: iasp_c
@@ -12102,6 +12123,7 @@
     - id: malACPmmy_c
     - name: acetoacetyl-MmyA
     - compartment: c
+    - charge: 0
     - formula: C4H7O2S1R1
     - annotation: !!omap
       - bigg.metabolite: malACPmmy_c
@@ -12177,7 +12199,8 @@
     - id: male_c
     - name: Maleic acid
     - compartment: c
-    - formula: C4H4O4
+    - charge: -2
+    - formula: C4H2O4
     - annotation: !!omap
       - bigg.metabolite: male_c
       - biocyc: MALEATE
@@ -12556,6 +12579,7 @@
     - id: mercppyr_c
     - name: Mercaptopyruvate
     - compartment: c
+    - charge: 0
     - formula: C3H4O3S
     - annotation: !!omap
       - bigg.metabolite: mercppyr_c
@@ -12772,6 +12796,7 @@
     - id: mmyA_c
     - name: methylenomycin A
     - compartment: c
+    - charge: 0
     - formula: C9H17O4
     - annotation: !!omap
       - bigg.metabolite: mmyA_c
@@ -12782,6 +12807,7 @@
     - id: mmyB_c
     - name: methylenomycin B
     - compartment: c
+    - charge: 0
     - formula: C8H15O1
     - annotation: !!omap
       - bigg.metabolite: mmyB_c
@@ -12792,6 +12818,7 @@
     - id: mmyC_c
     - name: methylenomycin C
     - compartment: c
+    - charge: 0
     - formula: C9H16O3
     - annotation: !!omap
       - bigg.metabolite: mmyC_c
@@ -12802,6 +12829,7 @@
     - id: mmyint1_c
     - name: pentose intermediate
     - compartment: c
+    - charge: 0
     - formula: C5H11O5
     - annotation: !!omap
       - bigg.metabolite: mmyint1_c
@@ -12812,6 +12840,7 @@
     - id: mmyint2_c
     - name: butenolide intermediate
     - compartment: c
+    - charge: 0
     - formula: C9H17O6
     - annotation: !!omap
       - bigg.metabolite: mmyint2_c
@@ -14552,6 +14581,7 @@
     - id: peng_c
     - name: Penicillin G
     - compartment: c
+    - charge: 0
     - formula: C16H18N2O4S
     - annotation: !!omap
       - bigg.metabolite: peng_c
@@ -15621,7 +15651,7 @@
     - id: pre1_c
     - name: Precorrin 1
     - compartment: c
-    - charge: 0
+    - charge: -8
     - formula: C41H38N4O16
     - annotation: !!omap
       - bigg.metabolite: pre1_c
@@ -16050,7 +16080,8 @@
     - id: psqldi_c
     - name: Presqualene diphosphate
     - compartment: c
-    - formula: C30H52O7P2
+    - charge: -3
+    - formula: C30H49O7P2
     - annotation: !!omap
       - bigg.metabolite: psqldi_c
       - biocyc: CPD-465
@@ -16344,7 +16375,8 @@
     - id: r3mmal_c
     - name: D-erythro-3-Methylmalate
     - compartment: c
-    - formula: C5H8O5
+    - charge: -2
+    - formula: C5H6O5
     - annotation: !!omap
       - bigg.metabolite: r3mmal_c
       - kegg.compound: C06032
@@ -16961,6 +16993,7 @@
     - id: sql_c
     - name: Squalene
     - compartment: c
+    - charge: 0
     - formula: C30H50
     - annotation: !!omap
       - bigg.metabolite: sql_c
@@ -16986,6 +17019,7 @@
     - id: strprub_c
     - name: Streptorubin B
     - compartment: c
+    - charge: 0
     - formula: C25H33N3O
     - annotation: !!omap
       - bigg.metabolite: strprub_c
@@ -17548,7 +17582,8 @@
     - id: tcynt_c
     - name: Thiocyanate
     - compartment: c
-    - formula: CHNS
+    - charge: -1
+    - formula: CNS
     - annotation: !!omap
       - bigg.metabolite: tcynt_c
       - biocyc: HSCN
@@ -18532,6 +18567,7 @@
     - id: tsul_c
     - name: Thiosulfate
     - compartment: c
+    - charge: -1
     - formula: HS2O3
     - annotation: !!omap
       - bigg.metabolite: tsul_c
@@ -18964,7 +19000,7 @@
     - id: uppg1_c
     - name: Uroporphyrinogen I
     - compartment: c
-    - charge: 0
+    - charge: -8
     - formula: C40H36N4O16
     - annotation: !!omap
       - bigg.metabolite: uppg1_c
