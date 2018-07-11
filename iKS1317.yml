@@ -49322,7 +49322,7 @@
       - mptamp_c: -1.0
     - lower_bound: 0.0
     - upper_bound: 1000.0
-    - gene_reaction_rule: SCO3181 and SCO3827
+    - gene_reaction_rule: SCO3181 or SCO3827
     - annotation: !!omap
       - bigg.reaction: MOCOS
       - ec-code: 2.10.1.1
