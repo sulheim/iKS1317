@@ -13,8 +13,10 @@ TRANSCRIPTOMICS_FN = "../data/SOP-TS9-F452 data.csv"
 MODEL_FN = "../iKS1317.xml"
 OFFLINE_DATA_FN = "../data/offline_data_F452.csv"
 
+# MAX_GLUCOSE_UPTAKE_RATE = -2.1
 MAX_GLUCOSE_UPTAKE_RATE = -2.1
-CORRESPONDING_AMMONIUM_UPTAKE = -1.85
+# CORRESPONDING_AMMONIUM_UPTAKE = -1.85
+CORRESPONDING_AMMONIUM_UPTAKE = -2
 
 MOLAR_MASS = {
     "PO4": 94.9714, #g/mol
@@ -159,9 +161,17 @@ def convert_gene_data_to_reaction_data(model, derivate_df):
 # def func(x, A, b, c):
 #     return c - A*np.exp(b*x)
 
-def sigmoid(x, a, b, c):
-    y = a / (1 + np.exp(c*(x-b)))
+def sigmoid(x, a, b, c, d):
+    y = a / (1 + np.exp(c*(x-b))) + abs(d)
     return y
+
+def fit_PO4(df):
+    df = df[~df["PO4"].isnull()]
+    fit, _ = curve_fit(sigmoid, df.index, df["PO4"], p0 = [480, 40, 1, 10])
+    print(fit)
+    return fit
+
+
 
 def read_offline_data():
     df = pd.read_csv(OFFLINE_DATA_FN, sep = ";", decimal = ",")
@@ -170,27 +180,34 @@ def read_offline_data():
     df.loc[30, "RED":"TBP"] = 0
 
     df.set_index("TAI", inplace = True)
+    po4_fit = fit_PO4(df)
+
     df.index = pd.to_timedelta(df.index, "h")
-    df = df.resample("10T").interpolate(method = "linear")
+    df_resampled = df.resample("10T").interpolate(method = "linear")
+
+    df_resampled["Fitted PO4"] = sigmoid(df_resampled.index.total_seconds()/3600, *po4_fit)
+
+
 
     # # glc_fit = np.poly1d(np.polyfit(df.index.total_seconds(), df["Glucose"], 3))
-    glc_fit2, _ = curve_fit(func, df.index.total_seconds()/3600, np.array(df["Glucose"]), p0 = [1, 2, 40])
+    # glc_fit2, _ = curve_fit(func, df.index.total_seconds()/3600, np.array(df["Glucose"]), p0 = [1, 2, 40])
     # y = func(df.index.total_seconds()/3600, *glc_fit2)
 
-    
-    # # print(glc_fit(df.index.total_seconds()))
-    # plt.plot(df.index.total_seconds()/3600, y)
-    plt.plot(df.index.total_seconds()/3600, df["PO4"])
-    plt.show()
 
-    df[df.isnull()] = 0
+    # # print(glc_fit(df.index.total_seconds()))
+    # plt.plot(df_resampled.index.total_seconds()/3600, df_resampled["Fitted PO4"])
+    # plt.plot(df_resampled.index.total_seconds()/3600, df_resampled["PO4"])
+    # plt.show()
+
+
+    df_resampled[df_resampled.isnull()] = 0
 
     # Make max rate columns
-    df["Max glc"] = df["Glucose"].diff() * 6 # per hour
-    df["Max glu"] = df["Glutamate"].diff() * 6 # per hour
-    df["Max PO4"] = df["PO4"].diff() * 6 # per hour
+    df_resampled["Max glc"] = df_resampled["Glucose"].diff() * 6 # per hour
+    df_resampled["Max glu"] = df_resampled["Glutamate"].diff() * 6 # per hour
+    df_resampled["Max PO4"] = df_resampled["Fitted PO4"].diff() * 6 # per hour
 
-    return df
+    return df_resampled
 
 
 def dFBA_trans(model, reaction_data_df, growth_data):
@@ -249,11 +266,14 @@ def dFBA(model, growth_data):
         S_pi_uptake_array[i] = S_pi_uptake
         
 
-    fig, [ax1, ax2] = plt.subplots(1,2)
-    ax1.plot(time_array.total_seconds()/3600, biomass_arr, lw = 5, label = "Biomass")
+    fig, [ax1, ax2, ax3] = plt.subplots(1,3)
+    ax1.plot(time_array.total_seconds()/3600, biomass_arr, c = "k", lw = 5, label = "Biomass")
+    ax1.plot(time_array.total_seconds()/3600, growth_data["CDW"], lw = 4, label = "CDW")
     ax2.plot(time_array.total_seconds()/3600, S_pi_uptake_array)
     ax2.plot(time_array.total_seconds()/3600, growth_rate_array/max(growth_rate_array))
     ax2.plot(time_array.total_seconds()/3600, S_pi_uptake_array/max(S_pi_uptake_array))
+    ax3.plot(time_array.total_seconds()/3600, growth_rate_array)
+    # plt.legend()
     plt.show()
 
 
