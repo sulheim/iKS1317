@@ -5,161 +5,27 @@ from matplotlib import pyplot as plt
 from scipy.interpolate import UnivariateSpline
 from scipy.optimize import curve_fit
 import numpy as np
-import scipy.signal
+from itertools import chain
 import re
+import sympy
+add = sympy.Add._from_args
+mul = sympy.Mul._from_args
 # import tim
 
-TRANSCRIPTOMICS_FN = "../data/SOP-TS9-F452 data.csv"
-MODEL_FN = "../iKS1317.xml"
-OFFLINE_DATA_FN = "../data/offline_data_F452.csv"
+from get_transcriptomics import *
 
-# MAX_GLUCOSE_UPTAKE_RATE = -2.1
-MAX_GLUCOSE_UPTAKE_RATE = -2.1
+
+
+MAX_GLUCOSE_UPTAKE_RATE = -1.5
+# MAX_GLUCOSE_UPTAKE_RATE = -0.8
 # CORRESPONDING_AMMONIUM_UPTAKE = -1.85
-CORRESPONDING_AMMONIUM_UPTAKE = -2
+CORRESPONDING_AMMONIUM_UPTAKE = 1.85*MAX_GLUCOSE_UPTAKE_RATE/2.1
+PI_AVAILABLE_SCALE_FACTOR = 1
 
-MOLAR_MASS = {
-    "PO4": 94.9714, #g/mol
-}
+REACTION_CHANGE_CONSTANT = 1
 
-def read_transcriptomics(trans_fn = TRANSCRIPTOMICS_FN):
-    df = pd.read_csv(trans_fn, sep = ";", decimal = ",")
-    df.drop(["id_0", "Unnamed: 28"], axis = 1, inplace = True)
+SIGNIFICANCE_THRESHOLD = 0.5
 
-    # Remove rows that does not have a sco number
-    df = df[~df["gene ID"].isnull()]
-    df = df[df["gene ID"].str.contains("SC")]
-
-    df.set_index("gene ID", inplace = True)
-    df.columns = [float(x.split("_")[1]) for x in df.columns]
-    # Split rows with more than one gene
-    splitted_rows = []
-    for idx, row in df[df.index.str.contains(",")].iterrows():
-        for x in idx.split(","):
-            splitted_rows.append([x] + list(row))
-    new_df = pd.DataFrame(splitted_rows).set_index(0)
-    new_df.columns = df.columns
-
-    df = df[~df.index.str.contains(",")]
-    df = pd.concat([new_df, df])
-
-
-    return df
-
-def get_model(model_fn = MODEL_FN):
-    return cobra.io.read_sbml_model(model_fn)
-
-
-def plot_transcriptomics_for_model_genes():
-    df = read_transcriptomics()
-    model = get_model()
-
-    model_genes = [g.id for g in model.genes]
-    model_genes.remove("s0001")
-
-
-    print(len(df.index))
-    print(df.columns)
-    plt.ion()
-    fig, ax = plt.subplots(figsize = (16, 10))
-    cmap = plt.get_cmap("tab20")
-    x = np.linspace(df.columns[0], df.columns[-1], 100)
-    for i, gene_id in enumerate(model_genes):
-        
-        data = data_for_gene(df. gene_id)
-        print(gene_id)
-        # print(data)
-        # try:
-        #     spline = UnivariateSpline(data.index, data, k = 2, s = 0.5)
-        # except:
-        #     print(data)
-        # ax.plot(x, spline(x), ls = "--", c = cmap(i%10), label = gene_id)
-        # roll = data.rolling(3, min_periods = 1).mean()
-        # ax.plot(roll, ls = "--", c = cmap(i%10), label = gene_id)
-
-        data.index = pd.to_timedelta(data.index, "h")
-        data = data.resample("10T").interpolate(method = "linear")
-        data.plot(ax = ax, c = cmap(i%10), label = gene_id)
-        b, a = scipy.signal.butter(N = 3, Wn = 0.05, btype = "lowpass") # It is the Wn parameter which defines the cut off 
-        out = scipy.signal.filtfilt(b, a, data)
-        ax.plot(data.index, out, ls = "--", c = cmap(i%10), label = gene_id)
-        # plt.show()
-        plt.draw()
-        plt.pause(0.5)
-        if i%5 == 0:
-            ax.cla()
-
-def data_for_gene(df, gene_id):
-    if gene_id in ["SCP1233B", "SCP1233", "SCP153c", "SCP1301", "SCP155c", "SCP1299"]:
-        key =  ".".join([gene_id[:4], gene_id[4:]])
-    else:
-        key = gene_id
-    try:
-        data = df.loc[key]
-    except KeyError:
-        print("No gene expression data for {0}".format(key))
-        return None
-
-    if isinstance(data, pd.core.frame.DataFrame):
-        print("{0} rows for gene {1}".format(len(data.index), gene_id))
-        data = data.agg("mean")
-    return data
-
-def resample_and_filter(data, resample_period, butter_wn, gene_id):
-    data.index = pd.to_timedelta(data.index, "h")
-    data = data.resample("10T").interpolate(method = "linear")
-    b, a = scipy.signal.butter(N = 3, Wn = 0.05, btype = "lowpass") # It is the Wn parameter which defines the cut off 
-    out = pd.Series(scipy.signal.filtfilt(b, a, data), name = gene_id)
-    out.index = data.index
-    return out
-
-
-def filter_and_resample_and_derivative(resample_period = "10T", butter_wn = 0.05):
-    df = read_transcriptomics()
-    model = get_model()
-    model_genes = [g.id for g in model.genes]
-    model_genes.remove("s0001")
-
-    resampled_and_smoothed = []
-    for i, gene_id in enumerate(model_genes):
-        data = data_for_gene(df, gene_id)
-        if not data is None:
-            smooth_data = resample_and_filter(data, resample_period, butter_wn, gene_id)
-            resampled_and_smoothed.append(smooth_data)
-    
-    smooth_df = pd.concat(resampled_and_smoothed, axis = 1).T
-    timedelta = ((smooth_df.columns[1]-smooth_df.columns[0]).seconds / 3600) # In hours
-
-    derivate_df = smooth_df.diff(1, axis = 1) / timedelta
-    return derivate_df, model
-
-
-def convert_gene_data_to_reaction_data(model, derivate_df):
-    reaction_data_list = []
-    for r in model.reactions:
-        grr = r.gene_reaction_rule
-        if not len(grr):
-            continue
-
-        or_groups = grr.split(" or ")
-        or_list = []
-        for grr_part in or_groups:
-            and_group = grr_part.split(" and ")
-            and_group = [x.strip("() ") for x in and_group]
-            and_data = derivative_df[derivative_df.index.isin(and_group)]
-            if isinstance(and_data, pd.core.frame.DataFrame):
-                and_data = and_data.agg("mean", axis = 0)
-            or_list.append(and_data)
-
-        reaction_data = pd.concat(or_list, axis = 1).agg("sum", axis = 1)
-        reaction_data.name = r.id
-        reaction_data_list.append(reaction_data)
-
-    reaction_data_df = pd.concat(reaction_data_list, axis = 1).T
-    return reaction_data_df
-
-# def func(x, A, b, c):
-#     return c - A*np.exp(b*x)
 
 def sigmoid(x, a, b, c, d):
     y = a / (1 + np.exp(c*(x-b))) + abs(d)
@@ -167,13 +33,13 @@ def sigmoid(x, a, b, c, d):
 
 def fit_PO4(df):
     df = df[~df["PO4"].isnull()]
-    fit, _ = curve_fit(sigmoid, df.index, df["PO4"], p0 = [480, 40, 1, 10])
+    fit, _ = curve_fit(sigmoid, df.index, df["PO4"], p0 = [480, 40, 3, 10])
     print(fit)
     return fit
 
 
 
-def read_offline_data():
+def read_offline_data(offline_data_fn = OFFLINE_DATA_FN):
     df = pd.read_csv(OFFLINE_DATA_FN, sep = ";", decimal = ",")
     df.drop("Sample #", axis = 1, inplace = True)
     df.loc[0, "CDW"] = 0
@@ -185,8 +51,9 @@ def read_offline_data():
     df.index = pd.to_timedelta(df.index, "h")
     df_resampled = df.resample("10T").interpolate(method = "linear")
 
-    df_resampled["Fitted PO4"] = sigmoid(df_resampled.index.total_seconds()/3600, *po4_fit)
 
+    df_resampled["Fitted PO4"] = sigmoid(df_resampled.index.total_seconds()/3600, *po4_fit)
+    df_resampled["Fitted PO4"] = df_resampled["Fitted PO4"]*1e-3 #Convert from mg/L to g/L
 
 
     # # glc_fit = np.poly1d(np.polyfit(df.index.total_seconds(), df["Glucose"], 3))
@@ -210,79 +77,293 @@ def read_offline_data():
     return df_resampled
 
 
-def dFBA_trans(model, reaction_data_df, growth_data):
-    pass
+class DFBA(object):
+    def __init__(self, model_fn, growth_data_fn, reaction_data_fn, solver = "gurobi"):
+        self.get_model(model_fn)
+        self.set_solver(solver)
 
-def dFBA(model, growth_data):
-    # initial conditions
-    # glc = 41 g/L
-    # Glu = 57 g/L
-    # Initial biomass = 0.03 g/L
+        self.growth_data_df = read_offline_data(growth_data_fn)
+        self.reaction_data_df = pd.read_csv(reaction_data_fn, index_col = 0)
+        
+        self.N = len(self.growth_data_df.index)
+        self.time_array_hours = self.growth_data_df.index.total_seconds()/3600
+        self.time_array = self.growth_data_df.index
+        self.dt = self.time_array_hours[1]-self.time_array_hours[0]
+        
+        self._default_dFBA_settings()
 
-    time_array = growth_data.index#.total_seconds()/3600 # Hours
-    dt = (time_array[1]-time_array[0]).total_seconds()/3600
+        self.make_dFBA_df()
+        self.init_model()
+
+    def get_model(self, model_fn = None):
+        if not model_fn:
+            model_fn = self.model_fn
+        else:
+            self.model_fn = model_fn
+            
+        self.model = cobra.io.read_sbml_model(model_fn)
     
-    N = len(time_array)
-    biomass_arr = np.zeros(N)
-    biomass_arr[0] = 0.03 #g/L
+    def set_solver(self, solver):
+        self.model.solver = solver
 
-    PO4_arr = np.zeros(N)
-    PO4_arr[0] = 491.7e-3 #g/L
-    
-    glc_arr = np.zeros(N)
-    glc_arr[0] = 41
-    
-    glu_arr = np.zeros(N)
-    glu_arr[0] = 57
+    def _default_dFBA_settings(self):
+        self.use_measured_PO4_uptake = False
+        self.minimum_PO4_uptake = 0.02
 
-    
-    # S_glc_uptake_array = np.zeros(N)
-    # S_glu_uptake_array = np.zeros(N)
-    S_pi_uptake_array = np.zeros(N)
-    growth_rate_array = np.zeros(N)
+    def set_dFBA_settings(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
-    # Units in mmol/g
-    # No limitation on glucose and glutamate
-    scale_sources_3(model, ["EX_glc__D_e", "EX_glu__L_e"])
+    def make_dFBA_df(self):
+        """
+        Make a data frame to store values for:
+        - Glucose uptake in mmol/gDW/hr/L
+        - Glutamate uptake in mmol/gDW/hr/L
+        - PO4 uptake mmol/gDW/hr/L
+        - Predicted glucose medium concentration in mmol/L
+        - Predicted glutamate medium concentration in mmol/L
+        - Predicted PO4 medium concentration in mmol/L
+        - Biomass in gDW/L
+        - Growth rate in /hr
+        - Max PO4 uptake in mmol/gDW/hr/L
+        - Max PO4 uptake in mmol/hr/L
 
-    S_pi_available = -1000
 
-    for i, timepoint in enumerate(time_array):
+        """
+        dFBA_columns = ["Hours",
+                        "Glucose uptake",
+                        "Glutamate uptake",
+                        "PO4 uptake",
+                        "Glucose in medium",
+                        "Glutamate in medium",
+                        "PO4 in medium",
+                        "Biomass",
+                        "Growth rate",
+                        "Max PO4 /gDW",
+                        "Max PO4",
+                        ]
+
+        arr = np.zeros((self.N, 11))
+        arr[:, 0] = self.time_array_hours
+        self.dFBA_df = pd.DataFrame(arr)
+        self.dFBA_df.columns = dFBA_columns
+        # self.dFBA_df.set_index("Hours", inplace = True)
+        # print(self.dFBA_df)
+
+    def set_initial_amounts(self, glucose = None, glutamate = None, PO4 = None, biomass = 0.01):
+        """
+        Converts values from g/L to mmol/L and sets as initial amount
+        """
+        if glucose:
+            self.dFBA_df["Glucose in medium"][0] = 1e3* glucose / self.model.metabolites.glc__D_e.formula_weight
+        if glutamate:
+            self.dFBA_df["Glutamate in medium"][0] = 1e3* glutamate / self.model.metabolites.glu__L_e.formula_weight
+        if PO4:
+            self.dFBA_df["PO4 in medium"][0] = 1e3* PO4 / self.model.metabolites.pi_e.formula_weight
+
+        self.dFBA_df["Biomass"][0] = biomass
+
+    def init_model(self, glucose_uptake = MAX_GLUCOSE_UPTAKE_RATE):
+        self.model.reactions.EX_nh4_e.lower_bound = 0
+        scale_carbon_sources(self.model, ["EX_glc__D_e", "EX_glu__L_e"], glucose_uptake)
+        blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model)
+        self.model.remove_reactions(blocked_reactions, remove_orphans = True)
+
+    def calc_available_PO4(self, i):
+        if self.use_measured_PO4_uptake:
+            raise NotImplementedError
+        else:
+            self.dFBA_df["PO4 in medium"][i]
+            self.dFBA_df["Biomass"][i]
+            self.dFBA_df["Max PO4"][i] = self.dFBA_df["PO4 in medium"][i] / self.dt
+            self.dFBA_df["Max PO4 /gDW"][i] = max(self.minimum_PO4_uptake, self.dFBA_df["Max PO4"][i]/self.dFBA_df["Biomass"][i])
+
+
+
+    def update_biomass_and_medium(self, i):
         if i > 0:
-            biomass_arr[i] = biomass_arr[i-1] * np.exp(growth_rate * dt) # g/L
-            PO4_arr[i] = PO4_arr[i-1] + S_pi_uptake*biomass_arr[i-1]*dt
+            self.dFBA_df["Glucose in medium"][i] =  self.dFBA_df["Glucose in medium"][i-1] - self.dFBA_df["Glucose uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
+            self.dFBA_df["Glutamate in medium"][i] =  self.dFBA_df["Glutamate in medium"][i-1] - self.dFBA_df["Glutamate uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
+            self.dFBA_df["PO4 in medium"][i] =  self.dFBA_df["PO4 in medium"][i-1] - self.dFBA_df["PO4 uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
+            self.dFBA_df["Biomass"][i] = self.dFBA_df["Biomass"][i-1]*np.exp(self.dFBA_df["Growth rate"][i-1]*self.dt)
+
+    def pFBA(self, solution = None):
+        if solution is None:
+            solution = self.model.optimize()
+        with self.model as model:
+            model.reactions.BIOMASS_SCO.lb = solution.x_dict["BIOMASS_SCO"] * 0.95
+            model.reactions.BIOMASS_SCO.objective_coefficient = 0
+            reactions_flux_exp = [(r.forward_variable, r.reverse_variable) for r in model.reactions]
+            temp = chain(*reactions_flux_exp)
+            pFBA_exp = add([mul((x, sympy.singleton.S.One)) for x in temp])
+            objective = model.problem.Objective(pFBA_exp, direction = "min", sloppy = True)
+            model.objective = objective
+            solution = model.optimize()
+        return solution
+        # reaction_vars = chain(*((r.forward_variable, r.reverse_variable) for r in model.reactions))
+
+
+    def transFBA(self, i, solution = None):
+        timepoint = str(self.time_array[i])
+        if (str(timepoint) in list(self.reaction_data_df.columns)) and (solution is not None):
+            solution = self._transFBA(timepoint, solution)
+        else:
+            solution = self.model.optimize()
+        return solution
+
+    
+    def _transFBA(self, timepoint, solution, fraction_of_optimum = 0.95):
+        with self.model as model:
+            current_reaction_data = self.reaction_data_df[timepoint]
+            current_reaction_data = current_reaction_data[abs(current_reaction_data) > SIGNIFICANCE_THRESHOLD]
+            print(timepoint, len(current_reaction_data))
+            objective_list = []
+            for r_id, r_change in current_reaction_data.iteritems():
+                try:
+                    r_current_flux = solution.x_dict[r_id] 
+                except KeyError:
+                    continue
+                r_target_flux = r_current_flux + r_change*REACTION_CHANGE_CONSTANT
+                pos_var = model.problem.Variable(r_id+"_pos_diff", lb = 0)
+                neg_var = model.problem.Variable(r_id+"_neg_diff", lb = 0)
+                reaction = model.reactions.get_by_id(r_id)
+                cons = model.problem.Constraint(reaction.flux_expression + pos_var - neg_var - r_target_flux, lb = 0, ub = 0)
+                model.add_cons_vars([pos_var, neg_var, cons])
+                objective_list += [pos_var, neg_var]
+            if len(objective_list):
+                cobra.util.solver.fix_objective_as_constraint(model, fraction = fraction_of_optimum)    
+                objective_exp = add(objective_list)
+                # print(objective_exp)
+                obj = model.problem.Objective(objective_exp, direction = "min")
+                model.objective = obj
+                solution = model.optimize(objective_sense = None)
+                print(model.summary())
+            else:
+                print("No reaction data above threshold for time: {0}".format(timepoint))
+                solution = model.optimize()
+
+        return solution                
+
+                
+            
+
+    # def set_target_fluxes_and_objective(self, i, solution = None):
+    #     timepoint = str(self.time_array[i])
+    #         for r_id, r_change in self.reaction_data_df[str(timepoint)].iteritems()[:3]:
+    #             # if r_change > SIGNIFICANCE_THRESHOLD:
+    #             #     var = model.problem.Variable(r_id+"_diff")
+    #             #     cons2 = model.problem.Constraint(var, lb = 0)
+    #             #     new_vars.append(var)
+    #             #     model.add_cons_vars([var, cons, cons2])
+
+    #             # if r_change < -SIGNIFICANCE_THRESHOLD:
+    #             #     var = model.problem.Variable(r_id+"_diff")
+    #             #     cons = model.problem.Constraint(model.reactions.get_by_id(r_id).flux_expression - var - target_flux, lb = 0, ub = 0)
+    #             #     cons2 = model.problem.Constraint(var, lb = 0)
+    #             #     new_vars.append(var)
+    #             #     model.add_cons_vars([var, cons, cons2])
+    #             print(r_id)
+
+
+    def set_FBA_bounds(self, i):
+        self.model.reactions.EX_pi_e.lower_bound = -self.dFBA_df["Max PO4 /gDW"][i]
+
+    def store_solution(self, solution, i):
+        self.dFBA_df["Glucose uptake"][i] = - solution.x_dict["EX_glc__D_e"]
+        self.dFBA_df["Glutamate uptake"][i] = - solution.x_dict["EX_glu__L_e"]
+        self.dFBA_df["PO4 uptake"][i] = - solution.x_dict["EX_pi_e"]
+        self.dFBA_df["Growth rate"][i] = solution.x_dict["BIOMASS_SCO"]
+
+
+    def run_dFBA(self):
+        for i in range(self.N):
+            self.update_biomass_and_medium(i)
+            self.calc_available_PO4(i)
+            self.set_FBA_bounds(i)
+            solution = self.model.optimize()
+            self.store_solution(solution, i)
+
+    def run_pdFBA(self):
+        solution = None
+        for i in range(self.N):
+            print(i)
+            self.update_biomass_and_medium(i)
+            self.calc_available_PO4(i)
+            self.set_FBA_bounds(i)
+            solution = self.pFBA(solution)
+            self.store_solution(solution, i)
+
+    def run_transdFBA(self):
+        solution = None
+        for i in range(self.N):
+            # print(i, self.time_array[i])
+            self.update_biomass_and_medium(i)
+            self.calc_available_PO4(i)
+            self.set_FBA_bounds(i)
+            solution = self.transFBA(i, solution)
+            if solution.status == "infeasible":
+                print("Infeasible at timepoint {0}".format(self.time_array[i]))
+                solution = self.model.optimize()
+            self.store_solution(solution, i)
+
+    def plot_dFBA_results(self):
+        fig, [ax1, ax2, ax3, ax4, ax5] = plt.subplots(1,5, figsize = (20, 10))
+        self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
+        ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "CDW")
+
+        self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "r")
+        self.dFBA_df.plot(x = "Hours", y = "Glutamate uptake", ax = ax2, c = "r")
         
-            S_pi_available = min(-0.01, get_available_PO4(growth_data, timepoint) / biomass_arr[i])
 
-        model.reactions.EX_pi_e.lower_bound = min(0, S_pi_available)
-        solution = model.optimize()
-        
-        S_glc_uptake = solution.x_dict["EX_glc__D_e"]
-        S_pi_uptake = solution.x_dict["EX_pi_e"]
-        S_glut_uptake = solution.x_dict["EX_glu__L_e"]
-        growth_rate = solution.objective_value
+        self.dFBA_df["PO4 uptake"].plot(ax = ax3, c = "r")
+        self.dFBA_df["Max PO4 /gDW"].plot(ax = ax3, c = "b")
 
-        growth_rate_array[i] = growth_rate
-        S_pi_uptake_array[i] = S_pi_uptake
-        
+        self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
+        ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
+     
 
-    fig, [ax1, ax2, ax3] = plt.subplots(1,3)
-    ax1.plot(time_array.total_seconds()/3600, biomass_arr, c = "k", lw = 5, label = "Biomass")
-    ax1.plot(time_array.total_seconds()/3600, growth_data["CDW"], lw = 4, label = "CDW")
-    ax2.plot(time_array.total_seconds()/3600, S_pi_uptake_array)
-    ax2.plot(time_array.total_seconds()/3600, growth_rate_array/max(growth_rate_array))
-    ax2.plot(time_array.total_seconds()/3600, S_pi_uptake_array/max(S_pi_uptake_array))
-    ax3.plot(time_array.total_seconds()/3600, growth_rate_array)
-    # plt.legend()
-    plt.show()
+        # ax1.plot(self.dFBA_df["Biomass"], c = "k", lw = 5, label = "Biomass")
+        # ax1.plot(self.dFBA_df["Biomass"]["CDW"], lw = 4, label = "CDW")
+        # ax2.plot(self.dFBA_df["Biomass"], c = "k", label = "PO4 uptake")
+        # ax2.plot(self.dFBA_df["Biomass"], label = "PO4 uptake")
+
+        # ax3.plot(self.dFBA_df["Biomass"])
+        # ax4.plot(self.dFBA_df["Biomass"], c = "b", lw = 5)
+        # ax4.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
+
+        # ax5.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
+        # ax5.plot(self.dFBA_df["Biomass"]["Fitted PO4"]*1e3/model.metabolites.pi_c.formula_weight, c = "k", lw = 5)
+        # plt.legend()
+        plt.show()
 
 
-def get_available_PO4(growth_data, timepoint):
+
+def get_available_PO4_2(growth_data, timepoint, model):
+    max_PO4 = growth_data.loc[timepoint, "Fitted PO4"] #g/L
+    mmol_max_PO4 = 1e3*max_PO4/model.metabolites.pi_c.formula_weight #mmol/L
+    return mmol_max_PO4
+
+def get_available_PO4(growth_data, timepoint, model):
     max_PO4 = growth_data.loc[timepoint, "Max PO4"] #g/L/hr
-    mmol_max_PO4 = 1e3*max_PO4/MOLAR_MASS["PO4"] #mmol/L/hr
+    mmol_max_PO4 = 1e3*max_PO4/model.metabolites.pi_c.formula_weight #mmol/L/hr
     return mmol_max_PO4
 
     # except 
+def scale_carbon_sources(model, sources, max_glucose_uptake_rate):
+    total_carbon_uptake = max_glucose_uptake_rate * 6 # Glucose has 6 carbons
+    carbon_bound_exp = 0
+    for source_id in sources:
+        # print(source_id)
+        source = model.reactions.get_by_id(source_id)
+        n_carbon, n_nitrogen = get_number_of_carbons_and_nitrogens_in_metabolite(list(source.metabolites)[0])
+        source.lower_bound = total_carbon_uptake / n_carbon
+        carbon_bound_exp += source.flux_expression * n_carbon
+        
+    carbon_bound = model.problem.Constraint(carbon_bound_exp, lb = total_carbon_uptake)
+
+    model.add_cons_vars(carbon_bound)
+    # model.add_cons_vars(nitrogen_bound)
+
 def scale_sources_3(model, sources):
     total_carbon_uptake = MAX_GLUCOSE_UPTAKE_RATE * 6 # Glucose has 6 carbons
     total_nitrogen_uptake = CORRESPONDING_AMMONIUM_UPTAKE * 1 # Ammonium has 1 nitrogen
@@ -340,11 +421,23 @@ if __name__ == '__main__':
         reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
         reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
 
-    if 1:
+    if 0:
         offline_df = read_offline_data()
 
-        reaction_data_df = pd.read_csv("../data/derivatve_transcr_rxns.csv", index_col = 1)
+        reaction_data_df = pd.read_csv("../data/derivatve_transcr_rxns.csv", index_col = 0)
         model = get_model()
-        dFBA(model, offline_df)
+        dFBA_trans(model, reaction_data_df, offline_df)
+
+    if 1:
+        reaction_data_fn = "../data/derivatve_transcr_rxns.csv"
+        dFBA = DFBA(MODEL_FN, OFFLINE_DATA_FN, reaction_data_fn)
+        dFBA.set_initial_amounts(glucose = 41, glutamate = 57, PO4 = 491.7e-3, biomass = 0.03) #g/L
+        print(dFBA.reaction_data_df.abs().std().mean())
+        print(dFBA.reaction_data_df.abs().mean().mean())
+
+
+        dFBA.run_transdFBA()
+        # dFBA.run_pdFBA()
+        dFBA.plot_dFBA_results()
 
     # print(derivative_df.head())
