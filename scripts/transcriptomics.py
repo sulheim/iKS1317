@@ -321,16 +321,16 @@ class DFBA(object):
             self.store_solution(solution, i)
 
     def plot_dFBA_results(self):
-        fig, [ax1, ax2, ax3, ax4, ax5] = plt.subplots(1,5, figsize = (20, 10))
+        fig, [ax1, ax2, ax3, ax4] = plt.subplots(2,2, figsize = (20, 10))
         self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
-        ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "CDW")
+        ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "Measured CDW")
 
         self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "b")
         self.dFBA_df.plot(x = "Hours", y = "Glutamate uptake", ax = ax2, c = "r")
         
 
-        self.dFBA_df["PO4 uptake"].plot(ax = ax3, c = "r")
-        self.dFBA_df["Max PO4 /gDW"].plot(ax = ax3, c = "b")
+        self.dFBA_df.plot(x = "Hours", y = "PO4 uptake", ax = ax3, c = "r")
+        self.dFBA_df.plot(x = "Hours", y = "Max PO4 /gDW", ax = ax3, c = "b")
 
         self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
         ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
@@ -349,6 +349,7 @@ class DFBA(object):
         # ax5.plot(self.dFBA_df["Biomass"]["Fitted PO4"]*1e3/model.metabolites.pi_c.formula_weight, c = "k", lw = 5)
         # plt.legend()
         plt.show()
+
 
 
 
