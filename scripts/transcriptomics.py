@@ -94,6 +94,9 @@ class DFBA(object):
 
         self.make_dFBA_df()
         self.init_model()
+        self.exchange_storage = np.zeros((self.N, len(self.model.exchanges)))
+
+
 
     def get_model(self, model_fn = None):
         if not model_fn:
@@ -212,6 +215,11 @@ class DFBA(object):
             solution = self.model.optimize()
         return solution
 
+    def collect_exchanges(self, i, solution):
+        for j, r in enumerate(self.model.exchanges):
+            self.exchange_storage[i,j] = solution.x_dict[r.id]
+
+
     
     def _transFBA(self, timepoint, solution, fraction_of_optimum = 0.95):
         with self.model as model:
@@ -305,7 +313,7 @@ class DFBA(object):
             self.calc_available_PO4(i)
             self.set_FBA_bounds(i)
             solution = self.pFBA(solution)
-            self.store_solution(solution, i)
+            self.collect_solution(i, solution)
 
     def run_transdFBA(self):
         solution = None
@@ -318,10 +326,12 @@ class DFBA(object):
             if solution.status == "infeasible":
                 print("Infeasible at timepoint {0}".format(self.time_array[i]))
                 solution = self.model.optimize()
-            self.store_solution(solution, i)
+            self.collect_solution(i, solution)
+            
 
     def plot_dFBA_results(self):
-        fig, [ax1, ax2, ax3, ax4] = plt.subplots(2,2, figsize = (20, 10))
+        fig, axes = plt.subplots(2,2, figsize = (20, 10))
+        [ax1, ax2, ax3, ax4] = axes.flatten()
         self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
         ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "Measured CDW")
 
@@ -332,9 +342,9 @@ class DFBA(object):
         self.dFBA_df.plot(x = "Hours", y = "PO4 uptake", ax = ax3, c = "r")
         self.dFBA_df.plot(x = "Hours", y = "Max PO4 /gDW", ax = ax3, c = "b")
 
-        self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
-        ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
-     
+        # self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
+        # ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
+        
 
         # ax1.plot(self.dFBA_df["Biomass"], c = "k", lw = 5, label = "Biomass")
         # ax1.plot(self.dFBA_df["Biomass"]["CDW"], lw = 4, label = "CDW")
@@ -348,6 +358,20 @@ class DFBA(object):
         # ax5.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
         # ax5.plot(self.dFBA_df["Biomass"]["Fitted PO4"]*1e3/model.metabolites.pi_c.formula_weight, c = "k", lw = 5)
         # plt.legend()
+        plt.show()
+
+    def plot_exchanges(self):
+        fig, ax = plt.subplots(1, figsize = (20, 10))
+        df = pd.DataFrame(self.exchange_storage)
+        df.index = self.dFBA_df["Hours"]
+        df.columns = [r.id for r in self.model.exchanges]
+
+        # Remove all zero columns
+        df = df.loc[:, (df != 0).any(axis = 0)]
+
+        # Normalize each row
+        df = df / df.abs().max()
+        df.plot(ax = ax)
         plt.show()
 
 
@@ -454,5 +478,6 @@ if __name__ == '__main__':
         dFBA.run_transdFBA()
         # dFBA.run_pdFBA()
         dFBA.plot_dFBA_results()
+        dFBA.plot_exchanges()
 
     # print(derivative_df.head())
