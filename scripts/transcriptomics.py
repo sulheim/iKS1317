@@ -168,6 +168,7 @@ class DFBA(object):
         scale_carbon_sources(self.model, ["EX_glc__D_e", "EX_glu__L_e"], glucose_uptake)
         blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model)
         self.model.remove_reactions(blocked_reactions, remove_orphans = True)
+        self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
 
     def calc_available_PO4(self, i):
         if self.use_measured_PO4_uptake:
@@ -206,7 +207,7 @@ class DFBA(object):
     def transFBA(self, i, solution = None):
         timepoint = str(self.time_array[i])
         if (str(timepoint) in list(self.reaction_data_df.columns)) and (solution is not None):
-            solution = self._transFBA(timepoint, solution)
+            solution = self._transFBA2(timepoint, solution)
         else:
             solution = self.model.optimize()
         return solution
@@ -245,26 +246,39 @@ class DFBA(object):
         return solution                
 
                 
-            
+    def _transFBA2(self, timepoint, solution, fraction_of_optimum = 0.95):
+        current_reaction_data = self.reaction_data_df[abs(self.reaction_data_df[timepoint]) > SIGNIFICANCE_THRESHOLD][timepoint]
+        target_flux = self.get_target_flux(current_reaction_data, solution)
+        objective_list = []
+        print(timepoint, len(current_reaction_data), solution.x_dict["BIOMASS_SCO"])
+        with self.model as model:
+            for i, r_id in enumerate(self.non_exchange_reaction_ids):
+                pos_var = model.problem.Variable(r_id+"_pos_diff", lb = 0)
+                neg_var = model.problem.Variable(r_id+"_neg_diff", lb = 0)
+                reaction = model.reactions.get_by_id(r_id)
+                cons = model.problem.Constraint(reaction.flux_expression + pos_var - neg_var - target_flux[i], lb = 0, ub = 0)
+                model.add_cons_vars([pos_var, neg_var, cons])
+                objective_list += [pos_var, neg_var]
 
-    # def set_target_fluxes_and_objective(self, i, solution = None):
-    #     timepoint = str(self.time_array[i])
-    #         for r_id, r_change in self.reaction_data_df[str(timepoint)].iteritems()[:3]:
-    #             # if r_change > SIGNIFICANCE_THRESHOLD:
-    #             #     var = model.problem.Variable(r_id+"_diff")
-    #             #     cons2 = model.problem.Constraint(var, lb = 0)
-    #             #     new_vars.append(var)
-    #             #     model.add_cons_vars([var, cons, cons2])
+            cobra.util.solver.fix_objective_as_constraint(model, fraction = fraction_of_optimum)    
+            objective_exp = add(objective_list)
+            # print(objective_exp)
+            model.objective = model.problem.Objective(objective_exp, direction = "min")
+            solution = model.optimize(objective_sense = None)
+            print(model.summary())
+        return solution
 
-    #             # if r_change < -SIGNIFICANCE_THRESHOLD:
-    #             #     var = model.problem.Variable(r_id+"_diff")
-    #             #     cons = model.problem.Constraint(model.reactions.get_by_id(r_id).flux_expression - var - target_flux, lb = 0, ub = 0)
-    #             #     cons2 = model.problem.Constraint(var, lb = 0)
-    #             #     new_vars.append(var)
-    #             #     model.add_cons_vars([var, cons, cons2])
-    #             print(r_id)
+    def get_target_flux(self, current_reaction_data, solution):
+        r_target_flux = np.zeros(len(self.non_exchange_reaction_ids))
+        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+            try:
+                flux_change = current_reaction_data[r_id]*REACTION_CHANGE_CONSTANT
+            except KeyError:
+                flux_change = 0
+            r_target_flux[i] = solution.x_dict[r_id] + flux_change
+        return r_target_flux
 
-
+        
     def set_FBA_bounds(self, i):
         self.model.reactions.EX_pi_e.lower_bound = -self.dFBA_df["Max PO4 /gDW"][i]
 
@@ -311,7 +325,7 @@ class DFBA(object):
         self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
         ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "CDW")
 
-        self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "r")
+        self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "b")
         self.dFBA_df.plot(x = "Hours", y = "Glutamate uptake", ax = ax2, c = "r")
         
 
