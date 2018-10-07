@@ -313,7 +313,7 @@ class DFBA(object):
             self.calc_available_PO4(i)
             self.set_FBA_bounds(i)
             solution = self.pFBA(solution)
-            self.collect_solution(i, solution)
+            self.collect_exchanges(i, solution)
 
     def run_transdFBA(self):
         solution = None
