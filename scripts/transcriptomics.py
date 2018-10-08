@@ -7,6 +7,7 @@ from scipy.optimize import curve_fit
 import numpy as np
 from itertools import chain
 import re
+import time
 import sympy
 add = sympy.Add._from_args
 mul = sympy.Mul._from_args
@@ -296,6 +297,14 @@ class DFBA(object):
         self.dFBA_df["PO4 uptake"][i] = - solution.x_dict["EX_pi_e"]
         self.dFBA_df["Growth rate"][i] = solution.x_dict["BIOMASS_SCO"]
 
+    def write_results_to_file(self, filename = None):
+        if not filename:
+            filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M%"))
+        self.dFBA_df.to_csv("dFBA_df"+filename)
+        
+        exchanges_df = pd.DataFrame(self.exchange_storage)
+        exchanges_df.to_csv("exchanges_df"+filename)
+
 
     def run_dFBA(self):
         for i in range(self.N):
@@ -326,7 +335,7 @@ class DFBA(object):
             if solution.status == "infeasible":
                 print("Infeasible at timepoint {0}".format(self.time_array[i]))
                 solution = self.model.optimize()
-            self.collect_solution(i, solution)
+            self.collect_exchanges(i, solution)
             
 
     def plot_dFBA_results(self):
@@ -477,7 +486,10 @@ if __name__ == '__main__':
 
         dFBA.run_transdFBA()
         # dFBA.run_pdFBA()
-        dFBA.plot_dFBA_results()
-        dFBA.plot_exchanges()
+        # dFBA.plot_dFBA_results()
+        # dFBA.plot_exchanges()
+        dFBA.write_results_to_file()
+
+
 
     # print(derivative_df.head())
