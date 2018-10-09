@@ -26,7 +26,7 @@ PI_AVAILABLE_SCALE_FACTOR = 1
 REACTION_CHANGE_CONSTANT = 1
 
 SIGNIFICANCE_THRESHOLD = 0.5
-SAVE_FOLDER = Path(__file__).resolve().parent / "Results"
+SAVE_FOLDER = Path(__file__).resolve().parent.parent / "Results"
 
 
 def sigmoid(x, a, b, c, d):
@@ -86,7 +86,7 @@ class DFBA(object):
 
         self.growth_data_df = read_offline_data(growth_data_fn)
         self.reaction_data_df = pd.read_csv(reaction_data_fn, index_col = 0)
-        self.reactions_with_data = list(self.reaction_data_df.index)
+        
         
         self.N = len(self.growth_data_df.index)
         self.time_array_hours = self.growth_data_df.index.total_seconds()/3600
@@ -228,10 +228,15 @@ class DFBA(object):
     def _transFBA_add_variables(self):
         self.new_variables = []
         self.new_constraints = []
-        for i, r_id in enumerate(self.reactions_with_data):
+        self.reactions_with_data = list()
+        for i, r_id in enumerate(self.reaction_data_df.index):
+            try:
+                reaction = self.model.reactions.get_by_id(r_id)
+            except KeyError:
+                continue
+            self.reactions_with_data.append(r_id)
             pos_var = self.model.problem.Variable(r_id+"_pos_diff", lb = 0)
             neg_var = self.model.problem.Variable(r_id+"_neg_diff", lb = 0)
-            reaction = self.model.reactions.get_by_id(r_id)
             cons = self.model.problem.Constraint(reaction.flux_expression + pos_var - neg_var, name = r_id + "_cons", lb = 0, ub = 0)
             self.model.add_cons_vars([pos_var, neg_var, cons])
             self.new_variables += [pos_var, neg_var]
@@ -388,69 +393,6 @@ class DFBA(object):
             self.store_solution(solution, i)
             
 
-    def plot_dFBA_results(self):
-        fig, axes = plt.subplots(2,2, figsize = (20, 10))
-        [ax1, ax2, ax3, ax4] = axes.flatten()
-        self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
-        ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "Measured CDW")
-
-        self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "b")
-        self.dFBA_df.plot(x = "Hours", y = "Glutamate uptake", ax = ax2, c = "r")
-        
-
-        self.dFBA_df.plot(x = "Hours", y = "PO4 uptake", ax = ax3, c = "r")
-        self.dFBA_df.plot(x = "Hours", y = "Max PO4 /gDW", ax = ax3, c = "b")
-
-        # self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
-        # ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
-        
-
-        # ax1.plot(self.dFBA_df["Biomass"], c = "k", lw = 5, label = "Biomass")
-        # ax1.plot(self.dFBA_df["Biomass"]["CDW"], lw = 4, label = "CDW")
-        # ax2.plot(self.dFBA_df["Biomass"], c = "k", label = "PO4 uptake")
-        # ax2.plot(self.dFBA_df["Biomass"], label = "PO4 uptake")
-
-        # ax3.plot(self.dFBA_df["Biomass"])
-        # ax4.plot(self.dFBA_df["Biomass"], c = "b", lw = 5)
-        # ax4.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
-
-        # ax5.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
-        # ax5.plot(self.dFBA_df["Biomass"]["Fitted PO4"]*1e3/model.metabolites.pi_c.formula_weight, c = "k", lw = 5)
-        # plt.legend()
-        plt.show()
-
-    def plot_exchanges(self):
-        fig, ax = plt.subplots(1, figsize = (20, 10))
-        df = pd.DataFrame(self.exchange_storage)
-        df.index = self.dFBA_df["Hours"]
-        df.columns = [r.id for r in self.model.exchanges]
-
-        # Remove all zero columns
-        df = df.loc[:, (df != 0).any(axis = 0)]
-
-        # Normalize each row
-        df = df / df.abs().max()
-        df.plot(ax = ax)
-        plt.show()
-
-def plot_exchange_results(fn):
-    df = pd.read_csv(fn, sep = ";")
-    # df = df.drop("Unnamed: 0", axis = 1)
-    model = get_model()
-    print(df.head())
-    fig, ax = plt.subplots(1, figsize = (20, 10))
-    df.index = df["Hours"]
-    # df.columns = [r.id for r in model.exchanges]
-
-    # Remove all zero columns
-    df = df.loc[:, (df != 0).any(axis = 0)]
-
-    # Normalize each row
-    df = df / df.abs().max()
-    df.plot(ax = ax)
-    plt.show()
-
-
 def get_available_PO4_2(growth_data, timepoint, model):
     max_PO4 = growth_data.loc[timepoint, "Fitted PO4"] #g/L
     mmol_max_PO4 = 1e3*max_PO4/model.metabolites.pi_c.formula_weight #mmol/L
@@ -539,14 +481,5 @@ if __name__ == '__main__':
 
 
         dFBA.run_transdFBA()
-        # dFBA.run_pdFBA()
-        # dFBA.plot_dFBA_results()
-        # dFBA.plot_exchanges()
         dFBA.write_results_to_file()
     
-    if 0:
-        fn = "../Results/exchanges_df_results_20181009_1632.csv"
-        plot_exchange_results(fn)
-
-
-    # print(derivative_df.head())

@@ -224,17 +224,22 @@ class DFBA(object):
         for j, r in enumerate(self.model.exchanges):
             self.exchange_storage[i,j] = solution.x_dict[r.id]
     @profile
-    def _transFBA_add_variables():
+    def _transFBA_add_variables(self):
         self.new_variables = []
         self.new_constraints = []
-        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+        self.reactions_with_data = list()
+        for i, r_id in enumerate(self.reaction_data_df.index):
+            try:
+                reaction = self.model.reactions.get_by_id(r_id)
+            except KeyError:
+                continue
+            self.reactions_with_data.append(r_id)
             pos_var = self.model.problem.Variable(r_id+"_pos_diff", lb = 0)
             neg_var = self.model.problem.Variable(r_id+"_neg_diff", lb = 0)
-            reaction = self.model.reactions.get_by_id(r_id)
             cons = self.model.problem.Constraint(reaction.flux_expression + pos_var - neg_var, name = r_id + "_cons", lb = 0, ub = 0)
             self.model.add_cons_vars([pos_var, neg_var, cons])
             self.new_variables += [pos_var, neg_var]
-            self.new_constraints += cons.name
+            self.new_constraints.append(cons.name)
 
     
     def _transFBA(self, timepoint, solution, fraction_of_optimum = 0.95):
