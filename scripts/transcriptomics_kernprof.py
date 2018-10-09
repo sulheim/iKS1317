@@ -1,6 +1,6 @@
 import pandas as pd
 import cobra
-import os.path
+from pathlib import Path
 from matplotlib import pyplot as plt
 from scipy.interpolate import UnivariateSpline
 from scipy.optimize import curve_fit
@@ -26,6 +26,7 @@ PI_AVAILABLE_SCALE_FACTOR = 1
 REACTION_CHANGE_CONSTANT = 1
 
 SIGNIFICANCE_THRESHOLD = 0.5
+SAVE_FOLDER = Path(__file__).resolve().parent.parent / "Results"
 
 
 def sigmoid(x, a, b, c, d):
@@ -39,7 +40,7 @@ def fit_PO4(df):
     return fit
 
 
-@profile
+
 def read_offline_data(offline_data_fn = OFFLINE_DATA_FN):
     df = pd.read_csv(OFFLINE_DATA_FN, sep = ";", decimal = ",")
     df.drop("Sample #", axis = 1, inplace = True)
@@ -87,6 +88,7 @@ class DFBA(object):
         self.growth_data_df = read_offline_data(growth_data_fn)
         self.reaction_data_df = pd.read_csv(reaction_data_fn, index_col = 0)
         
+        
         self.N = len(self.growth_data_df.index)
         self.time_array_hours = self.growth_data_df.index.total_seconds()/3600
         self.time_array = self.growth_data_df.index
@@ -99,7 +101,7 @@ class DFBA(object):
         self.exchange_storage = np.zeros((self.N, len(self.model.exchanges)))
 
 
-    @profile
+
     def get_model(self, model_fn = None):
         if not model_fn:
             model_fn = self.model_fn
@@ -110,7 +112,7 @@ class DFBA(object):
     @profile
     def set_solver(self, solver):
         self.model.solver = solver
-    @profile
+
     def _default_dFBA_settings(self):
         self.use_measured_PO4_uptake = False
         self.minimum_PO4_uptake = 0.02
@@ -156,7 +158,7 @@ class DFBA(object):
         self.dFBA_df.columns = dFBA_columns
         # self.dFBA_df.set_index("Hours", inplace = True)
         # print(self.dFBA_df)
-    @profile
+
     def set_initial_amounts(self, glucose = None, glutamate = None, PO4 = None, biomass = 0.01):
         """
         Converts values from g/L to mmol/L and sets as initial amount
@@ -169,13 +171,14 @@ class DFBA(object):
             self.dFBA_df["PO4 in medium"][0] = 1e3* PO4 / self.model.metabolites.pi_e.formula_weight
 
         self.dFBA_df["Biomass"][0] = biomass
+
     @profile
     def init_model(self, glucose_uptake = MAX_GLUCOSE_UPTAKE_RATE):
         self.model.reactions.EX_nh4_e.lower_bound = 0
         scale_carbon_sources(self.model, ["EX_glc__D_e", "EX_glu__L_e"], glucose_uptake)
-        blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model)
+        blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model, open_exchanges = True)
         self.model.remove_reactions(blocked_reactions, remove_orphans = True)
-        self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
+        # self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
 
     def calc_available_PO4(self, i):
         if self.use_measured_PO4_uptake:
@@ -187,7 +190,7 @@ class DFBA(object):
             self.dFBA_df["Max PO4 /gDW"][i] = max(self.minimum_PO4_uptake, self.dFBA_df["Max PO4"][i]/self.dFBA_df["Biomass"][i])
 
 
-
+    @profile
     def update_biomass_and_medium(self, i):
         if i > 0:
             self.dFBA_df["Glucose in medium"][i] =  self.dFBA_df["Glucose in medium"][i-1] - self.dFBA_df["Glucose uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
@@ -217,8 +220,8 @@ class DFBA(object):
             solution = self._transFBA3(timepoint, solution)
         else:
             solution = self.model.optimize()
+            print(timepoint)
         return solution
-    
     @profile
     def collect_exchanges(self, i, solution):
         for j, r in enumerate(self.model.exchanges):
@@ -272,11 +275,12 @@ class DFBA(object):
                 print("No reaction data above threshold for time: {0}".format(timepoint))
                 solution = model.optimize()
 
-        return solution                 
+        return solution                
+    
     @profile
     def _transFBA3(self, timepoint, solution, fraction_of_optimum = 0.95):
-        if self.model.reactions["BIOMASS_SCO"].objective_coefficient:
-            self.model.reactions["BIOMASS_SCO"].objective_coefficient = 0
+        if self.model.reactions.get_by_id("BIOMASS_SCO").objective_coefficient:
+            self.model.reactions.get_by_id("BIOMASS_SCO").objective_coefficient = 0
             objective_exp = add(self.new_variables)
             self.model.objective = self.model.problem.Objective(objective_exp, direction = "min")
 
@@ -286,10 +290,15 @@ class DFBA(object):
         objective_list = []
         print(timepoint, len(current_reaction_data), solution.x_dict["BIOMASS_SCO"])
         with self.model as model:
-            for i, r_id in enumerate(self.non_exchange_reaction_ids):
+            for i, r_id in enumerate(self.reactions_with_data):
                 cons_name = self.new_constraints[i]
-                model.constraints[cons_name].lb = target_flux[i]
-                model.constraints[cons_name].ub = target_flux[i]
+                try:
+                    model.constraints[cons_name].lb = target_flux[i]
+                    model.constraints[cons_name].ub = target_flux[i]
+                except ValueError:
+                    model.constraints[cons_name].ub = target_flux[i]
+                    model.constraints[cons_name].lb = target_flux[i]
+
 
 
             model.reactions.BIOMASS_SCO.lower_bound = solution.x_dict["BIOMASS_SCO"] * fraction_of_optimum    
@@ -318,10 +327,11 @@ class DFBA(object):
             solution = model.optimize(objective_sense = None)
             print(model.summary())
         return solution
+
     @profile
     def get_target_flux(self, current_reaction_data, solution):
-        r_target_flux = np.zeros(len(self.non_exchange_reaction_ids))
-        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+        r_target_flux = np.zeros(len(self.reactions_with_data))
+        for i, r_id in enumerate(self.reactions_with_data):
             try:
                 flux_change = current_reaction_data[r_id]*REACTION_CHANGE_CONSTANT
             except KeyError:
@@ -341,13 +351,17 @@ class DFBA(object):
 
     def write_results_to_file(self, filename = None):
         if not filename:
-            filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M%"))
-        self.dFBA_df.to_csv("dFBA_df"+filename)
+            filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M"))
+        dFBA_fn = SAVE_FOLDER / ("dFBA_df" + filename)
+        self.dFBA_df.to_csv(dFBA_fn, index = False, sep = ";")
         
         exchanges_df = pd.DataFrame(self.exchange_storage)
-        exchanges_df.to_csv("exchanges_df"+filename)
+        exchanges_df.columns = [r.id for r in self.model.exchanges]
+        exchanges_df["Hours"] = self.dFBA_df["Hours"]
+        exchanges_fn = SAVE_FOLDER / ("exchanges_df" + filename)
+        exchanges_df.to_csv(exchanges_fn, index = False, sep = ";")
 
-
+    @profile
     def run_dFBA(self):
         for i in range(self.N):
             self.update_biomass_and_medium(i)
@@ -365,7 +379,7 @@ class DFBA(object):
             self.set_FBA_bounds(i)
             solution = self.pFBA(solution)
             self.collect_exchanges(i, solution)
-    @profile
+
     def run_transdFBA(self):
         solution = None
         self._transFBA_add_variables()
@@ -379,55 +393,8 @@ class DFBA(object):
                 print("Infeasible at timepoint {0}".format(self.time_array[i]))
                 solution = self.model.optimize()
             self.collect_exchanges(i, solution)
+            self.store_solution(solution, i)
             
-
-    def plot_dFBA_results(self):
-        fig, axes = plt.subplots(2,2, figsize = (20, 10))
-        [ax1, ax2, ax3, ax4] = axes.flatten()
-        self.dFBA_df.plot(x = "Hours", y = "Biomass", ax = ax1, c = "k")
-        ax1.plot(self.time_array_hours, self.growth_data_df["CDW"], c = "b", lw = 4, label = "Measured CDW")
-
-        self.dFBA_df.plot(x = "Hours", y = "Glucose uptake", ax = ax2, c = "b")
-        self.dFBA_df.plot(x = "Hours", y = "Glutamate uptake", ax = ax2, c = "r")
-        
-
-        self.dFBA_df.plot(x = "Hours", y = "PO4 uptake", ax = ax3, c = "r")
-        self.dFBA_df.plot(x = "Hours", y = "Max PO4 /gDW", ax = ax3, c = "b")
-
-        # self.dFBA_df["Max PO4"].plot(ax = ax4, c = "b")
-        # ax4.plot(self.time_array_hours, self.growth_data_df["Max PO4"] / self.model.metabolites.pi_e.formula_weight, c = "b")
-        
-
-        # ax1.plot(self.dFBA_df["Biomass"], c = "k", lw = 5, label = "Biomass")
-        # ax1.plot(self.dFBA_df["Biomass"]["CDW"], lw = 4, label = "CDW")
-        # ax2.plot(self.dFBA_df["Biomass"], c = "k", label = "PO4 uptake")
-        # ax2.plot(self.dFBA_df["Biomass"], label = "PO4 uptake")
-
-        # ax3.plot(self.dFBA_df["Biomass"])
-        # ax4.plot(self.dFBA_df["Biomass"], c = "b", lw = 5)
-        # ax4.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
-
-        # ax5.plot(self.dFBA_df["Biomass"], c = "r", lw = 5)
-        # ax5.plot(self.dFBA_df["Biomass"]["Fitted PO4"]*1e3/model.metabolites.pi_c.formula_weight, c = "k", lw = 5)
-        # plt.legend()
-        plt.show()
-
-    def plot_exchanges(self):
-        fig, ax = plt.subplots(1, figsize = (20, 10))
-        df = pd.DataFrame(self.exchange_storage)
-        df.index = self.dFBA_df["Hours"]
-        df.columns = [r.id for r in self.model.exchanges]
-
-        # Remove all zero columns
-        df = df.loc[:, (df != 0).any(axis = 0)]
-
-        # Normalize each row
-        df = df / df.abs().max()
-        df.plot(ax = ax)
-        plt.show()
-
-
-
 
 def get_available_PO4_2(growth_data, timepoint, model):
     max_PO4 = growth_data.loc[timepoint, "Fitted PO4"] #g/L
@@ -502,17 +469,6 @@ if __name__ == '__main__':
     # plot_transcriptomics_for_model_genes()
 
     if 0:
-        derivative_df, model = filter_and_resample_and_derivative()
-        derivative_df.to_csv("../data/derivative_transcr_genes.csv")
-
-    if 0:
-        derivative_df = pd.read_csv("../data/derivative_transcr_genes.csv", index_col = 0)
-        # print(derivative_df)
-        model = get_model()
-        reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
-        reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
-
-    if 0:
         offline_df = read_offline_data()
 
         reaction_data_df = pd.read_csv("../data/derivatve_transcr_rxns.csv", index_col = 0)
@@ -528,11 +484,5 @@ if __name__ == '__main__':
 
 
         dFBA.run_transdFBA()
-        # dFBA.run_pdFBA()
-        # dFBA.plot_dFBA_results()
-        # dFBA.plot_exchanges()
         dFBA.write_results_to_file()
-
-
-
-    # print(derivative_df.head())
+    
