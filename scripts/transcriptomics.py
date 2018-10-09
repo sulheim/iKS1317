@@ -113,6 +113,8 @@ class DFBA(object):
     def _default_dFBA_settings(self):
         self.use_measured_PO4_uptake = False
         self.minimum_PO4_uptake = 0.02
+        self.fraction_of_optimum = 0.95
+        self.significance_threshold = SIGNIFICANCE_THRESHOLD
 
     def set_dFBA_settings(self, **kwargs):
         for key, value in kwargs.items():
@@ -170,7 +172,7 @@ class DFBA(object):
     def init_model(self, glucose_uptake = MAX_GLUCOSE_UPTAKE_RATE):
         self.model.reactions.EX_nh4_e.lower_bound = 0
         scale_carbon_sources(self.model, ["EX_glc__D_e", "EX_glu__L_e"], glucose_uptake)
-        blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model)
+        blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model, open_exchanges = True)
         self.model.remove_reactions(blocked_reactions, remove_orphans = True)
         self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
 
@@ -211,7 +213,7 @@ class DFBA(object):
     def transFBA(self, i, solution = None):
         timepoint = str(self.time_array[i])
         if (str(timepoint) in list(self.reaction_data_df.columns)) and (solution is not None):
-            solution = self._transFBA2(timepoint, solution)
+            solution = self._transFBA3(timepoint, solution)
         else:
             solution = self.model.optimize()
         return solution
@@ -220,12 +222,23 @@ class DFBA(object):
         for j, r in enumerate(self.model.exchanges):
             self.exchange_storage[i,j] = solution.x_dict[r.id]
 
+    def _transFBA_add_variables(self):
+        self.new_variables = []
+        self.new_constraints = []
+        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+            pos_var = self.model.problem.Variable(r_id+"_pos_diff", lb = 0)
+            neg_var = self.model.problem.Variable(r_id+"_neg_diff", lb = 0)
+            reaction = self.model.reactions.get_by_id(r_id)
+            cons = self.model.problem.Constraint(reaction.flux_expression + pos_var - neg_var, name = r_id + "_cons", lb = 0, ub = 0)
+            self.model.add_cons_vars([pos_var, neg_var, cons])
+            self.new_variables += [pos_var, neg_var]
+            self.new_constraints.append(cons.name)
 
     
     def _transFBA(self, timepoint, solution, fraction_of_optimum = 0.95):
         with self.model as model:
             current_reaction_data = self.reaction_data_df[timepoint]
-            current_reaction_data = current_reaction_data[abs(current_reaction_data) > SIGNIFICANCE_THRESHOLD]
+            current_reaction_data = current_reaction_data[abs(current_reaction_data) > self.significance_threshold]
             print(timepoint, len(current_reaction_data))
             objective_list = []
             for r_id, r_change in current_reaction_data.iteritems():
@@ -254,7 +267,34 @@ class DFBA(object):
 
         return solution                
 
-                
+    def _transFBA3(self, timepoint, solution, fraction_of_optimum = 0.95):
+        if self.model.reactions.get_by_id("BIOMASS_SCO").objective_coefficient:
+            self.model.reactions.get_by_id("BIOMASS_SCO").objective_coefficient = 0
+            objective_exp = add(self.new_variables)
+            self.model.objective = self.model.problem.Objective(objective_exp, direction = "min")
+
+
+        current_reaction_data = self.reaction_data_df[abs(self.reaction_data_df[timepoint]) > self.significance_threshold][timepoint]
+        target_flux = self.get_target_flux(current_reaction_data, solution)
+        objective_list = []
+        print(timepoint, len(current_reaction_data), solution.x_dict["BIOMASS_SCO"])
+        with self.model as model:
+            for i, r_id in enumerate(self.non_exchange_reaction_ids):
+                cons_name = self.new_constraints[i]
+                try:
+                    model.constraints[cons_name].lb = target_flux[i]
+                    model.constraints[cons_name].ub = target_flux[i]
+                except ValueError:
+                    model.constraints[cons_name].ub = target_flux[i]
+                    model.constraints[cons_name].lb = target_flux[i]
+                    
+
+
+            model.reactions.BIOMASS_SCO.lower_bound = solution.x_dict["BIOMASS_SCO"] * fraction_of_optimum    
+            solution = model.optimize(objective_sense = None)
+        return solution
+
+
     def _transFBA2(self, timepoint, solution, fraction_of_optimum = 0.95):
         current_reaction_data = self.reaction_data_df[abs(self.reaction_data_df[timepoint]) > SIGNIFICANCE_THRESHOLD][timepoint]
         target_flux = self.get_target_flux(current_reaction_data, solution)
@@ -299,7 +339,7 @@ class DFBA(object):
 
     def write_results_to_file(self, filename = None):
         if not filename:
-            filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M%"))
+            filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M"))
         self.dFBA_df.to_csv("dFBA_df"+filename)
         
         exchanges_df = pd.DataFrame(self.exchange_storage)
@@ -326,6 +366,7 @@ class DFBA(object):
 
     def run_transdFBA(self):
         solution = None
+        self._transFBA_add_variables()
         for i in range(self.N):
             # print(i, self.time_array[i])
             self.update_biomass_and_medium(i)
