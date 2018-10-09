@@ -1,6 +1,7 @@
 import pandas as pd
 import cobra
 import scipy
+import matplotlib.pyplot as plt
 
 TRANSCRIPTOMICS_FN = "../data/SOP-TS9-F452 data.csv"
 MODEL_FN = "../iKS1317.xml"
@@ -47,7 +48,7 @@ def plot_transcriptomics_for_model_genes():
     plt.ion()
     fig, ax = plt.subplots(figsize = (16, 10))
     cmap = plt.get_cmap("tab20")
-    x = np.linspace(df.columns[0], df.columns[-1], 100)
+    # x = np.linspace(df.columns[0], df.columns[-1], 100)
     for i, gene_id in enumerate(model_genes):
         
         data = data_for_gene(df. gene_id)
@@ -142,15 +143,18 @@ def convert_gene_data_to_reaction_data(model, derivate_df):
     reaction_data_df = pd.concat(reaction_data_list, axis = 1).T
     return reaction_data_df
 
-    if __name__ == '__main__':
-        
-        if 0:
-            derivative_df, model = filter_and_resample_and_derivative()
-            derivative_df.to_csv("../data/derivative_transcr_genes.csv")
+if __name__ == '__main__':
 
-        if 0:
-            derivative_df = pd.read_csv("../data/derivative_transcr_genes.csv", index_col = 0)
-            # print(derivative_df)
-            model = get_model()
-            reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
-            reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
+    if 0:
+        derivative_df, model = filter_and_resample_and_derivative()
+        derivative_df.to_csv("../data/derivative_transcr_genes.csv")
+
+    if 0:
+        derivative_df = pd.read_csv("../data/derivative_transcr_genes.csv", index_col = 0)
+        # print(derivative_df)
+        model = get_model()
+        reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
+        reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
+
+    if 1:
+        plot_transcriptomics_for_model_genes()

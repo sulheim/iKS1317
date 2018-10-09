@@ -42,20 +42,38 @@ def plot_dFBA_results(dFBA_fn, growth_data_fn):
 def plot_exchange_results(fn):
     df = pd.read_csv(fn, sep = ";")
     # df = df.drop("Unnamed: 0", axis = 1)
-    model = cobra.io.read_sbml_model(str(MODEL_FN))
-    print(df.head())
-    fig, ax = plt.subplots(1, figsize = (20, 10))
+    # model = cobra.io.read_sbml_model(str(MODEL_FN))
     df.set_index("Hours", inplace = True)
     # df.columns = [r.id for r in model.exchanges]
 
     # Remove all zero columns
-    df = df.loc[:, (df != 0).any(axis = 0)]
+    # df[abs(df)<1e-6] = 0
+    # df = df.loc[:, (df != 0).any(axis = 0)]
 
-    # Normalize each row
-    df = df / df.abs().max()
-    df.plot(ax = ax)
+    df = df.loc[:, df.max().sort_values(ascending = False).index]
+
+    df.iloc[:, 12:25].plot()
+    plt.show()
+    exit()
+
+    # fig1, ax = plt.subplots(1, figsize = (20, 10))
+    df_1 = df[["EX_o2_e", "EX_glu__L_e", "EX_glc__D_e", "EX_pi_e", "EX_co2_e", "EX_h2o_e", "EX_nh4_e"]].abs()
+    df_1.plot()
     plt.show()
 
+    df["DM_germicidin_c"] = df[["DM_germicidinA_c", "DM_germicidinB_c", "DM_germicidinC_c", "DM_germicidinD_c"]].sum(axis = 1)
+    df["EX_ACT"] = df[["DM_ACT_c", "EX_gACT_e"]].sum(axis = 1)
+    df["EX_RED"] = df[["DM_strprub_c", "DM_RED_c"]].sum(axis = 1)
+
+    df_2 = df[["DM_germicidin_c", "EX_ACT", "EX_RED"]]
+    df_2.plot()
+    plt.show()
+
+    df_3 = df[["EX_ala__L_e", "EX_pyr_e", "EX_nh4_e", "EX_ac_e", "EX_gly_e"]]
+
+
+  
 if __name__ == '__main__':
-    fn_exchange = Path("../Results/exchanges_df_results_20181009_2236.csv")
+    file = "exchanges_df_results_20181009_2313.csv"
+    fn_exchange = Path("../Results/") / file
     plot_exchange_results(fn_exchange)
