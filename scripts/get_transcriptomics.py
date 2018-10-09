@@ -141,3 +141,16 @@ def convert_gene_data_to_reaction_data(model, derivate_df):
 
     reaction_data_df = pd.concat(reaction_data_list, axis = 1).T
     return reaction_data_df
+
+    if __name__ == '__main__':
+        
+        if 0:
+            derivative_df, model = filter_and_resample_and_derivative()
+            derivative_df.to_csv("../data/derivative_transcr_genes.csv")
+
+        if 0:
+            derivative_df = pd.read_csv("../data/derivative_transcr_genes.csv", index_col = 0)
+            # print(derivative_df)
+            model = get_model()
+            reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
+            reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")

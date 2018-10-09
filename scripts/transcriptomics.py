@@ -1,6 +1,6 @@
 import pandas as pd
 import cobra
-import os.path
+from pathlib import Path
 from matplotlib import pyplot as plt
 from scipy.interpolate import UnivariateSpline
 from scipy.optimize import curve_fit
@@ -26,6 +26,7 @@ PI_AVAILABLE_SCALE_FACTOR = 1
 REACTION_CHANGE_CONSTANT = 1
 
 SIGNIFICANCE_THRESHOLD = 0.5
+SAVE_FOLDER = Path(__file__).resolve().parent / "Results"
 
 
 def sigmoid(x, a, b, c, d):
@@ -85,6 +86,7 @@ class DFBA(object):
 
         self.growth_data_df = read_offline_data(growth_data_fn)
         self.reaction_data_df = pd.read_csv(reaction_data_fn, index_col = 0)
+        self.reactions_with_data = list(self.reaction_data_df.index)
         
         self.N = len(self.growth_data_df.index)
         self.time_array_hours = self.growth_data_df.index.total_seconds()/3600
@@ -174,7 +176,7 @@ class DFBA(object):
         scale_carbon_sources(self.model, ["EX_glc__D_e", "EX_glu__L_e"], glucose_uptake)
         blocked_reactions = cobra.flux_analysis.find_blocked_reactions(self.model, open_exchanges = True)
         self.model.remove_reactions(blocked_reactions, remove_orphans = True)
-        self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
+        # self.non_exchange_reaction_ids = [r.id for r in self.model.reactions if not r in self.model.exchanges]
 
     def calc_available_PO4(self, i):
         if self.use_measured_PO4_uptake:
@@ -216,6 +218,7 @@ class DFBA(object):
             solution = self._transFBA3(timepoint, solution)
         else:
             solution = self.model.optimize()
+            print(timepoint)
         return solution
 
     def collect_exchanges(self, i, solution):
@@ -225,7 +228,7 @@ class DFBA(object):
     def _transFBA_add_variables(self):
         self.new_variables = []
         self.new_constraints = []
-        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+        for i, r_id in enumerate(self.reactions_with_data):
             pos_var = self.model.problem.Variable(r_id+"_pos_diff", lb = 0)
             neg_var = self.model.problem.Variable(r_id+"_neg_diff", lb = 0)
             reaction = self.model.reactions.get_by_id(r_id)
@@ -279,7 +282,7 @@ class DFBA(object):
         objective_list = []
         print(timepoint, len(current_reaction_data), solution.x_dict["BIOMASS_SCO"])
         with self.model as model:
-            for i, r_id in enumerate(self.non_exchange_reaction_ids):
+            for i, r_id in enumerate(self.reactions_with_data):
                 cons_name = self.new_constraints[i]
                 try:
                     model.constraints[cons_name].lb = target_flux[i]
@@ -292,6 +295,7 @@ class DFBA(object):
 
             model.reactions.BIOMASS_SCO.lower_bound = solution.x_dict["BIOMASS_SCO"] * fraction_of_optimum    
             solution = model.optimize(objective_sense = None)
+            print(model.summary())
         return solution
 
 
@@ -318,8 +322,8 @@ class DFBA(object):
         return solution
 
     def get_target_flux(self, current_reaction_data, solution):
-        r_target_flux = np.zeros(len(self.non_exchange_reaction_ids))
-        for i, r_id in enumerate(self.non_exchange_reaction_ids):
+        r_target_flux = np.zeros(len(self.reactions_with_data))
+        for i, r_id in enumerate(self.reactions_with_data):
             try:
                 flux_change = current_reaction_data[r_id]*REACTION_CHANGE_CONSTANT
             except KeyError:
@@ -340,12 +344,14 @@ class DFBA(object):
     def write_results_to_file(self, filename = None):
         if not filename:
             filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M"))
-        self.dFBA_df.to_csv("dFBA_df"+filename, index = False)
+        dFBA_fn = SAVE_FOLDER / ("dFBA_df" + filename)
+        self.dFBA_df.to_csv(dFBA_fn, index = False, sep = ";")
         
         exchanges_df = pd.DataFrame(self.exchange_storage)
-        exchanges_df.columns = [r.id for r in model.exchanges]
-        exchanges["Hours"] = self.dFBA_df["Hours"]
-        exchanges_df.to_csv("exchanges_df"+filename, index = False)
+        exchanges_df.columns = [r.id for r in self.model.exchanges]
+        exchanges_df["Hours"] = self.dFBA_df["Hours"]
+        exchanges_fn = SAVE_FOLDER / ("exchanges_df" + filename)
+        exchanges_df.to_csv(exchanges_fn, index = False, sep = ";")
 
 
     def run_dFBA(self):
@@ -369,7 +375,7 @@ class DFBA(object):
     def run_transdFBA(self):
         solution = None
         self._transFBA_add_variables()
-        for i in range(self.N):
+        for i in range(20):#self.N):
             # print(i, self.time_array[i])
             self.update_biomass_and_medium(i)
             self.calc_available_PO4(i)
@@ -379,6 +385,7 @@ class DFBA(object):
                 print("Infeasible at timepoint {0}".format(self.time_array[i]))
                 solution = self.model.optimize()
             self.collect_exchanges(i, solution)
+            self.store_solution(solution, i)
             
 
     def plot_dFBA_results(self):
@@ -427,13 +434,13 @@ class DFBA(object):
         plt.show()
 
 def plot_exchange_results(fn):
-    df = pd.read_csv(fn)
-    df = df.drop("Unnamed: 0", axis = 1)
+    df = pd.read_csv(fn, sep = ";")
+    # df = df.drop("Unnamed: 0", axis = 1)
     model = get_model()
     print(df.head())
     fig, ax = plt.subplots(1, figsize = (20, 10))
-    # df.index = df["Hours"]
-    df.columns = [r.id for r in model.exchanges]
+    df.index = df["Hours"]
+    # df.columns = [r.id for r in model.exchanges]
 
     # Remove all zero columns
     df = df.loc[:, (df != 0).any(axis = 0)]
@@ -517,17 +524,6 @@ if __name__ == '__main__':
     # plot_transcriptomics_for_model_genes()
 
     if 0:
-        derivative_df, model = filter_and_resample_and_derivative()
-        derivative_df.to_csv("../data/derivative_transcr_genes.csv")
-
-    if 0:
-        derivative_df = pd.read_csv("../data/derivative_transcr_genes.csv", index_col = 0)
-        # print(derivative_df)
-        model = get_model()
-        reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
-        reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
-
-    if 0:
         offline_df = read_offline_data()
 
         reaction_data_df = pd.read_csv("../data/derivatve_transcr_rxns.csv", index_col = 0)
@@ -549,7 +545,7 @@ if __name__ == '__main__':
         dFBA.write_results_to_file()
     
     if 0:
-        fn = "../Results/exchanges_df_results_20181008_1924.csv"
+        fn = "../Results/exchanges_df_results_20181009_1632.csv"
         plot_exchange_results(fn)
 
 
