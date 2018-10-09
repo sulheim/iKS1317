@@ -380,7 +380,7 @@ class DFBA(object):
     def run_transdFBA(self):
         solution = None
         self._transFBA_add_variables()
-        for i in range(20):#self.N):
+        for i in range(self.N):
             # print(i, self.time_array[i])
             self.update_biomass_and_medium(i)
             self.calc_available_PO4(i)
