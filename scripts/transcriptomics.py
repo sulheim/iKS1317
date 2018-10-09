@@ -287,7 +287,7 @@ class DFBA(object):
                 except ValueError:
                     model.constraints[cons_name].ub = target_flux[i]
                     model.constraints[cons_name].lb = target_flux[i]
-                    
+
 
 
             model.reactions.BIOMASS_SCO.lower_bound = solution.x_dict["BIOMASS_SCO"] * fraction_of_optimum    
@@ -340,10 +340,12 @@ class DFBA(object):
     def write_results_to_file(self, filename = None):
         if not filename:
             filename = "_results_{0}.csv".format(time.strftime("%Y%m%d_%H%M"))
-        self.dFBA_df.to_csv("dFBA_df"+filename)
+        self.dFBA_df.to_csv("dFBA_df"+filename, index = False)
         
         exchanges_df = pd.DataFrame(self.exchange_storage)
-        exchanges_df.to_csv("exchanges_df"+filename)
+        exchanges_df.columns = [r.id for r in model.exchanges]
+        exchanges["Hours"] = self.dFBA_df["Hours"]
+        exchanges_df.to_csv("exchanges_df"+filename, index = False)
 
 
     def run_dFBA(self):
@@ -424,7 +426,22 @@ class DFBA(object):
         df.plot(ax = ax)
         plt.show()
 
+def plot_exchange_results(fn):
+    df = pd.read_csv(fn)
+    df = df.drop("Unnamed: 0", axis = 1)
+    model = get_model()
+    print(df.head())
+    fig, ax = plt.subplots(1, figsize = (20, 10))
+    # df.index = df["Hours"]
+    df.columns = [r.id for r in model.exchanges]
 
+    # Remove all zero columns
+    df = df.loc[:, (df != 0).any(axis = 0)]
+
+    # Normalize each row
+    df = df / df.abs().max()
+    df.plot(ax = ax)
+    plt.show()
 
 
 def get_available_PO4_2(growth_data, timepoint, model):
@@ -530,7 +547,10 @@ if __name__ == '__main__':
         # dFBA.plot_dFBA_results()
         # dFBA.plot_exchanges()
         dFBA.write_results_to_file()
-
+    
+    if 0:
+        fn = "../Results/exchanges_df_results_20181008_1924.csv"
+        plot_exchange_results(fn)
 
 
     # print(derivative_df.head())
