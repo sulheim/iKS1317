@@ -300,7 +300,6 @@ class DFBA(object):
 
             model.reactions.BIOMASS_SCO.lower_bound = solution.x_dict["BIOMASS_SCO"] * fraction_of_optimum    
             solution = model.optimize(objective_sense = None)
-            print(model.summary())
         return solution
 
 
