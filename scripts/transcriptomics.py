@@ -23,7 +23,7 @@ MAX_GLUCOSE_UPTAKE_RATE = -1.5
 CORRESPONDING_AMMONIUM_UPTAKE = 1.85*MAX_GLUCOSE_UPTAKE_RATE/2.1
 PI_AVAILABLE_SCALE_FACTOR = 1
 
-REACTION_CHANGE_CONSTANT = 10
+REACTION_CHANGE_CONSTANT = 1
 
 SIGNIFICANCE_THRESHOLD = 0.5
 SAVE_FOLDER = Path(__file__).resolve().parent.parent / "Results"
@@ -149,9 +149,12 @@ class DFBA(object):
                         "Growth rate",
                         "Max PO4 /gDW",
                         "Max PO4",
+                        "RED in medium",
+                        "RED production",
                         ]
 
-        arr = np.zeros((self.N, 11))
+        N_c = len(dFBA_columns)
+        arr = np.zeros((self.N, N_c))
         arr[:, 0] = self.time_array_hours
         self.dFBA_df = pd.DataFrame(arr)
         self.dFBA_df.columns = dFBA_columns
@@ -169,6 +172,8 @@ class DFBA(object):
         if PO4:
             self.dFBA_df["PO4 in medium"][0] = 1e3* PO4 / self.model.metabolites.pi_e.formula_weight
 
+
+        self.dFBA_df["RED in medium"][0] = biomass
         self.dFBA_df["Biomass"][0] = biomass
 
     def init_model(self, glucose_uptake = MAX_GLUCOSE_UPTAKE_RATE):
@@ -195,6 +200,7 @@ class DFBA(object):
             self.dFBA_df["Glutamate in medium"][i] =  self.dFBA_df["Glutamate in medium"][i-1] - self.dFBA_df["Glutamate uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
             self.dFBA_df["PO4 in medium"][i] =  self.dFBA_df["PO4 in medium"][i-1] - self.dFBA_df["PO4 uptake"][i-1] * self.dt * self.dFBA_df["Biomass"][i-1]
             self.dFBA_df["Biomass"][i] = self.dFBA_df["Biomass"][i-1]*np.exp(self.dFBA_df["Growth rate"][i-1]*self.dt)
+            # self.dFBA_df["RED"]
 
     def pFBA(self, solution = None):
         if solution is None:

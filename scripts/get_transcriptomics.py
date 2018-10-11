@@ -1,7 +1,19 @@
 import pandas as pd
 import cobra
-import scipy
+import scipy.signal
 import matplotlib.pyplot as plt
+import matplotlib
+from matplotlib.dates import DateFormatter
+import numpy as np
+
+plt.style.use('seaborn-white')
+matplotlib.rcParams["font.size"] = 16
+matplotlib.rcParams["font.weight"] = "bold"
+matplotlib.rcParams["axes.labelweight"] = "bold"
+matplotlib.rcParams["lines.linewidth"] = 3
+matplotlib.rcParams['axes.titleweight'] = "bold"
+matplotlib.rcParams['axes.titlesize'] = 18
+
 
 TRANSCRIPTOMICS_FN = "../data/SOP-TS9-F452 data.csv"
 MODEL_FN = "../iKS1317.xml"
@@ -31,6 +43,45 @@ def read_transcriptomics(trans_fn = TRANSCRIPTOMICS_FN):
 
     return df
 
+def make_figure_smoothing(resample_period = "10T", butter_wn = 0.05):
+    df = read_transcriptomics()
+    genes = ["SCO5080", "SCO5091", "SCO3622"]
+    gene_data = []
+    smooth_data = []
+    for g in genes:
+        gd = data_for_gene(df, g)
+        gene_data.append(gd)
+        smooth_data.append(resample_and_filter(gd, resample_period, butter_wn, g))
+
+
+    fig, ax = plt.subplots(1, figsize = (14, 8))
+    
+    cmap = plt.get_cmap("tab10")
+    for i, g in enumerate(genes):
+        gd = gene_data[i]
+        gd.index = gd.index.total_seconds()/3600
+        # gd.index = pd.to_datetime(np.array(gd.index))
+        # print(sd)
+        ax.plot(gd.index, gd,".", ms = 10, c = cmap(i%10), label = g)
+
+    for i, g in enumerate(genes):
+        sd = smooth_data[i]
+        # sd.index = pd.to_datetime(np.array(sd.index))
+        sd.index = sd.index.total_seconds()/3600
+        
+        # print(gd.index)
+
+        # sd_d = gd.resample("10T").interpolate(method = "linear")
+        ax.plot(sd.index, sd, ls = "--", c = cmap(i%10), label = g + ", smoothed")
+    # ax.xaxis.set_major_formatter("%H:%M")
+    # ax.xaxis.set_major_formatter(DateFormatter("%H:%M"))
+    ax.set_ylabel("Log2 normalized counts")
+    ax.set_xlabel("Hours after innoculation")
+    plt.legend(ncol = 2)
+    
+    # plt.gcf().autofmt_xdate()
+    plt.savefig("../Plots/smoothing.png", bbox_inches = "tight", pad_inches = 0.5)
+    # plt.show()
 
 def get_model(model_fn = MODEL_FN):
     return cobra.io.read_sbml_model(model_fn)
@@ -42,16 +93,17 @@ def plot_transcriptomics_for_model_genes():
     model_genes = [g.id for g in model.genes]
     model_genes.remove("s0001")
 
-
-    print(len(df.index))
     print(df.columns)
+    # print(df.head())
+    # print(len(df.index))
+    # print(df.columns)
     plt.ion()
     fig, ax = plt.subplots(figsize = (16, 10))
     cmap = plt.get_cmap("tab20")
     # x = np.linspace(df.columns[0], df.columns[-1], 100)
     for i, gene_id in enumerate(model_genes):
         
-        data = data_for_gene(df. gene_id)
+        data = data_for_gene(df, gene_id)
         print(gene_id)
         # print(data)
         # try:
@@ -156,5 +208,7 @@ if __name__ == '__main__':
         reaction_data_df = convert_gene_data_to_reaction_data(model, derivative_df)
         reaction_data_df.to_csv("../data/derivatve_transcr_rxns.csv")
 
-    if 1:
+    if 0:
         plot_transcriptomics_for_model_genes()
+    if 1:
+        make_figure_smoothing()
